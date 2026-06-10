@@ -12,7 +12,7 @@ export default function NotFound() {
       <h1 className="text-2xl font-light text-foreground mb-4">Page not found.</h1>
       <Link
         href="/"
-        className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
+        className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
       >
         <span aria-hidden="true">←</span>
         <span>Back to home</span>

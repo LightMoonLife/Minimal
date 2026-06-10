@@ -5,11 +5,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#FAFAF8',
-        foreground: '#171717',
-        muted: '#F4F3EE',
-        'muted-foreground': '#737373',
-        border: '#E4E3DE',
+        background: '#FFFFFF',
+        foreground: '#4E4C4A',
+        muted: '#F5F5F5',
+        'muted-foreground': '#9B9998',
+        border: '#EBEBEB',
+        accent: '#2D4395',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

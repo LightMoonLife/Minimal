@@ -11,7 +11,7 @@ export function Footer() {
               href="https://linkedin.com/in/yourprofile"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200"
             >
               LinkedIn
             </a>
@@ -19,7 +19,7 @@ export function Footer() {
           <li>
             <a
               href="mailto:hello@yourdomain.com"
-              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200"
             >
               Email
             </a>

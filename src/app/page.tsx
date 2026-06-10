@@ -67,7 +67,7 @@ export default function HomePage() {
                   </span>
                 </span>
                 <span className="flex items-center gap-6 sm:shrink-0">
-                  <span className="font-mono text-xs text-foreground font-medium">
+                  <span className="font-mono text-xs text-accent font-medium">
                     {project.heroMetric.value}
                   </span>
                   <span className="font-mono text-xs text-muted-foreground">
@@ -88,7 +88,7 @@ export default function HomePage() {
         <div className="mt-10">
           <Link
             href="/portfolio"
-            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
+            className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
           >
             <span>All work</span>
             <span aria-hidden="true">→</span>
@@ -116,7 +116,7 @@ export default function HomePage() {
         <div className="mt-12">
           <Link
             href="/cv"
-            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
+            className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
           >
             <span>Full background</span>
             <span aria-hidden="true">→</span>
@@ -143,7 +143,7 @@ export default function HomePage() {
               href="https://linkedin.com/in/yourprofile"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 block"
+              className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 block"
             >
               LinkedIn →
             </a>
@@ -151,7 +151,7 @@ export default function HomePage() {
           <div className="pt-4">
             <Link
               href="/contact"
-              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
+              className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
             >
               <span>Send a message</span>
               <span aria-hidden="true">→</span>

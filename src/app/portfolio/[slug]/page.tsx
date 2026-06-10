@@ -37,7 +37,7 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="mb-4">
           <Link
             href="/portfolio"
-            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
+            className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
           >
             <span aria-hidden="true">←</span>
             <span>Work</span>
@@ -73,7 +73,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
             Primary result
           </p>
-          <p className="text-6xl font-light text-foreground tracking-tighter leading-none">
+          <p className="text-6xl font-light text-accent tracking-tighter leading-none">
             {project.heroMetric.value}
           </p>
           <p className="font-mono text-xs text-muted-foreground">
@@ -130,7 +130,7 @@ export default async function ProjectPage({ params }: PageProps) {
           {project.results.map(result => (
             <div key={result.label} className="space-y-1">
               <dt className="font-mono text-xs text-muted-foreground">{result.label}</dt>
-              <dd className="text-3xl font-light text-foreground tracking-tight leading-none">
+              <dd className="text-3xl font-light text-accent tracking-tight leading-none">
                 {result.value}
               </dd>
               {result.context && (
@@ -166,7 +166,7 @@ export default async function ProjectPage({ params }: PageProps) {
               href={`/portfolio/${prev.slug}`}
               className="group flex flex-col gap-1"
             >
-              <span className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="font-mono text-xs text-muted-foreground group-hover:text-accent transition-colors">
                 ← Previous
               </span>
               <span className="text-base font-light text-foreground">{prev.title}</span>
@@ -179,7 +179,7 @@ export default async function ProjectPage({ params }: PageProps) {
               href={`/portfolio/${next.slug}`}
               className="group flex flex-col gap-1 sm:text-right"
             >
-              <span className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="font-mono text-xs text-muted-foreground group-hover:text-accent transition-colors">
                 Next →
               </span>
               <span className="text-base font-light text-foreground">{next.title}</span>

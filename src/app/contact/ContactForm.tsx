@@ -51,7 +51,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    'w-full bg-transparent border-b border-border py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200'
+    'w-full bg-transparent border-b border-border py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent transition-colors duration-200'
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-8 max-w-md" aria-label="Contact form">
@@ -111,7 +111,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={state === 'submitting'}
-        className="font-mono text-xs text-foreground hover:text-muted-foreground transition-colors duration-200 inline-flex items-center gap-2 disabled:opacity-40"
+        className="font-mono text-xs text-accent hover:text-accent/70 transition-colors duration-200 inline-flex items-center gap-2 disabled:opacity-40"
       >
         <span>{state === 'submitting' ? 'Sending…' : 'Send message'}</span>
         {state !== 'submitting' && <span aria-hidden="true">→</span>}

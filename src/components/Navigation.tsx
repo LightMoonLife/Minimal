@@ -56,9 +56,9 @@ export function Navigation() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`font-mono text-xs tracking-widest transition-colors duration-200 hover:text-foreground ${
+                    className={`font-mono text-xs tracking-widest transition-colors duration-200 hover:text-accent ${
                       pathname.startsWith(href)
-                        ? 'text-foreground'
+                        ? 'text-accent'
                         : 'text-muted-foreground'
                     }`}
                   >
@@ -70,7 +70,7 @@ export function Navigation() {
           </nav>
 
           <button
-            className="sm:hidden font-mono text-xs tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-200"
+            className="sm:hidden font-mono text-xs tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors duration-200"
             onClick={() => setOpen(v => !v)}
             aria-label={open ? 'Close navigation' : 'Open navigation'}
             aria-expanded={open}
@@ -87,7 +87,7 @@ export function Navigation() {
         role="dialog"
         aria-label="Navigation menu"
         aria-modal="true"
-        className={`fixed inset-0 z-40 bg-foreground flex flex-col justify-end pb-16 px-8 sm:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-accent flex flex-col justify-end pb-16 px-8 sm:hidden transition-opacity duration-300 ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >

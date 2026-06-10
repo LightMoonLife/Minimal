@@ -29,12 +29,12 @@ body {
 
 /* Selection colour */
 ::selection {
-  background-color: #171717;
-  color: #FAFAF8;
+  background-color: #2D4395;
+  color: #FFFFFF;
 }
 
 /* Focus visible ring — consistent, accessible */
 :focus-visible {
-  outline: 2px solid #171717;
+  outline: 2px solid #2D4395;
   outline-offset: 3px;
 }

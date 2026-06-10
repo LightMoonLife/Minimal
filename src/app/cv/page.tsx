@@ -31,7 +31,7 @@ export default function CVPage() {
         <div className="mt-8">
           <a
             href="/cv.pdf"
-            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
+            className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
           >
             <span>Download CV (PDF)</span>
             <span aria-hidden="true">↓</span>

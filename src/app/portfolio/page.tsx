@@ -48,7 +48,7 @@ export default function PortfolioPage() {
                     </p>
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                       <div className="flex items-baseline gap-2">
-                        <span className="font-mono text-xs text-foreground font-medium">
+                        <span className="font-mono text-xs text-accent font-medium">
                           {project.heroMetric.value}
                         </span>
                         <span className="font-mono text-xs text-muted-foreground">
@@ -63,7 +63,7 @@ export default function PortfolioPage() {
                       {project.services.map(s => (
                         <span
                           key={s}
-                          className="font-mono text-xs text-muted-foreground border border-border px-2 py-0.5"
+                          className="font-mono text-xs text-accent/70 border border-accent/25 px-2 py-0.5"
                         >
                           {s}
                         </span>
