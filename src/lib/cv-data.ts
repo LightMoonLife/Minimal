@@ -32,7 +32,7 @@ export const experience: Role[] = [
     period: '2022 — Present',
     location: 'London, UK',
     description:
-      'Leading the conversion optimisation and UX practice, owning the end-to-end testing programme across the company's digital portfolio.',
+      'Leading the conversion optimisation and UX practice, owning the end-to-end testing programme across the company\'s digital portfolio.',
     highlights: [
       'Managed a continuous A/B testing programme generating £2.4M in incremental revenue across 3 years',
       'Built and led a team of 3 analysts and 2 UX designers',
@@ -59,7 +59,7 @@ export const experience: Role[] = [
     period: '2017 — 2019',
     location: 'London, UK',
     description:
-      'Conducted user research and produced UX deliverables to support the product team's development roadmap.',
+      'Conducted user research and produced UX deliverables to support the product team\'s development roadmap.',
     highlights: [
       'Planned and ran moderated and unmoderated user testing sessions',
       'Produced journey maps, personas, wireframes, and interaction specifications',

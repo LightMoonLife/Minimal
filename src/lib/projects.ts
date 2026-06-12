@@ -43,13 +43,13 @@ export const projects: Project[] = [
         number: '01',
         title: 'Discovery',
         description:
-          'Quantitative funnel analysis in GA4, segmented by device, traffic source, and new vs. returning user. Identified the payment step as responsible for 61% of all checkout drop-off. Supplemented with heuristic evaluation of the checkout UI against Nielsen's 10 usability heuristics.',
+          'Quantitative funnel analysis in GA4, segmented by device, traffic source, and new vs. returning user. Identified the payment step as responsible for 61% of all checkout drop-off. Supplemented with heuristic evaluation of the checkout UI against Nielsen\'s 10 usability heuristics.',
       },
       {
         number: '02',
         title: 'Qualitative Research',
         description:
-          '8 moderated remote user testing sessions with representative customers. Sessions focused on the checkout journey end-to-end, with think-aloud protocol. Key finding: users consistently expressed uncertainty about total delivery cost and distrust of the payment form's visual design.',
+          '8 moderated remote user testing sessions with representative customers. Sessions focused on the checkout journey end-to-end, with think-aloud protocol. Key finding: users consistently expressed uncertainty about total delivery cost and distrust of the payment form\'s visual design.',
       },
       {
         number: '03',
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     ],
     learnings: [
       'Inline delivery cost reassurance ("Free standard delivery on this order") outperformed visual trust seals (padlock icons, Trustpilot badges) in direct tests. Relevance at the moment of decision beats generic credential signals.',
-      'A progress indicator showing checkout steps reduced drop-off at the payment stage by 31% in isolation. Knowing "I'm on step 3 of 4" reduces perceived effort significantly.',
+      'A progress indicator showing checkout steps reduced drop-off at the payment stage by 31% in isolation. Knowing "I\'m on step 3 of 4" reduces perceived effort significantly.',
       'Mobile checkout exhibited materially different drop-off patterns to desktop, requiring separate optimisation iterations rather than a single responsive solution.',
     ],
   },
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     overview:
       'A fast-growing B2B SaaS platform was struggling to convert free trial sign-ups into activated users. With 30-day trials and only 34% of users completing onboarding—defined as creating a first project and inviting a team member—significant ARR was being left in the funnel.',
     challenge:
-      'The existing onboarding flow treated all users identically regardless of role, company size, or use case. Product managers, operations leads, and engineers all saw the same generic 12-step sequence. The result was poor time-to-value and high drop-off in the first 72 hours—before users had experienced the product's core value.',
+      'The existing onboarding flow treated all users identically regardless of role, company size, or use case. Product managers, operations leads, and engineers all saw the same generic 12-step sequence. The result was poor time-to-value and high drop-off in the first 72 hours—before users had experienced the product\'s core value.',
     approach: [
       {
         number: '01',
@@ -111,7 +111,7 @@ export const projects: Project[] = [
         number: '03',
         title: 'User Archetype Mapping',
         description:
-          'Defined 3 primary onboarding archetypes based on research: the Solo Maker, the Team Lead, and the Ops Manager. Mapped each archetype's divergent expectations, vocabulary, and ideal first-session outcomes. Used these to design branching onboarding paths.',
+          'Defined 3 primary onboarding archetypes based on research: the Solo Maker, the Team Lead, and the Ops Manager. Mapped each archetype\'s divergent expectations, vocabulary, and ideal first-session outcomes. Used these to design branching onboarding paths.',
       },
       {
         number: '04',
@@ -189,7 +189,7 @@ export const projects: Project[] = [
       { value: '~£1.2M', label: 'Incremental qualified pipeline', context: 'Annualised value at average deal size' },
     ],
     learnings: [
-      'Message-match—aligning the page headline directly to the ad's keyword intent—was the highest-impact individual test across the programme. Visitors converted at a meaningfully higher rate when the headline confirmed they'd arrived in the right place.',
+      'Message-match—aligning the page headline directly to the ad\'s keyword intent—was the highest-impact individual test across the programme. Visitors converted at a meaningfully higher rate when the headline confirmed they\'d arrived in the right place.',
       'In regulated financial services, a "reassurance cluster" (FCA authorisation badge, FSCS scheme membership, and 3+ customer testimonials visible above the fold) outperformed any single trust element tested in isolation.',
       'Form length had a complex relationship with lead quality: shorter forms improved volume but decreased quality. A 5-field form with intelligent pre-qualification questions struck the best balance for the client\'s sales team capacity.',
     ],
