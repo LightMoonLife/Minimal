@@ -27,171 +27,253 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'checkout-optimisation',
-    title: 'Checkout Optimisation',
-    tagline: 'Reducing payment-step friction to recover abandoned revenue at scale.',
-    client: 'Fashion e-commerce, UK',
-    year: '2024',
-    services: ['CRO', 'UX Research', 'A/B Testing'],
-    heroMetric: { value: '+23%', label: 'Checkout conversion rate' },
+    slug: 'b2b-commerce-platform',
+    title: 'B2B Commerce Platform',
+    tagline: 'Engineering a self-service portal that moved 67% of customers to online ordering in 18 months.',
+    client: 'Liquidline — 8-figure B2B supplier',
+    year: '2023',
+    services: ['Platform Engineering', 'Laravel 10', 'Tailwind CSS', 'UX Design'],
+    heroMetric: { value: '67%', label: 'Customers ordering online', context: 'From 0% in 18 months' },
     overview:
-      'The checkout funnel for a high-volume UK fashion retailer was leaking revenue at the payment step. With a cart abandonment rate of 78%—above the industry average—there was a measurable opportunity to recover revenue through targeted optimisation rather than increased ad spend.',
+      'Liquidline is a major UK B2B coffee equipment supplier. Their customers — offices, hotels, restaurants — were placing all orders by phone and email. No self-service, no order history, no reordering. The business needed a digital commerce layer that matched the complexity of B2B ordering (account pricing, multi-site delivery, consumable subscriptions) without the friction of enterprise portals.',
     challenge:
-      'Session recordings and funnel analysis showed users hesitating at the payment step, with notable drop-off around delivery cost revelation and security perception. The challenge was to reduce this friction without disrupting the brand experience or introducing development complexity.',
+      'B2B ordering is fundamentally different from B2C. Customers have negotiated pricing, multiple delivery addresses, standing orders, and account managers. Off-the-shelf e-commerce platforms couldn\'t handle this complexity without heavy customisation. The portal needed to feel as simple as a consumer checkout while supporting the full weight of B2B operations — and it needed to drive adoption without forcing customers off their existing ordering habits.',
     approach: [
       {
         number: '01',
-        title: 'Discovery',
+        title: 'Commercial mapping',
         description:
-          'Quantitative funnel analysis in GA4, segmented by device, traffic source, and new vs. returning user. Identified the payment step as responsible for 61% of all checkout drop-off. Supplemented with heuristic evaluation of the checkout UI against Nielsen\'s 10 usability heuristics.',
+          'Mapped the existing order flow end-to-end: phone calls, emails, spreadsheets, manual ERP entry. Quantified the cost per order across channels and identified the highest-volume, lowest-complexity order types as the adoption wedge — consumables reordering.',
       },
       {
         number: '02',
-        title: 'Qualitative Research',
+        title: 'Platform architecture',
         description:
-          '8 moderated remote user testing sessions with representative customers. Sessions focused on the checkout journey end-to-end, with think-aloud protocol. Key finding: users consistently expressed uncertainty about total delivery cost and distrust of the payment form\'s visual design.',
+          'Built on Laravel 10 with Tailwind CSS. Integrated with the existing ERP for real-time pricing, stock, and order status. Designed the data model to support account-level pricing, multi-site delivery, and order history from day one.',
       },
       {
         number: '03',
-        title: 'Hypothesis Framework',
+        title: 'UX for adoption',
         description:
-          '12 prioritised hypotheses developed using the ICE scoring framework (Impact, Confidence, Ease). Top 3 selected for the first test cycle: inline delivery cost reassurance, progress indicator addition, and payment form visual trust uplift.',
+          'Designed the portal experience around the reorder flow — not product browsing. Customers see their previous orders first, can reorder in two clicks, and only encounter the full catalogue when they choose to. This reduced the barrier from "learn a new system" to "click reorder".',
       },
       {
         number: '04',
-        title: 'A/B Testing',
+        title: 'Phased rollout',
         description:
-          'Sequential A/B tests run over 8 weeks using VWO. Each test required a minimum sample of 2,400 transactions per variant to detect a 5% relative change at 95% statistical significance. Tests were monitored daily but called only on reaching significance to avoid peeking bias.',
-      },
-      {
-        number: '05',
-        title: 'Implementation & Monitoring',
-        description:
-          'Winning variants handed to the development team with annotated specification documents. Post-launch monitoring for 30 days to confirm performance held outside the test environment, accounting for seasonal variation.',
+          'Launched to the top 50 accounts first with account manager support. Used early adoption data to refine the experience before opening to all customers. Account managers were trained as portal advocates, not competitors.',
       },
     ],
     results: [
-      { value: '+23%', label: 'Checkout conversion rate', context: 'Primary KPI over 8-week test period' },
-      { value: '−18%', label: 'Cart abandonment rate', context: 'Measured at the payment step specifically' },
-      { value: '+11%', label: 'Average order value', context: 'Secondary effect from delivery threshold clarity' },
-      { value: '£890K', label: 'Estimated incremental revenue', context: 'Annualised projection based on test uplift' },
+      { value: '67%', label: 'Online ordering adoption', context: '0→67% of customers in 18 months' },
+      { value: '+23%', label: 'Online orders', context: 'Year-on-year increase' },
+      { value: '+17%', label: 'Consumables revenue', context: 'Driven by reorder ease' },
+      { value: '2 clicks', label: 'Reorder flow', context: 'From login to order placed' },
     ],
     learnings: [
-      'Inline delivery cost reassurance ("Free standard delivery on this order") outperformed visual trust seals (padlock icons, Trustpilot badges) in direct tests. Relevance at the moment of decision beats generic credential signals.',
-      'A progress indicator showing checkout steps reduced drop-off at the payment stage by 31% in isolation. Knowing "I\'m on step 3 of 4" reduces perceived effort significantly.',
-      'Mobile checkout exhibited materially different drop-off patterns to desktop, requiring separate optimisation iterations rather than a single responsive solution.',
+      'The reorder-first UX was the single biggest driver of adoption. Customers don\'t want to browse a catalogue — they want to repeat what they already buy. Designing around this insight made the portal feel useful from the first login.',
+      'Account manager buy-in was as important as customer UX. When account managers saw the portal as a tool that freed them from order-taking (not a threat to their role), they became the primary adoption channel.',
+      'B2B portals that try to replicate B2C shopping experiences fail. The mental model is completely different — it\'s procurement, not shopping. The interface needs to respect that.',
     ],
   },
   {
-    slug: 'saas-onboarding-redesign',
-    title: 'SaaS Onboarding Redesign',
-    tagline: 'Moving from a generic 12-step flow to role-based, progressive onboarding.',
-    client: 'B2B project management SaaS',
-    year: '2023',
-    services: ['UX Research', 'Interaction Design', 'Prototyping', 'Usability Testing'],
-    heroMetric: { value: '+41%', label: 'User activation rate' },
+    slug: 'digital-revenue-engine',
+    title: 'Digital Revenue Engine',
+    tagline: 'Scaling digital revenue from £600K to £2.2M — on less than 2% of company budget.',
+    client: 'Liquidline — B2B coffee equipment',
+    year: '2018–2023',
+    services: ['Growth Strategy', 'Team Building', 'Digital Marketing', 'E-commerce'],
+    heroMetric: { value: '£2.2M', label: 'Digital revenue', context: 'Scaled from £600K on <2% budget' },
     overview:
-      'A fast-growing B2B SaaS platform was struggling to convert free trial sign-ups into activated users. With 30-day trials and only 34% of users completing onboarding—defined as creating a first project and inviting a team member—significant ARR was being left in the funnel.',
+      'When I joined Liquidline as their first digital hire, the company was generating £600K in digital revenue with no marketing team, no strategy, and no systems. Over four years as Head of Marketing, I built the team from 1 to 10, established every digital channel, and scaled revenue to £2.2M — all on less than 2% of company revenue as budget.',
     challenge:
-      'The existing onboarding flow treated all users identically regardless of role, company size, or use case. Product managers, operations leads, and engineers all saw the same generic 12-step sequence. The result was poor time-to-value and high drop-off in the first 72 hours—before users had experienced the product\'s core value.',
+      'Building a digital revenue function from nothing inside a traditional B2B business. The company had no marketing team, no CRM, no analytics, no content, and no digital acquisition channels. Every system, process, and hire needed to be built from scratch — and justify its existence with revenue, not vanity metrics.',
     approach: [
       {
         number: '01',
-        title: 'Jobs-to-be-Done Research',
+        title: 'Foundation',
         description:
-          '14 user interviews split between churned trial users and highly activated customers. Questions structured around the JTBD framework to understand the "hiring" context: what problem prompted the search, what alternatives were considered, and what moment made the product feel valuable.',
+          'Built the measurement layer first — analytics, attribution, reporting. You can\'t scale what you can\'t measure. Established baseline metrics across every channel before investing in growth.',
       },
       {
         number: '02',
-        title: 'Product Analytics',
+        title: 'Channel development',
         description:
-          'Deep analysis of Mixpanel event data to identify the "aha moment"—the product action most correlated with long-term retention. Found that users who created a project from a template within 48 hours retained at 3× the rate of those who started from blank. This became the activation target.',
+          'Systematically built each channel: SEO (dominated #1 ranking for top industry terms), PPC (managed budget with clear ROAS targets), social (engagement from 1.2%→7%), email (automated nurture sequences via HubSpot).',
       },
       {
         number: '03',
-        title: 'User Archetype Mapping',
+        title: 'Team scaling',
         description:
-          'Defined 3 primary onboarding archetypes based on research: the Solo Maker, the Team Lead, and the Ops Manager. Mapped each archetype\'s divergent expectations, vocabulary, and ideal first-session outcomes. Used these to design branching onboarding paths.',
+          'Hired and developed a team of 10 across content, design, digital marketing, and web development. Built the highest-performing team in the company — engagement score 7.2→9.6.',
       },
       {
         number: '04',
-        title: 'Design & Prototype',
+        title: 'Commercial alignment',
         description:
-          'High-fidelity prototypes built in Figma for each archetype path. Key design decisions: a single role-qualifying question at sign-up, progressive disclosure of advanced features, contextual empty states with pre-filled templates, and in-app tooltips triggered by hesitation signals.',
-      },
-      {
-        number: '05',
-        title: 'Test & Measure',
-        description:
-          'Two rounds of usability testing (12 participants total) to validate comprehension and flow. Soft launch to 20% of new sign-ups, measuring activation rate, time-to-value, and 30-day retention against control over 6 weeks.',
+          'Every marketing activity was tied to a revenue number. Weekly reporting to the board on pipeline, conversion, and revenue attribution. Marketing became the most commercially accountable function in the business.',
       },
     ],
     results: [
-      { value: '+41%', label: 'Activation rate', context: 'Users completing the defined activation event' },
-      { value: '−60%', label: 'Time-to-value', context: 'Median days to first project creation' },
-      { value: '+28%', label: '30-day retention', context: 'Measured against same-period cohort' },
-      { value: '+14pts', label: 'Trial NPS', context: 'Improvement among free trial users' },
+      { value: '£2.2M', label: 'Digital revenue', context: 'From £600K — 3.7× growth' },
+      { value: '1→10', label: 'Team scaled', context: 'Highest engagement score in company' },
+      { value: '7%', label: 'Market share captured', context: 'Design & Build sector in 2 years' },
+      { value: '+2,300%', label: 'Traffic growth', context: 'Social engagement 1.2%→7%' },
     ],
     learnings: [
-      'The single highest-leverage change was adding one qualifying question at sign-up ("What best describes your role?"). Personalising the subsequent experience from this single data point drove more activation improvement than all other changes combined.',
-      'Empty state design was significantly underinvested in the original product. Replacing blank canvas states with template suggestions reduced cognitive load and dramatically increased first-session completion rates.',
-      'Showing a step count of more than 5 in a progress bar had a measurable negative effect on completion. Hiding the total count—and surfacing only the current step—improved confidence and reduced premature abandonment.',
+      'In a traditional B2B business, the fastest way to earn budget is to tie every activity to a revenue number from day one. Vanity metrics (impressions, followers, traffic) build zero credibility with a board that thinks in margin and pipeline.',
+      'Team engagement directly correlates with output quality. Investing in people — clear development paths, autonomy, purpose — produced better work than any process or tool change.',
+      'The COVID pivot to B2C e-commerce (hubcoffee.co.uk, launched in 8 weeks) proved that a well-built team can execute at speed when the commercial opportunity is clear.',
     ],
   },
   {
-    slug: 'financial-services-landing-pages',
-    title: 'Financial Services Landing Page Programme',
-    tagline: 'Building a systematic test programme to improve lead quality and reduce CPL.',
-    client: 'UK financial services provider',
-    year: '2023',
-    services: ['CRO', 'Landing Page Optimisation', 'Analytics', 'A/B Testing'],
-    heroMetric: { value: '+31%', label: 'Qualified leads' },
+    slug: 'conversion-architecture',
+    title: 'Conversion Architecture',
+    tagline: 'A CRO programme that turned one landing page into £300K revenue in six months.',
+    client: 'Liquidline — B2B equipment',
+    year: '2018',
+    services: ['CRO', 'SEO', 'Landing Page Optimisation', 'A/B Testing'],
+    heroMetric: { value: '+£90K', label: 'Monthly revenue increase', context: 'Conversion 1.72%→4.29%' },
     overview:
-      'A UK financial services firm was running paid search at scale but struggling with lead quality. High CPL and low conversion-to-customer rates were eroding ROAS. The brief was to develop a systematic landing page optimisation programme that could run continuously alongside paid campaigns.',
+      'Liquidline\'s website was generating traffic but not converting. The site had decent visibility but conversion rates sat at 1.72% — well below what the traffic quality justified. I built a systematic CRO programme that identified the highest-leverage pages, tested relentlessly, and turned the existing traffic into a revenue machine.',
     challenge:
-      'Landing pages were generic, disconnected from ad copy, and lacked the trust architecture needed in a regulated industry. Page-level conversion rates averaged 2.1% across 22 pages. There was no structured testing process, and the team had no framework for prioritising which pages to optimise first.',
+      'The traffic was there but the conversion infrastructure wasn\'t. Landing pages were generic, forms were buried, trust signals were missing, and the user journey from search to enquiry had too many steps. The challenge was to maximise revenue from existing traffic — no additional ad spend, no new channels — just better conversion of what was already coming.',
     approach: [
       {
         number: '01',
-        title: 'Audit',
+        title: 'Traffic & intent analysis',
         description:
-          'Full heuristic evaluation of all 22 landing pages against a custom rubric covering message clarity, trust signals, form friction, mobile experience, and accessibility. Scored each page 1–5 across 8 dimensions to create a baseline and identify patterns.',
+          'Mapped every high-traffic page against search intent and conversion rate. Identified the top industry keyword where Liquidline could dominate — and the landing page that would capture that intent.',
       },
       {
         number: '02',
-        title: 'Message Match Analysis',
+        title: 'SEO dominance',
         description:
-          'Audit of ad copy → landing page headline consistency across all active campaigns. Found that 14 of 22 pages had a significant mismatch between the keyword intent driving the click and the page headline. This became a primary hypothesis for testing.',
+          'Secured #1 ranking for the industry\'s highest-volume keyword. Traffic to the target page grew from 720 to 13,320/month. But traffic without conversion is a vanity metric — the real work was what happened after the click.',
       },
       {
         number: '03',
-        title: 'Competitive Teardown',
+        title: 'Landing page engineering',
         description:
-          '8 competitor and sector-leader landing pages reviewed for trust signal patterns, CTA approaches, and social proof placement. Documented a "reassurance architecture" pattern common to the highest-performing financial services pages.',
+          'Rebuilt the landing page with a conversion-first architecture: clear value proposition above the fold, social proof at decision points, progressive form disclosure, and multiple CTA placements matched to scroll depth.',
       },
       {
         number: '04',
-        title: 'Prioritisation',
+        title: 'Continuous testing',
         description:
-          'Pages ranked using a composite score: monthly traffic × (target CVR − current CVR) × estimated revenue per lead. Top 6 pages identified for first test cycle. Weekly reporting cadence established with the paid media team to align test windows with campaign activity.',
-      },
-      {
-        number: '05',
-        title: 'Test Programme',
-        description:
-          '6-month rolling A/B test programme with 3–4 concurrent tests at any time. Tests were designed as single-variable where possible, with multivariate tests reserved for pages with sufficient traffic. Results reviewed bi-weekly with stakeholders; winners rolled out within 1-week development sprint.',
+          'Ran a systematic A/B testing programme across headlines, form length, CTA copy, trust signals, and page layout. Every test was statistically significant before implementation. The compound effect of marginal gains drove conversion from 1.24% to 4.21%.',
       },
     ],
     results: [
-      { value: '+31%', label: 'Qualified leads', context: 'Leads scoring above internal qualification threshold' },
-      { value: '−22%', label: 'Cost per lead', context: 'Across all campaign landing pages in scope' },
-      { value: '+0.9pp', label: 'Conversion rate', context: 'From 2.1% to 3.0% across all pages in scope' },
-      { value: '~£1.2M', label: 'Incremental qualified pipeline', context: 'Annualised value at average deal size' },
+      { value: '+£90K', label: 'Monthly revenue', context: 'Attributed to CRO programme' },
+      { value: '4.29%', label: 'Conversion rate', context: 'From 1.72% — 2.5× improvement' },
+      { value: '#1', label: 'Search ranking', context: 'Top industry keyword' },
+      { value: '30+', label: 'Customers/month', context: 'From one page — £300K in 6 months' },
     ],
     learnings: [
-      'Message-match—aligning the page headline directly to the ad\'s keyword intent—was the highest-impact individual test across the programme. Visitors converted at a meaningfully higher rate when the headline confirmed they\'d arrived in the right place.',
-      'In regulated financial services, a "reassurance cluster" (FCA authorisation badge, FSCS scheme membership, and 3+ customer testimonials visible above the fold) outperformed any single trust element tested in isolation.',
-      'Form length had a complex relationship with lead quality: shorter forms improved volume but decreased quality. A 5-field form with intelligent pre-qualification questions struck the best balance for the client\'s sales team capacity.',
+      'One page, optimised properly, can be worth more than an entire marketing channel. The £300K generated from a single landing page in 6 months (working 1 day/week) outperformed campaigns with 10× the budget.',
+      'SEO and CRO are not separate disciplines — they\'re two halves of the same revenue system. Ranking #1 is worthless if the page doesn\'t convert; a perfect landing page is invisible without traffic.',
+      'Progressive form disclosure (showing fields in stages rather than all at once) was the single highest-impact test. It reduced perceived effort without reducing data quality.',
+    ],
+  },
+  {
+    slug: 'revenue-channel-build',
+    title: 'Revenue Channel Build',
+    tagline: 'Building a £3.2M digital revenue channel from zero — including self-teaching every skill needed.',
+    client: 'Tchibo — Coffee & FMCG',
+    year: '2015–2017',
+    services: ['CRO', 'PPC Management', 'SEO', 'Brand Development'],
+    heroMetric: { value: '£3.2M', label: 'Revenue from scratch', context: 'Built in 2 years' },
+    overview:
+      'I joined Tchibo as a Digital Designer with no SEO, CRO, or PPC experience. Within two years, I had self-taught every discipline needed and built a £3.2M digital revenue channel from nothing. This engagement demonstrates what happens when curiosity, commercial instinct, and relentless execution meet a clear opportunity.',
+    challenge:
+      'Tchibo\'s UK digital presence was generating zero measurable revenue. No organic traffic strategy, no conversion optimisation, no paid acquisition. The website existed but served no commercial purpose. The opportunity was massive — a strong product, an established brand, and zero digital competition in the UK market — but every capability needed to capture it had to be built from scratch.',
+    approach: [
+      {
+        number: '01',
+        title: 'Self-education',
+        description:
+          'Systematically learned SEO, CRO, and PPC through a combination of online courses, industry communities, and direct experimentation. Applied every technique to live campaigns from day one — theory was always tested against real commercial outcomes.',
+      },
+      {
+        number: '02',
+        title: 'Organic growth',
+        description:
+          'Built the SEO programme from zero. Grew organic traffic from 0 to 15,000/month in two years through technical SEO, content strategy, and authority building. Every piece of content was tied to a keyword with commercial intent.',
+      },
+      {
+        number: '03',
+        title: 'Paid acquisition',
+        description:
+          'Managed a £7K/month PPC budget with surgical precision. Achieved a CPA of £90 against a customer lifetime value of £5,500 — a 61:1 return on ad spend. Budget was allocated by ROAS, not channel loyalty.',
+      },
+      {
+        number: '04',
+        title: 'Conversion optimisation',
+        description:
+          'Ran 50+ A/B tests across the product pages and checkout. Product page conversion moved from 0.9% to 3.1%. Each test was designed to isolate a single variable and run to statistical significance.',
+      },
+    ],
+    results: [
+      { value: '£3.2M', label: 'Revenue built', context: 'From zero in 2 years' },
+      { value: '61:1', label: 'ROAS', context: '£90 CPA vs £5,500 customer value' },
+      { value: '15K', label: 'Monthly organic traffic', context: 'From 0 — self-taught SEO' },
+      { value: '3.1%', label: 'Product page conversion', context: 'From 0.9% — 50+ A/B tests' },
+    ],
+    learnings: [
+      'The combination of SEO + CRO + PPC as a unified revenue system (not three separate channels) was the multiplier. Traffic × conversion × spend efficiency compounds faster than optimising any single variable.',
+      'Self-teaching is underrated as a signal of commercial capability. The willingness to learn whatever the problem demands — rather than staying within a job description — is what turns a designer into a revenue architect.',
+      'The Smokin Bean brand project (which secured a Marks & Spencer contract) proved that creative execution and commercial strategy aren\'t opposed — they\'re most powerful together.',
+    ],
+  },
+  {
+    slug: 'onboarding-transformation',
+    title: 'Customer Onboarding Transformation',
+    tagline: 'Re-engineering B2B onboarding to be 75% faster and 62% cheaper per customer.',
+    client: 'Liquidline — B2B operations',
+    year: '2023',
+    services: ['Process Design', 'Digital Transformation', 'CX Strategy'],
+    heroMetric: { value: '75%', label: 'Faster onboarding', context: '4 weeks → 1 week' },
+    overview:
+      'Customer onboarding at Liquidline took 4 weeks and cost £512 per customer. For a business scaling its customer base, this was an unsustainable bottleneck — slow onboarding delayed revenue recognition, frustrated customers, and consumed operations capacity. I led the project to re-engineer the entire onboarding process.',
+    challenge:
+      'The onboarding process had accumulated complexity over years — manual data entry, paper forms, multiple handoffs between teams, and no visibility into where a customer was in the pipeline. The process worked when the business had 50 new customers a month, but it was breaking at 200+. The goal was radical simplification without losing the human touch that B2B customers expect.',
+    approach: [
+      {
+        number: '01',
+        title: 'Process mapping',
+        description:
+          'Documented every step in the existing onboarding flow — 47 discrete steps across 4 teams. Identified which steps added value for the customer and which existed only because of system limitations or legacy process.',
+      },
+      {
+        number: '02',
+        title: 'Bottleneck analysis',
+        description:
+          'Timed each step and identified the three biggest bottlenecks: manual data entry (duplicate entry across 3 systems), approval routing (average 6 days waiting for sign-off), and equipment scheduling (manual calendar management).',
+      },
+      {
+        number: '03',
+        title: 'System integration',
+        description:
+          'Connected CRM, ERP, and scheduling systems via API integrations. Eliminated duplicate data entry entirely. Built automated approval workflows that reduced sign-off from 6 days to same-day for standard orders.',
+      },
+      {
+        number: '04',
+        title: 'Measurement & iteration',
+        description:
+          'Built a real-time onboarding dashboard showing every customer\'s progress. Used the data to identify remaining friction points and iterate weekly. The dashboard itself changed behaviour — visible bottlenecks get fixed faster.',
+      },
+    ],
+    results: [
+      { value: '75%', label: 'Faster onboarding', context: '4 weeks → 1 week' },
+      { value: '62%', label: 'Cost reduction', context: '£512 → £196 per customer' },
+      { value: '47→18', label: 'Process steps', context: 'Radical simplification' },
+      { value: 'Same-day', label: 'Approval routing', context: 'From 6-day average' },
+    ],
+    learnings: [
+      'Process transformation is 70% politics and 30% technology. The hardest part wasn\'t building the integrations — it was convincing four team leads that their manual processes weren\'t adding the value they thought they were.',
+      'Real-time visibility changed behaviour more than any process mandate. When everyone could see the bottlenecks, people fixed them without being asked.',
+      'The cost-per-customer metric (£512→£196) was the number that got board attention and budget approval for further transformation work. Always frame process improvement in commercial terms.',
     ],
   },
 ]

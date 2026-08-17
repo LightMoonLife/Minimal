@@ -47,7 +47,7 @@ export function Navigation() {
             className="font-mono text-xs tracking-[0.2em] text-foreground hover:text-muted-foreground transition-colors duration-200"
             aria-label="Home"
           >
-            YN
+            JPB
           </Link>
 
           <nav aria-label="Main navigation" className="hidden sm:block">
@@ -81,7 +81,6 @@ export function Navigation() {
         </div>
       </header>
 
-      {/* Mobile fullscreen overlay */}
       <div
         id="mobile-nav"
         role="dialog"

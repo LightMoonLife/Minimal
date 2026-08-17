@@ -6,24 +6,22 @@ import { SectionLabel } from '@/components/SectionLabel'
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'CRO and UX case studies — e-commerce checkout optimisation, SaaS onboarding redesign, and financial services landing page programmes.',
+    'Case studies in B2B digital transformation, revenue platform engineering, and conversion optimisation.',
 }
 
 export default function PortfolioPage() {
   return (
     <div className="max-w-content mx-auto px-6">
 
-      {/* Header */}
       <section className="pt-20 pb-20 border-b border-border">
         <SectionLabel number="00" title="Work" className="mb-8" />
         <h1 className="text-2xl font-light text-foreground leading-snug tracking-tight max-w-sm">
-          Case studies in CRO, UX research, and digital optimisation.
+          Engagements in digital transformation, platform engineering, and revenue growth.
         </h1>
       </section>
 
-      {/* Project list */}
-      <section className="py-8" aria-label="All projects">
-        <ol aria-label="Project list">
+      <section className="py-8" aria-label="All engagements">
+        <ol aria-label="Engagement list">
           {projects.map((project, i) => (
             <li key={project.slug}>
               <Link

@@ -1,39 +1,45 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { projects } from '@/lib/projects'
+import { impactMetrics, services } from '@/lib/cv-data'
 import { SectionLabel } from '@/components/SectionLabel'
 
 export const metadata: Metadata = {
-  title: 'Your Name — CRO & UX Specialist',
+  title: 'Jack Paul Brookes — Digital Growth Architect',
   description:
-    'CRO and UX specialist turning behavioural data into design decisions. Eight years of optimising digital experiences for e-commerce, SaaS, and financial services.',
+    'I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
 }
 
 export default function HomePage() {
   return (
     <div className="max-w-content mx-auto px-6">
 
-      {/* ——— Intro ——— */}
+      {/* ——— Hero ——— */}
       <section className="pt-20 pb-20 border-b border-border" aria-label="Introduction">
         <div className="space-y-8">
           <div>
             <h1 className="text-2xl font-light text-foreground leading-snug tracking-tight">
-              Your Name
+              Jack Paul Brookes
             </h1>
             <p className="font-mono text-xs text-muted-foreground tracking-widest mt-1">
-              CRO &amp; UX Specialist
+              Digital Growth Architect
             </p>
           </div>
 
           <p className="text-lg font-light text-foreground leading-relaxed max-w-lg">
-            Turning behavioural data into design decisions that move the needle.
+            I build revenue platforms, not just websites.
+          </p>
+
+          <p className="text-base font-light text-muted-foreground leading-relaxed max-w-lg">
+            Digital transformation for B2B businesses — strategy, engineering, and
+            optimisation driven by commercial outcomes, not vanity metrics.
           </p>
 
           <dl className="space-y-1">
             {[
-              { label: 'Based in', value: 'London, UK' },
-              { label: 'Specialising in', value: 'E-commerce, SaaS, Financial Services' },
-              { label: 'Experience', value: '8+ years in CRO & UX' },
+              { label: 'Based in', value: 'Ipswich, UK' },
+              { label: 'Focus', value: 'B2B Digital Transformation & Revenue Platforms' },
+              { label: 'Experience', value: '9+ years building digital revenue systems' },
             ].map(({ label, value }) => (
               <div key={label} className="flex items-baseline gap-3">
                 <dt className="font-mono text-xs text-muted-foreground w-28 shrink-0">{label}</dt>
@@ -44,12 +50,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ——— Impact ——— */}
+      <section className="py-16 border-b border-border" aria-label="Impact metrics">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+          {impactMetrics.map((metric) => (
+            <div key={metric.label} className="space-y-1">
+              <p className="text-2xl sm:text-3xl font-light text-accent tracking-tight leading-none">
+                {metric.value}
+              </p>
+              <p className="font-mono text-xs text-foreground">{metric.label}</p>
+              <p className="font-mono text-xs text-muted-foreground">{metric.context}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ——— Selected Work ——— */}
       <section className="py-20 border-b border-border" aria-labelledby="work-heading">
         <SectionLabel number="01" title="Selected Work" className="mb-12" />
 
-        <ol className="space-y-0" aria-label="Featured projects">
-          {projects.map((project, i) => (
+        <ol className="space-y-0" aria-label="Featured engagements">
+          {projects.slice(0, 4).map((project, i) => (
             <li key={project.slug}>
               <Link
                 href={`/portfolio/${project.slug}`}
@@ -90,26 +111,51 @@ export default function HomePage() {
             href="/portfolio"
             className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
           >
-            <span>All work</span>
+            <span>All engagements</span>
             <span aria-hidden="true">→</span>
           </Link>
         </div>
       </section>
 
+      {/* ——— Services ——— */}
+      <section className="py-20 border-b border-border" aria-labelledby="services-heading">
+        <SectionLabel number="02" title="Services" className="mb-12" />
+
+        <div className="space-y-12">
+          {services.map((service) => (
+            <div key={service.number} className="flex gap-6">
+              <span className="font-mono text-xs text-muted-foreground tabular-nums pt-0.5 w-5 shrink-0">
+                {service.number}
+              </span>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-medium text-foreground mb-2">{service.title}</h3>
+                <p className="text-sm font-light text-muted-foreground leading-relaxed max-w-lg mb-3">
+                  {service.description}
+                </p>
+                <p className="font-mono text-xs text-foreground">
+                  {service.deliverables.join(' · ')}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ——— Approach ——— */}
       <section className="py-20 border-b border-border" aria-labelledby="approach-heading">
-        <SectionLabel number="02" title="Approach" className="mb-12" />
+        <SectionLabel number="03" title="How I Work" className="mb-12" />
 
         <div className="space-y-6 max-w-lg">
           <p className="text-base font-light text-foreground leading-relaxed">
-            Start with evidence. Interrogate the data before touching the design.
-            Quantitative analysis tells you where the problem is; qualitative
-            research tells you why.
+            Start with the commercial outcome. Work backwards to the platform, the
+            process, and the team that delivers it. Every recommendation is backed
+            by evidence — if I can&apos;t measure the impact, I won&apos;t propose the work.
           </p>
           <p className="text-base font-light text-foreground leading-relaxed">
-            Then hypothesise, test, and measure. Every design decision should be
-            answerable with a number. If you can&apos;t measure it, you can&apos;t
-            know if it worked.
+            I&apos;ve built teams from 1 to 10, delivered platforms that handle real
+            commercial complexity, and run CRO programmes that move revenue — not
+            just conversion rates. I work at the intersection of strategy and
+            execution because that&apos;s where value gets lost.
           </p>
         </div>
 
@@ -126,21 +172,23 @@ export default function HomePage() {
 
       {/* ——— Contact ——— */}
       <section className="py-20" aria-labelledby="contact-heading">
-        <SectionLabel number="03" title="Contact" className="mb-12" />
+        <SectionLabel number="04" title="Get in Touch" className="mb-12" />
 
         <div className="space-y-4">
-          <p className="text-base font-light text-foreground">
-            Available for freelance projects and full-time roles.
+          <p className="text-base font-light text-foreground max-w-md">
+            Available for freelance projects and consulting engagements.
+            If you&apos;re building something that needs to generate revenue,
+            let&apos;s talk.
           </p>
           <div className="space-y-2">
             <a
-              href="mailto:hello@yourdomain.com"
-              className="font-mono text-xs text-foreground hover:text-muted-foreground transition-colors duration-200 block"
+              href="mailto:jackpbrookes@gmail.com"
+              className="font-mono text-xs text-foreground hover:text-accent transition-colors duration-200 block"
             >
-              hello@yourdomain.com
+              jackpbrookes@gmail.com
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://linkedin.com/in/jackpbrookes"
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 block"

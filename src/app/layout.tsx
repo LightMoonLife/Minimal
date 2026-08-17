@@ -19,15 +19,15 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s — Your Name',
-    default: 'Your Name — CRO & UX Specialist',
+    template: '%s — Jack Paul Brookes',
+    default: 'Jack Paul Brookes — Digital Growth Architect',
   },
   description:
-    'CRO and UX specialist turning behavioural data into design decisions. Eight years of optimising digital experiences for e-commerce, SaaS, and financial services.',
+    'Digital Growth Architect. I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    siteName: 'Your Name',
+    siteName: 'Jack Paul Brookes',
   },
   robots: {
     index: true,

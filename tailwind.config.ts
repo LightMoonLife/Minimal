@@ -5,19 +5,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#FFFFFF',
-        foreground: '#4E4C4A',
-        muted: '#F5F5F5',
-        'muted-foreground': '#9B9998',
-        border: '#EBEBEB',
-        accent: '#2D4395',
+        background: '#FAFAF8',
+        foreground: '#1A1A1A',
+        muted: '#F0EFED',
+        'muted-foreground': '#8A8885',
+        border: '#E5E4E1',
+        accent: '#2D5A3C',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'Menlo', 'monospace'],
       },
       maxWidth: {
-        content: '680px',
+        content: '720px',
       },
       letterSpacing: {
         widest: '0.2em',
