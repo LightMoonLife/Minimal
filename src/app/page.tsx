@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { projects } from '@/lib/projects'
+import { posts } from '@/lib/blog'
 import { impactMetrics, services } from '@/lib/cv-data'
 import { SectionLabel } from '@/components/SectionLabel'
 
@@ -170,9 +171,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ——— Writing ——— */}
+      <section className="py-20 border-b border-border" aria-labelledby="writing-heading">
+        <SectionLabel number="04" title="Writing" className="mb-12" />
+
+        <ol className="space-y-0" aria-label="Recent posts">
+          {posts.slice(0, 3).map((post, i) => (
+            <li key={post.slug}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-5 border-b border-border last:border-0 hover:bg-muted -mx-6 px-6 transition-colors duration-200"
+              >
+                <span className="font-mono text-xs text-muted-foreground tabular-nums shrink-0 w-5">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block text-sm font-light text-foreground leading-snug">
+                    {post.title}
+                  </span>
+                </span>
+                <span className="flex items-center gap-4 sm:shrink-0">
+                  <span className="font-mono text-xs text-accent/70">
+                    {post.category}
+                  </span>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {post.readingTime} min
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-10">
+          <Link
+            href="/blog"
+            className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
+          >
+            <span>All posts</span>
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+      </section>
+
       {/* ——— Contact ——— */}
       <section className="py-20" aria-labelledby="contact-heading">
-        <SectionLabel number="04" title="Get in Touch" className="mb-12" />
+        <SectionLabel number="05" title="Get in Touch" className="mb-12" />
 
         <div className="space-y-4">
           <p className="text-base font-light text-foreground max-w-md">
