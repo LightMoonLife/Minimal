@@ -19,8 +19,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s — Jack Paul Brookes',
-    default: 'Jack Paul Brookes — Digital Growth Architect',
+    template: '%s | Jack Paul Brookes',
+    default: 'Jack Paul Brookes | Digital Growth Architect',
   },
   description:
     'Digital Growth Architect. I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
@@ -37,7 +37,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')})()`,
+          }}
+        />
+      </head>
       <body className="bg-background text-foreground font-sans">
         <a
           href="#main-content"

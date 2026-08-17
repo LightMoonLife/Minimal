@@ -13,14 +13,14 @@ export default function BlogPage() {
   return (
     <div className="max-w-content mx-auto px-6">
 
-      <section className="pt-20 pb-20 border-b border-border">
-        <SectionLabel number="00" title="Blog" className="mb-8" />
-        <h1 className="text-2xl font-light text-foreground leading-snug tracking-tight max-w-md mb-4">
+      <section className="pt-32 sm:pt-40 pb-24 border-b border-border">
+        <SectionLabel number="00" title="Blog" className="mb-10" />
+        <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight max-w-md mb-6">
           Notes on building revenue systems for B2B businesses.
         </h1>
-        <p className="text-base font-light text-muted-foreground leading-relaxed max-w-md">
+        <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md">
           Practical writing on digital transformation, conversion optimisation,
-          and what actually works — from someone who&apos;s done the work, not just
+          and what actually works, from someone who&apos;s done the work, not just
           written about it.
         </p>
       </section>
@@ -58,7 +58,7 @@ export default function BlogPage() {
                   </span>
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3">
-                      <span className="font-mono text-xs text-accent/70 border border-accent/25 px-2 py-0.5">
+                      <span className="font-mono text-xs text-muted-foreground border border-border px-2 py-0.5">
                         {post.category}
                       </span>
                       <span className="font-mono text-xs text-muted-foreground">
@@ -72,7 +72,7 @@ export default function BlogPage() {
                         })}
                       </span>
                     </div>
-                    <h2 className="text-base font-light text-foreground leading-snug mb-2 max-w-lg">
+                    <h2 className="text-lg font-light text-foreground leading-snug mb-3 max-w-lg">
                       {post.title}
                     </h2>
                     <p className="text-sm text-muted-foreground font-light leading-relaxed max-w-md">
@@ -83,7 +83,7 @@ export default function BlogPage() {
                     className="font-mono text-xs text-muted-foreground group-hover:translate-x-1 transition-transform duration-200 hidden sm:block pt-1 shrink-0"
                     aria-hidden="true"
                   >
-                    →
+                    &rarr;
                   </span>
                 </div>
               </Link>

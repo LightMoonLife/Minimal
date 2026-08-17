@@ -11,25 +11,25 @@ export default function ContactPage() {
   return (
     <div className="max-w-content mx-auto px-6">
 
-      <section className="pt-20 pb-20 border-b border-border">
-        <SectionLabel number="00" title="Contact" className="mb-8" />
-        <h1 className="text-2xl font-light text-foreground leading-snug tracking-tight mb-4">
+      <section className="pt-32 sm:pt-40 pb-24 border-b border-border">
+        <SectionLabel number="00" title="Contact" className="mb-10" />
+        <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight mb-6">
           Let&apos;s talk
         </h1>
-        <p className="text-base font-light text-muted-foreground leading-relaxed max-w-sm">
+        <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-sm">
           Available for freelance projects and consulting engagements. Typically respond within one working day.
         </p>
       </section>
 
-      <section className="py-16 border-b border-border" aria-label="Direct contact details">
-        <SectionLabel number="01" title="Direct" className="mb-8" />
-        <dl className="space-y-3">
+      <section className="py-20 border-b border-border" aria-label="Direct contact details">
+        <SectionLabel number="01" title="Direct" className="mb-10" />
+        <dl className="space-y-4">
           <div className="flex items-baseline gap-4">
             <dt className="font-mono text-xs text-muted-foreground w-16 shrink-0">Email</dt>
             <dd>
               <a
                 href="mailto:jackpbrookes@gmail.com"
-                className="font-mono text-xs text-foreground hover:text-accent transition-colors duration-200"
+                className="font-mono text-xs text-foreground hover:text-muted-foreground transition-colors duration-200"
               >
                 jackpbrookes@gmail.com
               </a>
@@ -42,17 +42,17 @@ export default function ContactPage() {
                 href="https://linkedin.com/in/jackpbrookes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-xs text-foreground hover:text-accent transition-colors duration-200"
+                className="font-mono text-xs text-foreground hover:text-muted-foreground transition-colors duration-200"
               >
-                linkedin.com/in/jackpbrookes →
+                linkedin.com/in/jackpbrookes &rarr;
               </a>
             </dd>
           </div>
         </dl>
       </section>
 
-      <section className="py-16" aria-labelledby="form-heading">
-        <SectionLabel number="02" title="Message" className="mb-12" />
+      <section className="py-20" aria-labelledby="form-heading">
+        <SectionLabel number="02" title="Message" className="mb-16" />
         <ContactForm />
       </section>
 

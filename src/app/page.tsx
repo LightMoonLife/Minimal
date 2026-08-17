@@ -7,7 +7,7 @@ import { SectionLabel } from '@/components/SectionLabel'
 import { StickyCTA } from '@/components/StickyCTA'
 
 export const metadata: Metadata = {
-  title: 'Jack Paul Brookes — Digital Growth Architect',
+  title: 'Jack Paul Brookes | Digital Growth Architect',
   description:
     'I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
 }
@@ -18,35 +18,39 @@ export default function HomePage() {
       <StickyCTA />
       <div className="max-w-content mx-auto px-6">
 
-        {/* ——— Hero ——— */}
-        <section className="pt-20 pb-12" aria-label="Introduction">
-          <div className="space-y-6">
+        {/* Hero */}
+        <section className="pt-32 sm:pt-40 pb-20" aria-label="Introduction">
+          <div className="space-y-8">
             <div>
               <p className="font-mono text-xs text-muted-foreground tracking-widest">
                 Jack Paul Brookes
               </p>
-              <h1 className="text-3xl sm:text-4xl font-light text-foreground leading-tight tracking-tight mt-3">
-                I build the digital systems
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extralight text-foreground leading-[1.05] tracking-tight mt-4">
+                I build the
                 <br className="hidden sm:block" />
-                {' '}that turn your operations
+                {' '}digital systems
+                <br className="hidden sm:block" />
+                {' '}that turn your
+                <br className="hidden sm:block" />
+                {' '}operations
                 <br className="hidden sm:block" />
                 {' '}into revenue.
               </h1>
             </div>
 
-            <p className="text-base font-light text-muted-foreground leading-relaxed max-w-md">
+            <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md">
               Digital transformation, B2B platforms, and conversion optimisation
               for manufacturers and equipment suppliers in Suffolk.
             </p>
 
-            <div className="pt-2">
+            <div className="pt-4">
               <Link
                 href="/contact"
-                className="inline-block bg-accent text-white font-mono text-xs tracking-widest px-6 py-3.5 hover:bg-accent/90 transition-colors duration-200"
+                className="inline-block bg-accent text-white font-mono text-xs tracking-widest px-8 py-4 hover:bg-accent/90 transition-colors duration-200"
               >
                 BOOK A FREE GROWTH REVIEW
               </Link>
-              <p className="font-mono text-xs text-muted-foreground mt-3 max-w-xs">
+              <p className="font-mono text-xs text-muted-foreground mt-4 max-w-xs">
                 30-minute call. I&apos;ll show you exactly where
                 you&apos;re leaving revenue on the table.
               </p>
@@ -54,12 +58,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Proof bar ——— */}
-        <section className="py-10 border-t border-b border-border" aria-label="Impact metrics">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+        {/* Proof bar */}
+        <section className="py-16 border-t border-b border-border" aria-label="Impact metrics">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
             {impactMetrics.map((metric) => (
               <div key={metric.label} className="space-y-1">
-                <p className="text-2xl sm:text-3xl font-light text-accent tracking-tight leading-none">
+                <p className="text-4xl sm:text-5xl font-extralight text-foreground tracking-tight leading-none">
                   {metric.value}
                 </p>
                 <p className="font-mono text-xs text-foreground">{metric.label}</p>
@@ -69,9 +73,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Selected Work ——— */}
-        <section className="py-20 border-b border-border" aria-labelledby="work-heading">
-          <SectionLabel number="01" title="Selected Work" className="mb-12" />
+        {/* Selected Work */}
+        <section className="py-28 sm:py-32 border-b border-border" aria-labelledby="work-heading">
+          <SectionLabel number="01" title="Selected Work" className="mb-16" />
 
           <ol className="space-y-0" aria-label="Featured engagements">
             {projects.slice(0, 4).map((project, i) => (
@@ -92,7 +96,7 @@ export default function HomePage() {
                     </span>
                   </span>
                   <span className="flex items-center gap-6 sm:shrink-0">
-                    <span className="font-mono text-xs text-accent font-medium">
+                    <span className="font-mono text-xs text-foreground font-medium">
                       {project.heroMetric.value}
                     </span>
                     <span className="font-mono text-xs text-muted-foreground">
@@ -110,10 +114,10 @@ export default function HomePage() {
             ))}
           </ol>
 
-          <div className="mt-10">
+          <div className="mt-12">
             <Link
               href="/portfolio"
-              className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
+              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
             >
               <span>All engagements</span>
               <span aria-hidden="true">&rarr;</span>
@@ -121,19 +125,19 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Services ——— */}
-        <section className="py-20 border-b border-border" aria-labelledby="services-heading">
-          <SectionLabel number="02" title="Services" className="mb-12" />
+        {/* Services */}
+        <section className="py-28 sm:py-32 border-b border-border" aria-labelledby="services-heading">
+          <SectionLabel number="02" title="Services" className="mb-16" />
 
-          <div className="space-y-12">
+          <div className="space-y-14">
             {services.map((service) => (
               <div key={service.number} className="flex gap-6">
                 <span className="font-mono text-xs text-muted-foreground tabular-nums pt-0.5 w-5 shrink-0">
                   {service.number}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-medium text-foreground mb-2">{service.title}</h3>
-                  <p className="text-sm font-light text-muted-foreground leading-relaxed max-w-lg mb-3">
+                  <h3 className="text-lg font-medium text-foreground mb-3">{service.title}</h3>
+                  <p className="text-base font-light text-muted-foreground leading-relaxed max-w-lg mb-4">
                     {service.description}
                   </p>
                   <p className="font-mono text-xs text-foreground">
@@ -144,7 +148,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-14">
+          <div className="mt-16">
             <Link
               href="/contact"
               className="font-mono text-xs text-accent hover:text-accent/70 transition-colors duration-200 inline-flex items-center gap-2"
@@ -155,34 +159,34 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Approach ——— */}
-        <section className="py-20 border-b border-border" aria-labelledby="approach-heading">
-          <SectionLabel number="03" title="How I Work" className="mb-12" />
+        {/* Approach */}
+        <section className="py-28 sm:py-32 border-b border-border" aria-labelledby="approach-heading">
+          <SectionLabel number="03" title="How I Work" className="mb-16" />
 
-          <div className="space-y-6 max-w-lg">
-            <p className="text-base font-light text-foreground leading-relaxed">
+          <div className="space-y-8 max-w-lg">
+            <p className="text-lg font-light text-foreground leading-relaxed">
               Start with the commercial outcome. Work backwards to the platform, the
               process, and the team that delivers it. Every recommendation is backed
-              by evidence &mdash; if I can&apos;t measure the impact, I won&apos;t propose the work.
+              by evidence. If I can&apos;t measure the impact, I won&apos;t propose the work.
             </p>
-            <p className="text-base font-light text-foreground leading-relaxed">
+            <p className="text-lg font-light text-foreground leading-relaxed">
               I&apos;ve built teams from 1 to 10, delivered platforms that handle real
-              commercial complexity, and run CRO programmes that move revenue &mdash; not
+              commercial complexity, and run CRO programmes that move revenue, not
               just conversion rates. I work at the intersection of strategy and
               execution because that&apos;s where value gets lost.
             </p>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center gap-6">
+          <div className="mt-16 flex flex-wrap items-center gap-6">
             <Link
               href="/contact"
-              className="inline-block bg-accent text-white font-mono text-xs tracking-widest px-5 py-3 hover:bg-accent/90 transition-colors duration-200"
+              className="inline-block bg-accent text-white font-mono text-xs tracking-widest px-6 py-3.5 hover:bg-accent/90 transition-colors duration-200"
             >
               BOOK A GROWTH REVIEW
             </Link>
             <Link
               href="/cv"
-              className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
+              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
             >
               <span>Full background</span>
               <span aria-hidden="true">&rarr;</span>
@@ -190,16 +194,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Writing ——— */}
-        <section className="py-20 border-b border-border" aria-labelledby="writing-heading">
-          <SectionLabel number="04" title="Writing" className="mb-12" />
+        {/* Writing */}
+        <section className="py-28 sm:py-32 border-b border-border" aria-labelledby="writing-heading">
+          <SectionLabel number="04" title="Writing" className="mb-16" />
 
           <ol className="space-y-0" aria-label="Recent posts">
             {posts.slice(0, 3).map((post, i) => (
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-5 border-b border-border last:border-0 hover:bg-muted -mx-6 px-6 transition-colors duration-200"
+                  className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-6 border-b border-border last:border-0 hover:bg-muted -mx-6 px-6 transition-colors duration-200"
                 >
                   <span className="font-mono text-xs text-muted-foreground tabular-nums shrink-0 w-5">
                     {String(i + 1).padStart(2, '0')}
@@ -210,7 +214,7 @@ export default function HomePage() {
                     </span>
                   </span>
                   <span className="flex items-center gap-4 sm:shrink-0">
-                    <span className="font-mono text-xs text-accent/70">
+                    <span className="font-mono text-xs text-muted-foreground">
                       {post.category}
                     </span>
                     <span className="font-mono text-xs text-muted-foreground">
@@ -222,10 +226,10 @@ export default function HomePage() {
             ))}
           </ol>
 
-          <div className="mt-10">
+          <div className="mt-12">
             <Link
               href="/blog"
-              className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
+              className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
             >
               <span>All posts</span>
               <span aria-hidden="true">&rarr;</span>
@@ -233,31 +237,31 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Final CTA ——— */}
-        <section className="py-24" aria-labelledby="contact-heading">
-          <div className="space-y-6">
+        {/* Final CTA */}
+        <section className="py-32 sm:py-40" aria-labelledby="contact-heading">
+          <div className="space-y-8">
             <p className="font-mono text-xs text-muted-foreground tracking-widest">
-              05 &mdash; NEXT STEP
+              05 / NEXT STEP
             </p>
-            <h2 className="text-2xl font-light text-foreground leading-snug tracking-tight max-w-md">
+            <h2 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight max-w-md">
               Find out what&apos;s costing you revenue.
             </h2>
-            <p className="text-base font-light text-muted-foreground leading-relaxed max-w-md">
+            <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md">
               Book a free 30-minute growth review. I&apos;ll look at your website,
-              your systems, and your numbers &mdash; and tell you exactly where the
+              your systems, and your numbers, and tell you exactly where the
               biggest opportunities are. No pitch deck. No retainer proposal.
               Just an honest assessment.
             </p>
-            <div className="pt-2 flex flex-wrap items-center gap-6">
+            <div className="pt-4 flex flex-wrap items-center gap-6">
               <Link
                 href="/contact"
-                className="inline-block bg-accent text-white font-mono text-xs tracking-widest px-6 py-3.5 hover:bg-accent/90 transition-colors duration-200"
+                className="inline-block bg-accent text-white font-mono text-xs tracking-widest px-8 py-4 hover:bg-accent/90 transition-colors duration-200"
               >
                 BOOK YOUR FREE REVIEW
               </Link>
               <a
                 href="mailto:jackpbrookes@gmail.com"
-                className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200"
+                className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 or email directly &rarr;
               </a>

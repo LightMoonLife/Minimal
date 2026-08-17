@@ -33,21 +33,21 @@ export default async function ProjectPage({ params }: PageProps) {
     <div className="max-w-content mx-auto px-6">
 
       {/* Header */}
-      <section className="pt-20 pb-20 border-b border-border">
-        <div className="mb-4">
+      <section className="pt-32 sm:pt-40 pb-24 border-b border-border">
+        <div className="mb-6">
           <Link
             href="/portfolio"
-            className="font-mono text-xs text-muted-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2"
+            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
           >
-            <span aria-hidden="true">←</span>
+            <span aria-hidden="true">&larr;</span>
             <span>Work</span>
           </Link>
         </div>
 
-        <h1 className="text-2xl font-light text-foreground leading-snug tracking-tight mb-3">
+        <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight mb-4">
           {project.title}
         </h1>
-        <p className="text-base font-light text-muted-foreground leading-relaxed max-w-md mb-10">
+        <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md mb-12">
           {project.tagline}
         </p>
 
@@ -68,12 +68,12 @@ export default async function ProjectPage({ params }: PageProps) {
       </section>
 
       {/* Hero metric */}
-      <section className="py-16 border-b border-border" aria-label="Primary result">
-        <div className="space-y-1">
+      <section className="py-20 border-b border-border" aria-label="Primary result">
+        <div className="space-y-2">
           <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
             Primary result
           </p>
-          <p className="text-6xl font-light text-accent tracking-tighter leading-none">
+          <p className="text-7xl sm:text-8xl font-extralight text-foreground tracking-tighter leading-none">
             {project.heroMetric.value}
           </p>
           <p className="font-mono text-xs text-muted-foreground">
@@ -88,32 +88,32 @@ export default async function ProjectPage({ params }: PageProps) {
       </section>
 
       {/* Overview */}
-      <section className="py-16 border-b border-border" aria-labelledby="overview-heading">
-        <SectionLabel number="01" title="Overview" className="mb-8" />
+      <section className="py-20 border-b border-border" aria-labelledby="overview-heading">
+        <SectionLabel number="01" title="Overview" className="mb-10" />
         <p className="text-base font-light text-foreground leading-relaxed max-w-lg">
           {project.overview}
         </p>
       </section>
 
       {/* Challenge */}
-      <section className="py-16 border-b border-border" aria-labelledby="challenge-heading">
-        <SectionLabel number="02" title="Challenge" className="mb-8" />
+      <section className="py-20 border-b border-border" aria-labelledby="challenge-heading">
+        <SectionLabel number="02" title="Challenge" className="mb-10" />
         <p className="text-base font-light text-foreground leading-relaxed max-w-lg">
           {project.challenge}
         </p>
       </section>
 
       {/* Approach */}
-      <section className="py-16 border-b border-border" aria-labelledby="approach-heading">
-        <SectionLabel number="03" title="Approach" className="mb-12" />
-        <ol className="space-y-10" aria-label="Approach phases">
+      <section className="py-20 border-b border-border" aria-labelledby="approach-heading">
+        <SectionLabel number="03" title="Approach" className="mb-14" />
+        <ol className="space-y-12" aria-label="Approach phases">
           {project.approach.map(phase => (
             <li key={phase.number} className="flex gap-6">
               <span className="font-mono text-xs text-muted-foreground tabular-nums pt-0.5 w-5 shrink-0">
                 {phase.number}
               </span>
               <div>
-                <h3 className="text-sm font-medium text-foreground mb-2">{phase.title}</h3>
+                <h3 className="text-sm font-medium text-foreground mb-3">{phase.title}</h3>
                 <p className="text-sm font-light text-muted-foreground leading-relaxed max-w-lg">
                   {phase.description}
                 </p>
@@ -124,13 +124,13 @@ export default async function ProjectPage({ params }: PageProps) {
       </section>
 
       {/* Results */}
-      <section className="py-16 border-b border-border" aria-labelledby="results-heading">
-        <SectionLabel number="04" title="Results" className="mb-12" />
-        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <section className="py-20 border-b border-border" aria-labelledby="results-heading">
+        <SectionLabel number="04" title="Results" className="mb-14" />
+        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           {project.results.map(result => (
             <div key={result.label} className="space-y-1">
               <dt className="font-mono text-xs text-muted-foreground">{result.label}</dt>
-              <dd className="text-3xl font-light text-accent tracking-tight leading-none">
+              <dd className="text-4xl font-extralight text-foreground tracking-tight leading-none">
                 {result.value}
               </dd>
               {result.context && (
@@ -142,9 +142,9 @@ export default async function ProjectPage({ params }: PageProps) {
       </section>
 
       {/* Learnings */}
-      <section className="py-16 border-b border-border" aria-labelledby="learnings-heading">
-        <SectionLabel number="05" title="Learnings" className="mb-12" />
-        <ol className="space-y-8" aria-label="Key learnings">
+      <section className="py-20 border-b border-border" aria-labelledby="learnings-heading">
+        <SectionLabel number="05" title="Learnings" className="mb-14" />
+        <ol className="space-y-10" aria-label="Key learnings">
           {project.learnings.map((learning, i) => (
             <li key={i} className="flex gap-6">
               <span className="font-mono text-xs text-muted-foreground tabular-nums pt-0.5 w-5 shrink-0">
@@ -159,15 +159,15 @@ export default async function ProjectPage({ params }: PageProps) {
       </section>
 
       {/* Prev / Next navigation */}
-      <nav className="py-16" aria-label="Project navigation">
+      <nav className="py-20" aria-label="Project navigation">
         <div className="flex flex-col sm:flex-row gap-8 justify-between">
           {prev ? (
             <Link
               href={`/portfolio/${prev.slug}`}
               className="group flex flex-col gap-1"
             >
-              <span className="font-mono text-xs text-muted-foreground group-hover:text-accent transition-colors">
-                ← Previous
+              <span className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                &larr; Previous
               </span>
               <span className="text-base font-light text-foreground">{prev.title}</span>
             </Link>
@@ -179,8 +179,8 @@ export default async function ProjectPage({ params }: PageProps) {
               href={`/portfolio/${next.slug}`}
               className="group flex flex-col gap-1 sm:text-right"
             >
-              <span className="font-mono text-xs text-muted-foreground group-hover:text-accent transition-colors">
-                Next →
+              <span className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                Next &rarr;
               </span>
               <span className="text-base font-light text-foreground">{next.title}</span>
             </Link>
