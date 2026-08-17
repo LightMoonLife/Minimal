@@ -7,6 +7,7 @@ type FormState = 'idle' | 'submitting' | 'success' | 'error'
 export function ContactForm() {
   const [state, setState] = useState<FormState>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const [expanded, setExpanded] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -68,6 +69,7 @@ export function ContactForm() {
           className={inputClass}
           placeholder="Your name"
           disabled={state === 'submitting'}
+          onFocus={() => setExpanded(true)}
         />
       </div>
 
@@ -84,10 +86,15 @@ export function ContactForm() {
           className={inputClass}
           placeholder="you@example.com"
           disabled={state === 'submitting'}
+          onFocus={() => setExpanded(true)}
         />
       </div>
 
-      <div>
+      <div
+        className={`transition-all duration-300 overflow-hidden ${
+          expanded ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
         <label htmlFor="message" className="block font-mono text-xs text-muted-foreground mb-2">
           Message
         </label>
@@ -99,6 +106,7 @@ export function ContactForm() {
           className={`${inputClass} resize-none`}
           placeholder="Tell me about your project…"
           disabled={state === 'submitting'}
+          tabIndex={expanded ? 0 : -1}
         />
       </div>
 
