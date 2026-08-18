@@ -106,7 +106,7 @@ export function Navigation() {
       >
         <nav aria-label="Mobile navigation">
           <ul className="space-y-8" role="list">
-            {[{ href: '/', label: 'Home' }, ...navLinks, { href: '/review', label: 'Free Review' }].map(({ href, label }, i) => (
+            {[{ href: '/', label: 'Home' }, ...navLinks].map(({ href, label }, i) => (
               <li key={href}>
                 <Link
                   href={href}
@@ -124,6 +124,14 @@ export function Navigation() {
               </li>
             ))}
           </ul>
+          <Link
+            href="/review"
+            onClick={() => setOpen(false)}
+            className="mt-12 block text-center bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-sm tracking-widest py-4 hover:opacity-90 transition-opacity duration-200"
+            tabIndex={open ? 0 : -1}
+          >
+            FREE REVIEW
+          </Link>
         </nav>
       </div>
     </>
