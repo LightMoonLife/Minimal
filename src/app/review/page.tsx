@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ReviewForm } from './ReviewForm'
+import { SeoAnalyzer } from './SeoAnalyzer'
 import { SectionLabel } from '@/components/SectionLabel'
 
 export const metadata: Metadata = {
@@ -99,11 +99,11 @@ export default function ReviewPage() {
           Find out what&apos;s costing you customers.
         </h1>
         <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md mb-16">
-          Enter your website URL and get a free review with actionable insights
-          on your conversion rate, SEO, and user experience.
+          Paste your page&apos;s HTML source and a target keyword to get an instant
+          on-page SEO audit with actionable recommendations.
         </p>
 
-        <ReviewForm />
+        <SeoAnalyzer />
       </section>
 
       {/* Pricing */}
