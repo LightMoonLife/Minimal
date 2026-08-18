@@ -46,10 +46,10 @@ export function Navigation() {
         <div className="max-w-content mx-auto px-6 h-14 flex items-center">
           <Link
             href="/"
-            className="font-mono text-xs tracking-[0.2em] text-foreground hover:text-muted-foreground transition-colors duration-200 shrink-0"
+            className="font-mono text-sm font-black tracking-[0.15em] text-foreground hover:text-muted-foreground transition-colors duration-200 shrink-0"
             aria-label="Home"
           >
-            JPB
+            CONV.
           </Link>
 
           <nav aria-label="Main navigation" className="hidden sm:flex items-center flex-1">
