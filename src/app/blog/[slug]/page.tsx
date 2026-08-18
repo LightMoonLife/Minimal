@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* TL;DR */}
       <section className="py-12 border-b border-border" aria-label="Summary">
-        <div className="bg-muted -mx-6 px-6 py-8">
+        <div className="bg-muted py-8 px-6">
           <p className="font-mono text-xs text-foreground tracking-widest uppercase mb-4">
             TL;DR
           </p>

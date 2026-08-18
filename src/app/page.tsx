@@ -82,7 +82,7 @@ export default function HomePage() {
               <li key={project.slug}>
                 <Link
                   href={`/portfolio/${project.slug}`}
-                  className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-6 border-b border-border last:border-0 hover:bg-muted -mx-6 px-6 transition-colors duration-200"
+                  className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-6 border-b border-border last:border-0 hover:bg-muted transition-colors duration-200"
                 >
                   <span className="font-mono text-xs text-muted-foreground tabular-nums shrink-0 w-5">
                     {String(i + 1).padStart(2, '0')}
@@ -203,7 +203,7 @@ export default function HomePage() {
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-6 border-b border-border last:border-0 hover:bg-muted -mx-6 px-6 transition-colors duration-200"
+                  className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-6 border-b border-border last:border-0 hover:bg-muted transition-colors duration-200"
                 >
                   <span className="font-mono text-xs text-muted-foreground tabular-nums shrink-0 w-5">
                     {String(i + 1).padStart(2, '0')}

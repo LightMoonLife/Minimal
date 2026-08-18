@@ -26,7 +26,7 @@ export default function PortfolioPage() {
             <li key={project.slug}>
               <Link
                 href={`/portfolio/${project.slug}`}
-                className="group block py-12 border-b border-border hover:bg-muted -mx-6 px-6 transition-colors duration-200"
+                className="group block py-12 border-b border-border hover:bg-muted transition-colors duration-200"
               >
                 <div className="flex items-start gap-6">
                   <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">
