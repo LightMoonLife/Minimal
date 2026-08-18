@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
-  { href: '/portfolio', label: 'Work' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/portfolio', label: 'Results' },
+  { href: '/blog', label: 'Free Guides' },
   { href: '/cv', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
@@ -43,17 +43,17 @@ export function Navigation() {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-content mx-auto px-6 h-14 flex items-center justify-between">
+        <div className="max-w-content mx-auto px-6 h-14 flex items-center">
           <Link
             href="/"
-            className="font-mono text-xs tracking-[0.2em] text-foreground hover:text-muted-foreground transition-colors duration-200"
+            className="font-mono text-xs tracking-[0.2em] text-foreground hover:text-muted-foreground transition-colors duration-200 shrink-0"
             aria-label="Home"
           >
             JPB
           </Link>
 
-          <nav aria-label="Main navigation" className="hidden sm:flex items-center gap-8">
-            <ul className="flex items-center gap-8" role="list">
+          <nav aria-label="Main navigation" className="hidden sm:flex items-center flex-1">
+            <ul className="flex items-center justify-between flex-1 px-12" role="list">
               {navLinks.map(({ href, label }) => (
                 <li key={href}>
                   <Link

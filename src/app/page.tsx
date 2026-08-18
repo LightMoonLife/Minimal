@@ -75,7 +75,7 @@ export default function HomePage() {
 
         {/* Selected Work */}
         <section className="py-28 sm:py-32 border-b border-border" aria-labelledby="work-heading">
-          <SectionLabel number="01" title="Selected Work" className="mb-16" />
+          <SectionLabel number="01" title="Results" className="mb-16" />
 
           <ol className="space-y-0" aria-label="Featured engagements">
             {projects.slice(0, 4).map((project, i) => (
@@ -119,7 +119,7 @@ export default function HomePage() {
               href="/portfolio"
               className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
             >
-              <span>All engagements</span>
+              <span>All case studies</span>
               <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
@@ -196,7 +196,7 @@ export default function HomePage() {
 
         {/* Writing */}
         <section className="py-28 sm:py-32 border-b border-border" aria-labelledby="writing-heading">
-          <SectionLabel number="04" title="Writing" className="mb-16" />
+          <SectionLabel number="04" title="Free Guides" className="mb-16" />
 
           <ol className="space-y-0" aria-label="Recent posts">
             {posts.slice(0, 3).map((post, i) => (
@@ -231,7 +231,7 @@ export default function HomePage() {
               href="/blog"
               className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
             >
-              <span>All posts</span>
+              <span>All guides</span>
               <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>

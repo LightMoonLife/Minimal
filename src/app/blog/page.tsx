@@ -4,9 +4,9 @@ import { posts, categories } from '@/lib/blog'
 import { SectionLabel } from '@/components/SectionLabel'
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Free Guides',
   description:
-    'Practical writing on digital transformation, CRO, B2B revenue systems, and AI for manufacturing businesses. By Jack Paul Brookes, Digital Growth Architect.',
+    'Practical guides on digital transformation, CRO, B2B revenue systems, and AI for manufacturing businesses. By Jack Paul Brookes, Digital Growth Architect.',
 }
 
 export default function BlogPage() {
@@ -14,12 +14,12 @@ export default function BlogPage() {
     <div className="max-w-content mx-auto px-6">
 
       <section className="pt-32 sm:pt-40 pb-24 border-b border-border">
-        <SectionLabel number="00" title="Blog" className="mb-10" />
+        <SectionLabel number="00" title="Free Guides" className="mb-10" />
         <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight max-w-md mb-6">
-          Notes on building revenue systems for B2B businesses.
+          Free guides on building revenue systems for B2B businesses.
         </h1>
         <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md">
-          Practical writing on digital transformation, conversion optimisation,
+          Practical guides on digital transformation, conversion optimisation,
           and what actually works, from someone who&apos;s done the work, not just
           written about it.
         </p>
@@ -45,7 +45,7 @@ export default function BlogPage() {
 
       {/* Post list */}
       <section className="py-8" aria-label="All posts">
-        <ol aria-label="Blog posts">
+        <ol aria-label="Free guides">
           {posts.map((post, i) => (
             <li key={post.slug}>
               <Link

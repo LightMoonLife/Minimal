@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: PageProps) {
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
           >
             <span aria-hidden="true">&larr;</span>
-            <span>Work</span>
+            <span>Results</span>
           </Link>
         </div>
 

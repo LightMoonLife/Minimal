@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
           >
             <span aria-hidden="true">&larr;</span>
-            <span>Blog</span>
+            <span>Free Guides</span>
           </Link>
         </div>
 
