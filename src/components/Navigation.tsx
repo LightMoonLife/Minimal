@@ -69,7 +69,15 @@ export function Navigation() {
                 </li>
               ))}
             </ul>
-            <ThemeToggle />
+            <div className="flex items-center gap-5">
+              <ThemeToggle />
+              <Link
+                href="/review"
+                className="bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-xs tracking-widest px-5 py-2 hover:opacity-90 transition-opacity duration-200"
+              >
+                FREE REVIEW
+              </Link>
+            </div>
           </nav>
 
           <div className="flex items-center gap-6 sm:hidden">
@@ -98,7 +106,7 @@ export function Navigation() {
       >
         <nav aria-label="Mobile navigation">
           <ul className="space-y-8" role="list">
-            {[{ href: '/', label: 'Home' }, ...navLinks].map(({ href, label }, i) => (
+            {[{ href: '/', label: 'Home' }, ...navLinks, { href: '/review', label: 'Free Review' }].map(({ href, label }, i) => (
               <li key={href}>
                 <Link
                   href={href}
