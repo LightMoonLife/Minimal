@@ -194,6 +194,20 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Testimonial */}
+        <section className="py-28 sm:py-32 border-b border-border" aria-label="Client testimonial">
+          <blockquote className="space-y-6">
+            <p className="text-2xl sm:text-3xl font-extralight text-foreground leading-snug tracking-tight max-w-lg">
+              &ldquo;Jack took our digital revenue from zero to £2.2M. He didn&apos;t
+              just build the platform&mdash;he built the team, the process, and
+              the commercial engine behind it.&rdquo;
+            </p>
+            <footer className="font-mono text-xs text-muted-foreground">
+              Senior stakeholder, B2B equipment supplier
+            </footer>
+          </blockquote>
+        </section>
+
         {/* Writing */}
         <section className="py-28 sm:py-32 border-b border-border" aria-labelledby="writing-heading">
           <SectionLabel number="04" title="Free Guides" className="mb-16" />
