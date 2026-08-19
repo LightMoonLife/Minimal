@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { experience, education, skills } from '@/lib/cv-data'
+import { experience, education, skills, impactMetrics } from '@/lib/cv-data'
 import { SectionLabel } from '@/components/SectionLabel'
 
 export const metadata: Metadata = {
@@ -12,25 +12,42 @@ export default function CVPage() {
   return (
     <div className="max-w-content mx-auto px-6">
 
+      {/* What I do */}
       <section className="pt-32 sm:pt-40 pb-24 border-b border-border">
         <SectionLabel number="00" title="About" className="mb-10" />
         <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight mb-6">
           Jack Paul Brookes
         </h1>
         <p className="text-lg font-light text-foreground leading-relaxed max-w-lg">
-          I started as a product designer, taught myself SEO and CRO, built a £3.2M
-          revenue channel from scratch, scaled a marketing team from 1 to 10, and
-          now lead digital transformation for an 8-figure B2B business.
+          I help B2B businesses turn their websites and digital operations into
+          measurable revenue systems. That means conversion architecture, platform
+          engineering, SEO, and the commercial strategy that ties it all together.
+          I work directly with a small number of clients at a time.
         </p>
-        <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-lg mt-6">
-          The thread through all of it: I build the systems that turn digital
-          operations into revenue. Not campaigns. Not content strategies.
-          Platforms, processes, and teams that produce measurable commercial results.
+        <p className="font-mono text-xs text-muted-foreground mt-8">
+          Currently taking on new clients.
         </p>
       </section>
 
+      {/* Results summary */}
+      <section className="py-16 border-b border-border" aria-label="Results summary">
+        <SectionLabel number="01" title="Results" className="mb-10" />
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
+          {impactMetrics.map((metric) => (
+            <div key={metric.label} className="space-y-1">
+              <p className="text-4xl sm:text-5xl font-extralight text-foreground tracking-tight leading-none">
+                {metric.value}
+              </p>
+              <p className="font-mono text-xs text-foreground">{metric.label}</p>
+              <p className="font-mono text-xs text-muted-foreground">{metric.context}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience */}
       <section className="py-24 sm:py-32 border-b border-border" aria-labelledby="experience-heading">
-        <SectionLabel number="01" title="Experience" className="mb-16" />
+        <SectionLabel number="02" title="Experience" className="mb-16" />
         <ol className="space-y-16" aria-label="Work experience">
           {experience.map((role, i) => (
             <li key={i} className="flex gap-6">
@@ -64,7 +81,7 @@ export default function CVPage() {
       </section>
 
       <section className="py-24 sm:py-32 border-b border-border" aria-labelledby="education-heading">
-        <SectionLabel number="02" title="Education" className="mb-16" />
+        <SectionLabel number="03" title="Education" className="mb-16" />
         <ol className="space-y-12" aria-label="Education history">
           {education.map((ed, i) => (
             <li key={i} className="flex gap-6">
@@ -87,7 +104,7 @@ export default function CVPage() {
       </section>
 
       <section className="py-24 sm:py-32" aria-labelledby="skills-heading">
-        <SectionLabel number="03" title="Skills &amp; Tools" className="mb-16" />
+        <SectionLabel number="04" title="Skills &amp; Tools" className="mb-16" />
         <dl className="space-y-10">
           {skills.map(group => (
             <div key={group.label} className="flex gap-6">

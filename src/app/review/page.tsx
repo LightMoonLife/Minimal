@@ -20,7 +20,7 @@ const plans = [
       'Top 3 conversion blockers identified',
       'Delivered within 48 hours',
     ],
-    cta: 'Get started above',
+    cta: 'Start free review',
     highlight: false,
     gradient: false,
   },
@@ -36,7 +36,7 @@ const plans = [
       'Prioritised action plan',
       'Growth playbook document',
     ],
-    cta: 'Book audit',
+    cta: 'Book my audit',
     highlight: false,
     gradient: false,
   },
@@ -51,7 +51,7 @@ const plans = [
       'Conversion tracking setup',
       'Monthly recommendations',
     ],
-    cta: 'Get started',
+    cta: 'Start ongoing growth',
     highlight: false,
     gradient: false,
   },
@@ -59,7 +59,7 @@ const plans = [
     name: 'Growth Partner',
     price: '£299',
     period: '/month',
-    description: 'Ongoing audit, implementation support, and direct access to a growth architect.',
+    description: 'Ongoing audit, implementation support, and direct access to me.',
     features: [
       'Everything in Ongoing Growth',
       'Hands-on implementation support',
@@ -67,7 +67,7 @@ const plans = [
       'Priority response time',
       'Quarterly deep-dive audit',
     ],
-    cta: 'Get started',
+    cta: 'Become a growth partner',
     highlight: true,
     gradient: true,
   },
@@ -78,11 +78,11 @@ const plans = [
     description: 'For businesses with specific requirements or larger-scale transformation projects.',
     features: [
       'Scoped to your exact needs',
-      'Dedicated project management',
+      'I manage the project directly',
       'Full-stack implementation',
-      'Team training and handover',
+      'I train your team and hand over directly',
     ],
-    cta: 'Get in touch',
+    cta: 'Talk to me about this',
     highlight: false,
     gradient: false,
   },
@@ -99,8 +99,8 @@ export default function ReviewPage() {
           Find out what&apos;s costing you customers.
         </h1>
         <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md mb-16">
-          Paste your page&apos;s HTML source and a target keyword to get an instant
-          on-page SEO audit with actionable recommendations.
+          Enter a URL or paste your page&apos;s HTML source to get an instant
+          SEO audit with actionable recommendations.
         </p>
 
         <SeoAnalyzer />

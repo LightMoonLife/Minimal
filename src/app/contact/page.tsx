@@ -17,7 +17,7 @@ export default function ContactPage() {
           Let&apos;s talk
         </h1>
         <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-sm">
-          Available for freelance projects and consulting engagements. Typically respond within one working day.
+          I work with a small number of clients directly at any one time. Typically respond within one working day.
         </p>
       </section>
 

@@ -44,9 +44,12 @@ export default async function ProjectPage({ params }: PageProps) {
           </Link>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight mb-4">
+        <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight mb-2">
           {project.title}
         </h1>
+        <p className="font-mono text-xs text-muted-foreground mb-6">
+          {project.deliveryTag}
+        </p>
         <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md mb-12">
           {project.tagline}
         </p>

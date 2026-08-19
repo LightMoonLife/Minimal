@@ -16,6 +16,7 @@ export interface Project {
   tagline: string
   client: string
   year: string
+  deliveryTag: string
   services: string[]
   heroMetric: ResultMetric
   overview: string
@@ -28,10 +29,11 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'b2b-commerce-platform',
-    title: 'B2B Commerce Platform',
+    title: 'B2B Self-Service Portal',
     tagline: 'Engineering a self-service portal that moved 67% of customers to online ordering in 18 months.',
     client: 'Liquidline, 8-figure B2B supplier',
     year: '2023',
+    deliveryTag: 'Delivered in-house at Liquidline',
     services: ['Platform Engineering', 'Laravel 10', 'Tailwind CSS', 'UX Design'],
     heroMetric: { value: '67%', label: 'Customers ordering online', context: 'From 0% in 18 months' },
     overview:
@@ -78,10 +80,11 @@ export const projects: Project[] = [
   },
   {
     slug: 'digital-revenue-engine',
-    title: 'Digital Revenue Engine',
+    title: 'Digital Revenue Engine: £600K to £2.2M',
     tagline: 'Scaling digital revenue from £600K to £2.2M on less than 2% of company budget.',
     client: 'Liquidline, B2B coffee equipment',
     year: '2018–2023',
+    deliveryTag: 'Delivered in-house at Liquidline',
     services: ['Growth Strategy', 'Team Building', 'Digital Marketing', 'E-commerce'],
     heroMetric: { value: '£2.2M', label: 'Digital revenue', context: 'Scaled from £600K on <2% budget' },
     overview:
@@ -128,10 +131,11 @@ export const projects: Project[] = [
   },
   {
     slug: 'conversion-architecture',
-    title: 'Conversion Architecture',
+    title: 'Landing Page CRO: £300K in 6 Months',
     tagline: 'A CRO programme that turned one landing page into £300K revenue in six months.',
     client: 'Liquidline, B2B equipment',
     year: '2018',
+    deliveryTag: 'Delivered in-house at Liquidline',
     services: ['CRO', 'SEO', 'Landing Page Optimisation', 'A/B Testing'],
     heroMetric: { value: '+£90K', label: 'Monthly revenue increase', context: 'Conversion 1.72% to 4.29%' },
     overview:
@@ -178,10 +182,11 @@ export const projects: Project[] = [
   },
   {
     slug: 'revenue-channel-build',
-    title: 'Revenue Channel Build',
+    title: 'Revenue Channel Build: £3.2M from Zero',
     tagline: 'Building a £3.2M digital revenue channel from zero, including self-teaching every skill needed.',
     client: 'Tchibo, Coffee & FMCG',
     year: '2015–2017',
+    deliveryTag: 'Delivered in-house at Tchibo',
     services: ['CRO', 'PPC Management', 'SEO', 'Brand Development'],
     heroMetric: { value: '£3.2M', label: 'Revenue from scratch', context: 'Built in 2 years' },
     overview:
@@ -228,10 +233,11 @@ export const projects: Project[] = [
   },
   {
     slug: 'onboarding-transformation',
-    title: 'Customer Onboarding Transformation',
+    title: 'B2B Onboarding: 75% Faster, 62% Cheaper',
     tagline: 'Re-engineering B2B onboarding to be 75% faster and 62% cheaper per customer.',
     client: 'Liquidline, B2B operations',
     year: '2023',
+    deliveryTag: 'Delivered in-house at Liquidline',
     services: ['Process Design', 'Digital Transformation', 'CX Strategy'],
     heroMetric: { value: '75%', label: 'Faster onboarding', context: '4 weeks to 1 week' },
     overview:

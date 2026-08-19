@@ -7,7 +7,6 @@ type FormState = 'idle' | 'submitting' | 'success' | 'error'
 export function ContactForm() {
   const [state, setState] = useState<FormState>('idle')
   const [errorMessage, setErrorMessage] = useState('')
-  const [expanded, setExpanded] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -52,7 +51,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    'w-full bg-transparent border-b border-border py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent transition-colors duration-200'
+    'w-full bg-transparent border-b border-border py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200'
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-8 max-w-md" aria-label="Contact form">
@@ -64,12 +63,10 @@ export function ContactForm() {
           id="name"
           name="name"
           type="text"
-          required
           autoComplete="name"
           className={inputClass}
           placeholder="Your name"
           disabled={state === 'submitting'}
-          onFocus={() => setExpanded(true)}
         />
       </div>
 
@@ -81,32 +78,24 @@ export function ContactForm() {
           id="email"
           name="email"
           type="email"
-          required
           autoComplete="email"
           className={inputClass}
           placeholder="you@example.com"
           disabled={state === 'submitting'}
-          onFocus={() => setExpanded(true)}
         />
       </div>
 
-      <div
-        className={`transition-all duration-300 overflow-hidden ${
-          expanded ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
+      <div>
         <label htmlFor="message" className="block font-mono text-xs text-muted-foreground mb-2">
           Message
         </label>
         <textarea
           id="message"
           name="message"
-          required
           rows={5}
           className={`${inputClass} resize-none`}
-          placeholder="Tell me about your project…"
+          placeholder="Tell me about your project..."
           disabled={state === 'submitting'}
-          tabIndex={expanded ? 0 : -1}
         />
       </div>
 
@@ -119,10 +108,9 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={state === 'submitting'}
-        className="font-mono text-xs text-accent hover:text-accent/70 transition-colors duration-200 inline-flex items-center gap-2 disabled:opacity-40"
+        className="bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-xs tracking-widest px-8 py-3.5 hover:opacity-90 transition-opacity duration-200 disabled:opacity-40"
       >
-        <span>{state === 'submitting' ? 'Sending…' : 'Send message'}</span>
-        {state !== 'submitting' && <span aria-hidden="true">→</span>}
+        {state === 'submitting' ? 'SENDING...' : 'SEND MESSAGE'}
       </button>
     </form>
   )
