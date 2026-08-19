@@ -3,7 +3,7 @@
 import { useState, useMemo, useCallback } from 'react'
 
 type Status = 'pass' | 'warning' | 'fail'
-type Tab = 'seo' | 'speed'
+type Tab = 'seo' | 'speed' | 'serp' | 'social'
 
 interface CheckResult {
   name: string
@@ -41,6 +41,38 @@ function extractMetaContent(html: string, name: string): string | null {
   )
   const match = html.match(regex)
   return match ? (match[1] ?? match[2] ?? null) : null
+}
+
+function extractMetaProperty(html: string, property: string): string | null {
+  const regex = new RegExp(
+    `<meta[^>]*property=["']${property}["'][^>]*content=["']([^"']*)["'][^>]*/?>|<meta[^>]*content=["']([^"']*)["'][^>]*property=["']${property}["'][^>]*/?>`,
+    'i'
+  )
+  const match = html.match(regex)
+  return match ? (match[1] ?? match[2] ?? null) : null
+}
+
+function extractCanonicalUrl(html: string): string | null {
+  const match = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']*)["'][^>]*\/?>/i)
+  return match ? match[1] : null
+}
+
+function extractFavicon(html: string): string | null {
+  const match = html.match(/<link[^>]*rel=["'](?:shortcut )?icon["'][^>]*href=["']([^"']*)["'][^>]*\/?>/i)
+  return match ? match[1] : null
+}
+
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text
+  return text.slice(0, max - 1) + '…'
+}
+
+function extractDomain(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return url.replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0] || url
+  }
 }
 
 function extractImgAlts(html: string): { total: number; withAlt: number; alts: string[] } {
@@ -553,6 +585,522 @@ function parsePageSpeedResponse(data: Record<string, unknown>): PageSpeedResult 
 }
 
 // ---------------------------------------------------------------------------
+// SERP Preview Tab
+// ---------------------------------------------------------------------------
+
+interface SerpData {
+  title: string | null
+  description: string | null
+  url: string | null
+  favicon: string | null
+}
+
+function extractSerpData(html: string, pageUrl: string): SerpData {
+  return {
+    title: extractTag(html, 'title'),
+    description: extractMetaContent(html, 'description'),
+    url: pageUrl.trim() || extractCanonicalUrl(html),
+    favicon: extractFavicon(html),
+  }
+}
+
+function SerpPreviewTab({ html, url }: { html: string; url: string }) {
+  const data = useMemo(() => {
+    if (!html.trim()) return null
+    return extractSerpData(html, url)
+  }, [html, url])
+
+  if (!html.trim()) {
+    return (
+      <div className="py-16 text-center">
+        <p className="text-lg font-extralight text-muted-foreground mb-2">
+          Paste HTML in the On-Page SEO tab first
+        </p>
+        <p className="font-mono text-xs text-muted-foreground/60">
+          The SERP preview reads your title, meta description, and URL from the pasted source
+        </p>
+      </div>
+    )
+  }
+
+  if (!data) return null
+
+  const displayTitle = data.title || 'No title tag found'
+  const displayDesc = data.description || 'No meta description found. Google will auto-generate a snippet from page content, which you cannot control.'
+  const displayUrl = data.url || 'https://example.com'
+  const domain = extractDomain(displayUrl)
+
+  const titleLen = data.title?.length ?? 0
+  const descLen = data.description?.length ?? 0
+
+  const titleStatus: Status = !data.title ? 'fail' : titleLen > 60 ? 'warning' : titleLen < 30 ? 'warning' : 'pass'
+  const descStatus: Status = !data.description ? 'fail' : descLen > 160 ? 'warning' : descLen < 120 ? 'warning' : 'pass'
+
+  return (
+    <div>
+      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-8">
+        Google Search Preview
+      </p>
+
+      {/* Mock Google result */}
+      <div className="border border-border p-6 sm:p-8 mb-10 max-w-xl">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center shrink-0">
+            <span className="text-xs font-mono text-muted-foreground">
+              {domain.charAt(0).toUpperCase()}
+            </span>
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm text-foreground truncate">{domain}</p>
+            <p className="text-xs text-muted-foreground truncate">{displayUrl}</p>
+          </div>
+        </div>
+        <h3 className="text-xl font-normal leading-snug mb-2" style={{ color: '#1a0dab' }}>
+          <span className="dark:text-blue-400">
+            {truncate(displayTitle, 60)}
+          </span>
+        </h3>
+        <p className="text-sm leading-relaxed" style={{ color: '#4d5156' }}>
+          <span className="dark:text-muted-foreground">
+            {truncate(displayDesc, 160)}
+          </span>
+        </p>
+      </div>
+
+      {/* Analysis */}
+      <div className="space-y-0">
+        <div className="border-t border-border py-6">
+          <div className="flex items-start gap-4">
+            <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">01</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <h4 className="text-sm font-medium text-foreground">Title Tag</h4>
+                <StatusBadge status={titleStatus} />
+                <span className="font-mono text-xs text-muted-foreground ml-auto">
+                  {titleLen} / 60 chars
+                </span>
+              </div>
+              {data.title ? (
+                <>
+                  <p className="text-sm font-light text-muted-foreground leading-relaxed mb-2 break-words">
+                    &quot;{data.title}&quot;
+                  </p>
+                  <div className="w-full bg-muted h-1.5 mt-3">
+                    <div
+                      className={`h-1.5 transition-all ${
+                        titleLen <= 60 ? 'bg-emerald-500' : 'bg-amber-500'
+                      }`}
+                      style={{ width: `${Math.min((titleLen / 70) * 100, 100)}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between mt-1">
+                    <span className="font-mono text-xs text-muted-foreground/50">0</span>
+                    <span className="font-mono text-xs text-muted-foreground/50">30</span>
+                    <span className="font-mono text-xs text-emerald-500/60">60</span>
+                    <span className="font-mono text-xs text-muted-foreground/50">70</span>
+                  </div>
+                  {titleLen > 60 && (
+                    <p className="text-sm font-light text-foreground leading-relaxed mt-3">
+                      Your title will be truncated in search results. Shorten it to 60 characters or fewer.
+                    </p>
+                  )}
+                  {titleLen < 30 && (
+                    <p className="text-sm font-light text-foreground leading-relaxed mt-3">
+                      Your title is very short. Aim for 30-60 characters to use the full space Google provides.
+                    </p>
+                  )}
+                </>
+              ) : (
+                <p className="text-sm font-light text-foreground leading-relaxed">
+                  Add a title tag. Without one, Google will generate its own, which you cannot control.
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border py-6">
+          <div className="flex items-start gap-4">
+            <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">02</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <h4 className="text-sm font-medium text-foreground">Meta Description</h4>
+                <StatusBadge status={descStatus} />
+                <span className="font-mono text-xs text-muted-foreground ml-auto">
+                  {descLen} / 160 chars
+                </span>
+              </div>
+              {data.description ? (
+                <>
+                  <p className="text-sm font-light text-muted-foreground leading-relaxed mb-2 break-words">
+                    &quot;{data.description}&quot;
+                  </p>
+                  <div className="w-full bg-muted h-1.5 mt-3">
+                    <div
+                      className={`h-1.5 transition-all ${
+                        descLen <= 160 ? 'bg-emerald-500' : 'bg-amber-500'
+                      }`}
+                      style={{ width: `${Math.min((descLen / 200) * 100, 100)}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between mt-1">
+                    <span className="font-mono text-xs text-muted-foreground/50">0</span>
+                    <span className="font-mono text-xs text-muted-foreground/50">120</span>
+                    <span className="font-mono text-xs text-emerald-500/60">160</span>
+                    <span className="font-mono text-xs text-muted-foreground/50">200</span>
+                  </div>
+                  {descLen > 160 && (
+                    <p className="text-sm font-light text-foreground leading-relaxed mt-3">
+                      Your description will be truncated. Shorten it to 160 characters and end with a call to action.
+                    </p>
+                  )}
+                  {descLen < 120 && (
+                    <p className="text-sm font-light text-foreground leading-relaxed mt-3">
+                      Your description is short. Aim for 120-160 characters to maximise the SERP real estate.
+                    </p>
+                  )}
+                </>
+              ) : (
+                <p className="text-sm font-light text-foreground leading-relaxed">
+                  Add a meta description. Without one, Google auto-generates a snippet from your page content, and it rarely converts as well as a hand-written one.
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-b border-border py-6">
+          <div className="flex items-start gap-4">
+            <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">03</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <h4 className="text-sm font-medium text-foreground">Canonical URL</h4>
+                <StatusBadge status={data.url ? 'pass' : 'warning'} />
+              </div>
+              {data.url ? (
+                <p className="text-sm font-light text-muted-foreground leading-relaxed break-all">
+                  {data.url}
+                </p>
+              ) : (
+                <p className="text-sm font-light text-foreground leading-relaxed">
+                  No canonical URL detected. Add a canonical link tag to prevent duplicate content issues.
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Social Preview Tab
+// ---------------------------------------------------------------------------
+
+interface OgData {
+  title: string | null
+  description: string | null
+  image: string | null
+  url: string | null
+  siteName: string | null
+  type: string | null
+}
+
+interface TwitterData {
+  card: string | null
+  title: string | null
+  description: string | null
+  image: string | null
+  site: string | null
+}
+
+interface SocialCheckItem {
+  name: string
+  status: Status
+  value: string | null
+  suggestion: string
+}
+
+function extractOgData(html: string): OgData {
+  return {
+    title: extractMetaProperty(html, 'og:title'),
+    description: extractMetaProperty(html, 'og:description'),
+    image: extractMetaProperty(html, 'og:image'),
+    url: extractMetaProperty(html, 'og:url'),
+    siteName: extractMetaProperty(html, 'og:site_name'),
+    type: extractMetaProperty(html, 'og:type'),
+  }
+}
+
+function extractTwitterData(html: string): TwitterData {
+  return {
+    card: extractMetaContent(html, 'twitter:card'),
+    title: extractMetaContent(html, 'twitter:title'),
+    description: extractMetaContent(html, 'twitter:description'),
+    image: extractMetaContent(html, 'twitter:image'),
+    site: extractMetaContent(html, 'twitter:site'),
+  }
+}
+
+function buildSocialChecks(og: OgData, tw: TwitterData): SocialCheckItem[] {
+  const checks: SocialCheckItem[] = []
+
+  checks.push({
+    name: 'og:title',
+    status: og.title ? 'pass' : 'fail',
+    value: og.title,
+    suggestion: og.title ? 'Set.' : 'Add og:title. Without it, platforms may use the page title or nothing.',
+  })
+  checks.push({
+    name: 'og:description',
+    status: og.description ? 'pass' : 'warning',
+    value: og.description,
+    suggestion: og.description ? 'Set.' : 'Add og:description to control the text shown when shared.',
+  })
+  checks.push({
+    name: 'og:image',
+    status: og.image ? 'pass' : 'fail',
+    value: og.image,
+    suggestion: og.image ? 'Set.' : 'Add og:image (1200x630px recommended). Posts with images get significantly more engagement.',
+  })
+  checks.push({
+    name: 'og:url',
+    status: og.url ? 'pass' : 'warning',
+    value: og.url,
+    suggestion: og.url ? 'Set.' : 'Add og:url to specify the canonical URL for sharing.',
+  })
+  checks.push({
+    name: 'og:type',
+    status: og.type ? 'pass' : 'warning',
+    value: og.type,
+    suggestion: og.type ? 'Set.' : 'Add og:type (e.g. "website", "article") for richer previews.',
+  })
+  checks.push({
+    name: 'og:site_name',
+    status: og.siteName ? 'pass' : 'warning',
+    value: og.siteName,
+    suggestion: og.siteName ? 'Set.' : 'Add og:site_name to show your brand name in share previews.',
+  })
+  checks.push({
+    name: 'twitter:card',
+    status: tw.card ? 'pass' : 'warning',
+    value: tw.card,
+    suggestion: tw.card ? 'Set.' : 'Add twitter:card (use "summary_large_image" for best visibility on X/Twitter).',
+  })
+  checks.push({
+    name: 'twitter:title',
+    status: tw.title ? 'pass' : (og.title ? 'pass' : 'warning'),
+    value: tw.title || (og.title ? `(falls back to og:title)` : null),
+    suggestion: tw.title ? 'Set.' : og.title ? 'Falls back to og:title.' : 'Add twitter:title or og:title.',
+  })
+  checks.push({
+    name: 'twitter:description',
+    status: tw.description ? 'pass' : (og.description ? 'pass' : 'warning'),
+    value: tw.description || (og.description ? `(falls back to og:description)` : null),
+    suggestion: tw.description ? 'Set.' : og.description ? 'Falls back to og:description.' : 'Add twitter:description or og:description.',
+  })
+  checks.push({
+    name: 'twitter:image',
+    status: tw.image ? 'pass' : (og.image ? 'pass' : 'fail'),
+    value: tw.image || (og.image ? `(falls back to og:image)` : null),
+    suggestion: tw.image ? 'Set.' : og.image ? 'Falls back to og:image.' : 'Add twitter:image or og:image for visual share cards.',
+  })
+
+  return checks
+}
+
+function SocialPreviewTab({ html, url }: { html: string; url: string }) {
+  const analysis = useMemo(() => {
+    if (!html.trim()) return null
+    const og = extractOgData(html)
+    const tw = extractTwitterData(html)
+    const checks = buildSocialChecks(og, tw)
+    return { og, tw, checks }
+  }, [html])
+
+  if (!html.trim()) {
+    return (
+      <div className="py-16 text-center">
+        <p className="text-lg font-extralight text-muted-foreground mb-2">
+          Paste HTML in the On-Page SEO tab first
+        </p>
+        <p className="font-mono text-xs text-muted-foreground/60">
+          The social preview reads Open Graph and Twitter Card meta tags from the pasted source
+        </p>
+      </div>
+    )
+  }
+
+  if (!analysis) return null
+
+  const { og, tw, checks } = analysis
+  const passCount = checks.filter(c => c.status === 'pass').length
+  const totalCount = checks.length
+  const score = Math.round((passCount / totalCount) * 100)
+
+  const fbTitle = og.title || extractTag(html, 'title') || 'Page Title'
+  const fbDesc = og.description || extractMetaContent(html, 'description') || 'No description available'
+  const fbDomain = og.url ? extractDomain(og.url) : url ? extractDomain(url) : 'example.com'
+  const hasImage = !!(og.image || tw.image)
+
+  const twTitle = tw.title || og.title || extractTag(html, 'title') || 'Page Title'
+  const twDesc = tw.description || og.description || extractMetaContent(html, 'description') || 'No description available'
+  const twCard = tw.card || 'summary'
+
+  return (
+    <div>
+      {/* Score summary */}
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mb-16">
+        <ScoreRing score={score} label={score >= 80 ? 'READY' : score >= 50 ? 'PARTIAL' : 'INCOMPLETE'} />
+        <div className="flex-1 text-center sm:text-left">
+          <h3 className="text-2xl font-extralight text-foreground mb-2">
+            Social Share Readiness
+          </h3>
+          <p className="font-mono text-xs text-muted-foreground mb-1">
+            {passCount} of {totalCount} tags set
+          </p>
+          <div className="flex items-center gap-4 mt-4 justify-center sm:justify-start">
+            <span className="font-mono text-xs text-emerald-500">{passCount} set</span>
+            <span className="font-mono text-xs text-amber-500">{checks.filter(c => c.status === 'warning').length} missing</span>
+            <span className="font-mono text-xs text-red-500">{checks.filter(c => c.status === 'fail').length} critical</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Facebook / LinkedIn preview */}
+      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-6">
+        Facebook / LinkedIn Preview
+      </p>
+      <div className="border border-border max-w-md mb-12 overflow-hidden">
+        {hasImage ? (
+          <div className="bg-muted h-52 flex items-center justify-center border-b border-border">
+            <div className="text-center">
+              <svg className="w-10 h-10 mx-auto text-muted-foreground/30 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              <p className="font-mono text-xs text-muted-foreground/40">og:image preview</p>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-red-500/5 h-32 flex items-center justify-center border-b border-border">
+            <p className="font-mono text-xs text-red-500/60">No og:image set</p>
+          </div>
+        )}
+        <div className="p-4 bg-muted/50">
+          <p className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-1">
+            {fbDomain}
+          </p>
+          <p className="text-base font-medium text-foreground leading-snug mb-1 line-clamp-2">
+            {truncate(fbTitle, 65)}
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+            {truncate(fbDesc, 155)}
+          </p>
+        </div>
+      </div>
+
+      {/* X / Twitter preview */}
+      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-6">
+        X / Twitter Preview
+      </p>
+      <div className={`border border-border max-w-md mb-12 overflow-hidden ${twCard === 'summary_large_image' ? '' : 'flex'}`}>
+        {twCard === 'summary_large_image' ? (
+          <>
+            {hasImage ? (
+              <div className="bg-muted h-52 flex items-center justify-center border-b border-border">
+                <div className="text-center">
+                  <svg className="w-10 h-10 mx-auto text-muted-foreground/30 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="m21 15-5-5L5 21" />
+                  </svg>
+                  <p className="font-mono text-xs text-muted-foreground/40">twitter:image</p>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-red-500/5 h-32 flex items-center justify-center border-b border-border">
+                <p className="font-mono text-xs text-red-500/60">No image set</p>
+              </div>
+            )}
+            <div className="p-4">
+              <p className="text-base font-medium text-foreground leading-snug mb-1 line-clamp-1">
+                {truncate(twTitle, 70)}
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                {truncate(twDesc, 125)}
+              </p>
+              <p className="font-mono text-xs text-muted-foreground/60 mt-2">
+                {fbDomain}
+              </p>
+            </div>
+          </>
+        ) : (
+          <>
+            {hasImage ? (
+              <div className="bg-muted w-32 shrink-0 flex items-center justify-center border-r border-border">
+                <svg className="w-8 h-8 text-muted-foreground/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
+              </div>
+            ) : (
+              <div className="bg-red-500/5 w-32 shrink-0 flex items-center justify-center border-r border-border">
+                <p className="font-mono text-xs text-red-500/40">No img</p>
+              </div>
+            )}
+            <div className="p-4 min-w-0">
+              <p className="font-mono text-xs text-muted-foreground/60 mb-1">{fbDomain}</p>
+              <p className="text-sm font-medium text-foreground leading-snug mb-1 line-clamp-1">
+                {truncate(twTitle, 70)}
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                {truncate(twDesc, 125)}
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Tag checklist */}
+      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-6">
+        Tag Checklist
+      </p>
+      <div className="space-y-0">
+        {checks.map((check, i) => (
+          <div key={check.name} className={`border-t border-border py-4 ${i === checks.length - 1 ? 'border-b' : ''}`}>
+            <div className="flex items-start gap-4">
+              <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-3 mb-1">
+                  <h4 className="text-sm font-medium text-foreground font-mono">{check.name}</h4>
+                  <StatusBadge status={check.status} />
+                </div>
+                {check.value && (
+                  <p className="text-sm font-light text-muted-foreground leading-relaxed break-all">
+                    {check.value}
+                  </p>
+                )}
+                {check.status !== 'pass' && (
+                  <p className="text-sm font-light text-foreground leading-relaxed mt-1">
+                    {check.suggestion}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
 // PageSpeed Tab
 // ---------------------------------------------------------------------------
 
@@ -784,40 +1332,62 @@ export function SeoAnalyzer() {
       <div className="flex items-center gap-0 border-b border-border mb-10">
         <button
           onClick={() => setTab('seo')}
-          className={`font-mono text-xs tracking-widest px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
             tab === 'seo'
               ? 'border-foreground text-foreground'
               : 'border-transparent text-muted-foreground hover:text-foreground'
           }`}
         >
-          ON-PAGE SEO
+          SEO
+        </button>
+        <button
+          onClick={() => setTab('serp')}
+          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+            tab === 'serp'
+              ? 'border-foreground text-foreground'
+              : 'border-transparent text-muted-foreground hover:text-foreground'
+          }`}
+        >
+          SERP
+        </button>
+        <button
+          onClick={() => setTab('social')}
+          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+            tab === 'social'
+              ? 'border-foreground text-foreground'
+              : 'border-transparent text-muted-foreground hover:text-foreground'
+          }`}
+        >
+          SOCIAL
         </button>
         <button
           onClick={() => setTab('speed')}
-          className={`font-mono text-xs tracking-widest px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
             tab === 'speed'
               ? 'border-foreground text-foreground'
               : 'border-transparent text-muted-foreground hover:text-foreground'
           }`}
         >
-          PAGE SPEED
+          SPEED
         </button>
       </div>
 
-      {/* API key (shown for both tabs, used by speed) */}
-      <div className="mb-8">
-        <label htmlFor="api-key" className="block font-mono text-xs text-muted-foreground mb-2">
-          Google API Key <span className="text-muted-foreground/50">(optional, increases rate limits)</span>
-        </label>
-        <input
-          id="api-key"
-          type="text"
-          value={apiKey}
-          onChange={e => setApiKey(e.target.value)}
-          placeholder="AIza..."
-          className="w-full sm:w-80 bg-transparent border border-border px-4 py-2.5 font-mono text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
-        />
-      </div>
+      {/* API key (only shown on speed tab) */}
+      {tab === 'speed' && (
+        <div className="mb-8">
+          <label htmlFor="api-key" className="block font-mono text-xs text-muted-foreground mb-2">
+            Google API Key <span className="text-muted-foreground/50">(optional, increases rate limits)</span>
+          </label>
+          <input
+            id="api-key"
+            type="text"
+            value={apiKey}
+            onChange={e => setApiKey(e.target.value)}
+            placeholder="AIza..."
+            className="w-full sm:w-80 bg-transparent border border-border px-4 py-2.5 font-mono text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
+          />
+        </div>
+      )}
 
       {/* SEO Tab */}
       {tab === 'seo' && (
@@ -956,6 +1526,12 @@ export function SeoAnalyzer() {
           )}
         </>
       )}
+
+      {/* SERP Tab */}
+      {tab === 'serp' && <SerpPreviewTab html={html} url={url} />}
+
+      {/* Social Tab */}
+      {tab === 'social' && <SocialPreviewTab html={html} url={url} />}
 
       {/* Speed Tab */}
       {tab === 'speed' && <PageSpeedTab url={url} apiKey={apiKey} />}
