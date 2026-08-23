@@ -32,7 +32,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -65,4 +64,94 @@ body {
 :focus-visible {
   outline: 2px solid rgb(var(--accent));
   outline-offset: 3px;
+}
+
+/* Page transition curtain */
+.sv-curtain {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 500;
+  pointer-events: none;
+  visibility: hidden;
+  --n: 8;
+  --cw: 12.5vw;
+  --cover: .48s;
+  --reveal: .52s;
+  --stagger: 38ms;
+}
+.sv-curtain.is-on { visibility: visible; }
+
+.sv-curtain-col {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: calc(var(--i) * var(--cw));
+  width: calc(var(--cw) + 1.5px);
+  background-color: rgb(var(--panel));
+  background-image:
+    repeating-linear-gradient(0deg, rgba(var(--foreground), .04) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, rgb(var(--panel)), rgb(var(--muted)));
+  transform: translateY(-101%);
+  will-change: transform;
+  transition: transform var(--cover) cubic-bezier(.72, 0, .22, 1);
+  transition-delay: calc(var(--i) * var(--stagger));
+}
+.sv-curtain-col::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgb(var(--accent));
+  opacity: .9;
+}
+
+.sv-curtain.is-cover .sv-curtain-col {
+  transform: translateY(0);
+}
+.sv-curtain.is-covered .sv-curtain-col {
+  transform: translateY(0);
+  transition: none;
+}
+.sv-curtain.is-reveal .sv-curtain-col {
+  transform: translateY(-101%);
+  transition: transform var(--reveal) cubic-bezier(.72, 0, .22, 1);
+  transition-delay: calc((var(--n) - 1 - var(--i)) * var(--stagger));
+}
+
+.sv-curtain-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgb(var(--foreground));
+  opacity: 0;
+  transition: opacity .3s ease;
+  will-change: opacity;
+}
+.sv-curtain.show-label .sv-curtain-label { opacity: 1; }
+
+.sv-curtain-label .name {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: max(42px, 5.6vw);
+  letter-spacing: -.045em;
+  line-height: .92;
+}
+.sv-curtain-label .name .d {
+  color: rgb(var(--accent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sv-curtain { display: none !important; }
 }
