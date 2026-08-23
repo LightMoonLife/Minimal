@@ -48,12 +48,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-background text-foreground font-sans">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:font-mono focus:text-xs focus:tracking-widest"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-foreground focus:text-xs focus:rounded-pill"
         >
           Skip to main content
         </a>
         <Navigation />
-        <main id="main-content" className="pt-14">
+        <main id="main-content" className="pt-16">
           {children}
         </main>
         <Footer />

@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
-  { href: '/portfolio', label: 'Results' },
-  { href: '/blog', label: 'Free Guides' },
+  { href: '/portfolio', label: 'Work' },
+  { href: '/blog', label: 'Writing' },
   { href: '/cv', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
@@ -37,30 +37,30 @@ export function Navigation() {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-320 ease-smooth ${
           scrolled
-            ? 'bg-background/95 backdrop-blur-sm border-b border-border'
+            ? 'bg-background/90 backdrop-blur-md border-b border-border/10'
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-content mx-auto px-6 h-14 flex items-center">
+        <div className="max-w-content mx-auto px-6 sm:px-10 h-16 flex items-center">
           <Link
             href="/"
-            className="font-mono text-sm font-black tracking-[0.15em] text-foreground hover:text-muted-foreground transition-colors duration-200 shrink-0"
+            className="text-base font-semibold tracking-tight text-foreground hover:text-accent-deep transition-colors duration-200 shrink-0"
             aria-label="Home"
           >
-            CONV.
+            Jack Brookes
           </Link>
 
           <nav aria-label="Main navigation" className="hidden sm:flex items-center flex-1">
-            <ul className="flex items-center justify-between flex-1 px-12" role="list">
+            <ul className="flex items-center gap-8 ml-auto" role="list">
               {navLinks.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`font-mono text-xs tracking-widest transition-colors duration-200 hover:text-foreground ${
+                    className={`text-sm transition-colors duration-200 hover:text-foreground ${
                       pathname.startsWith(href)
-                        ? 'text-foreground'
+                        ? 'text-foreground font-medium'
                         : 'text-muted-foreground'
                     }`}
                   >
@@ -68,28 +68,30 @@ export function Navigation() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/review"
+                  className="bg-accent text-foreground text-sm font-medium px-5 py-2 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200"
+                >
+                  Free Review
+                </Link>
+              </li>
             </ul>
-            <div className="flex items-center gap-5">
+            <div className="ml-6">
               <ThemeToggle />
-              <Link
-                href="/review"
-                className="bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-xs tracking-widest px-5 py-2 hover:opacity-90 transition-opacity duration-200"
-              >
-                FREE REVIEW
-              </Link>
             </div>
           </nav>
 
-          <div className="flex items-center gap-6 sm:hidden">
+          <div className="flex items-center gap-5 sm:hidden ml-auto">
             <ThemeToggle />
             <button
-              className="font-mono text-xs tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               onClick={() => setOpen(v => !v)}
               aria-label={open ? 'Close navigation' : 'Open navigation'}
               aria-expanded={open}
               aria-controls="mobile-nav"
             >
-              {open ? 'CLOSE' : 'MENU'}
+              {open ? 'Close' : 'Menu'}
             </button>
           </div>
         </div>
@@ -100,24 +102,23 @@ export function Navigation() {
         role="dialog"
         aria-label="Navigation menu"
         aria-modal="true"
-        className={`fixed inset-0 z-40 bg-foreground flex flex-col justify-end pb-16 px-8 sm:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-background flex flex-col justify-end pb-16 px-8 sm:hidden transition-opacity duration-320 ease-smooth ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
         <nav aria-label="Mobile navigation">
-          <ul className="space-y-8" role="list">
-            {[{ href: '/', label: 'Home' }, ...navLinks].map(({ href, label }, i) => (
+          <ul className="space-y-6" role="list">
+            {[{ href: '/', label: 'Home' }, ...navLinks].map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="flex items-baseline gap-5 group"
+                  className="group block"
                   tabIndex={open ? 0 : -1}
                 >
-                  <span className="font-mono text-xs text-background/25 group-hover:text-background/50 transition-colors duration-200 w-5 shrink-0">
-                    0{i}
-                  </span>
-                  <span className="text-5xl font-extralight text-background/80 group-hover:text-background transition-colors duration-200 leading-none tracking-tight">
+                  <span className={`text-4xl font-medium tracking-tight transition-colors duration-200 ${
+                    pathname === href ? 'text-accent' : 'text-foreground/70 group-hover:text-foreground'
+                  }`}>
                     {label}
                   </span>
                 </Link>
@@ -127,10 +128,10 @@ export function Navigation() {
           <Link
             href="/review"
             onClick={() => setOpen(false)}
-            className="mt-12 block text-center bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-sm tracking-widest py-4 hover:opacity-90 transition-opacity duration-200"
+            className="mt-10 block text-center bg-accent text-foreground font-medium text-sm py-4 rounded-card hover:bg-accent-deep hover:text-white transition-all duration-200"
             tabIndex={open ? 0 : -1}
           >
-            FREE REVIEW
+            Free Review
           </Link>
         </nav>
       </div>

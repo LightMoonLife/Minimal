@@ -43,20 +43,20 @@ export function ContactForm() {
 
   if (state === 'success') {
     return (
-      <div className="py-8">
-        <p className="font-mono text-xs text-foreground mb-1">Message received.</p>
-        <p className="font-mono text-xs text-muted-foreground">I&apos;ll be in touch within one working day.</p>
+      <div className="border border-accent/20 rounded-card p-6 sm:p-8 bg-accent/5">
+        <p className="text-base font-medium text-foreground mb-1">Message received.</p>
+        <p className="text-sm text-muted-foreground">I&apos;ll be in touch within one working day.</p>
       </div>
     )
   }
 
   const inputClass =
-    'w-full bg-transparent border-b border-border py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200'
+    'w-full bg-transparent border border-border/15 rounded-card px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent transition-colors duration-200'
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-8 max-w-md" aria-label="Contact form">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5 max-w-md" aria-label="Contact form">
       <div>
-        <label htmlFor="name" className="block font-mono text-xs text-muted-foreground mb-2">
+        <label htmlFor="name" className="block text-xs text-muted-foreground font-medium mb-2">
           Name
         </label>
         <input
@@ -71,7 +71,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="email" className="block font-mono text-xs text-muted-foreground mb-2">
+        <label htmlFor="email" className="block text-xs text-muted-foreground font-medium mb-2">
           Email
         </label>
         <input
@@ -86,7 +86,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block font-mono text-xs text-muted-foreground mb-2">
+        <label htmlFor="message" className="block text-xs text-muted-foreground font-medium mb-2">
           Message
         </label>
         <textarea
@@ -100,7 +100,7 @@ export function ContactForm() {
       </div>
 
       {state === 'error' && (
-        <p className="font-mono text-xs text-foreground" role="alert">
+        <p className="text-xs text-foreground" role="alert">
           {errorMessage}
         </p>
       )}
@@ -108,9 +108,9 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={state === 'submitting'}
-        className="bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-xs tracking-widest px-8 py-3.5 hover:opacity-90 transition-opacity duration-200 disabled:opacity-40"
+        className="bg-accent text-foreground font-medium text-sm px-8 py-3.5 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-320 ease-smooth hover:-translate-y-0.5 disabled:opacity-40 disabled:hover:translate-y-0"
       >
-        {state === 'submitting' ? 'SENDING...' : 'SEND MESSAGE'}
+        {state === 'submitting' ? 'Sending...' : 'Send message'}
       </button>
     </form>
   )

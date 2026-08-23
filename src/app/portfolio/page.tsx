@@ -4,81 +4,60 @@ import { projects } from '@/lib/projects'
 import { SectionLabel } from '@/components/SectionLabel'
 
 export const metadata: Metadata = {
-  title: 'Results',
+  title: 'Work',
   description:
     'Case studies in B2B digital transformation, revenue platform engineering, and conversion optimisation.',
 }
 
 export default function PortfolioPage() {
   return (
-    <div className="max-w-content mx-auto px-6">
+    <div className="max-w-content mx-auto px-6 sm:px-10">
 
-      <section className="pt-32 sm:pt-40 pb-24 border-b border-border">
-        <SectionLabel number="00" title="Results" className="mb-10" />
-        <h1 className="text-3xl sm:text-4xl font-extralight text-foreground leading-snug tracking-tight max-w-sm">
+      <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+        <SectionLabel number="00" title="Work" className="mb-8" />
+        <h1 className="text-3xl sm:text-4xl font-medium text-foreground leading-snug tracking-tight max-w-md">
           Case studies in digital transformation, platform engineering, and revenue growth.
         </h1>
       </section>
 
-      <section className="py-8" aria-label="All case studies">
-        <ol aria-label="Case study list">
-          {projects.map((project, i) => (
-            <li key={project.slug}>
-              <Link
-                href={`/portfolio/${project.slug}`}
-                className="group block py-12 border-b border-border hover:bg-muted transition-colors duration-200"
-              >
-                <div className="flex items-start gap-6">
-                  <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
-                      <h2 className="text-xl font-light text-foreground leading-tight">
-                        {project.title}
-                      </h2>
-                      <span className="font-mono text-xs text-muted-foreground">
-                        {project.year}
-                      </span>
-                    </div>
-                    <p className="text-sm text-muted-foreground font-light leading-relaxed mb-5 max-w-md">
-                      {project.tagline}
-                    </p>
-                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-mono text-xs text-foreground font-medium">
-                          {project.heroMetric.value}
-                        </span>
-                        <span className="font-mono text-xs text-muted-foreground">
-                          {project.heroMetric.label.toLowerCase()}
-                        </span>
-                      </div>
-                      <span className="font-mono text-xs text-muted-foreground">
-                        {project.client}
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-2 mt-5">
-                      {project.services.map(s => (
-                        <span
-                          key={s}
-                          className="font-mono text-xs text-muted-foreground border border-border px-2 py-0.5"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+      <section className="pb-12" aria-label="All case studies">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {projects.map((project) => (
+            <Link
+              key={project.slug}
+              href={`/portfolio/${project.slug}`}
+              className="group block border border-border/10 rounded-card p-6 sm:p-8 bg-panel/50 hover:bg-panel hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
+            >
+              <p className="text-xs text-muted-foreground mb-3">
+                {project.deliveryTag} &middot; {project.year}
+              </p>
+              <h2 className="text-lg font-medium text-foreground mb-2 group-hover:text-accent-deep transition-colors duration-200">
+                {project.title}
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 line-clamp-2">
+                {project.tagline}
+              </p>
+              <div className="flex items-center justify-between mb-5">
+                <span className="text-2xl font-medium text-foreground tracking-tight">
+                  {project.heroMetric.value}
+                </span>
+                <span className="text-xs text-muted-foreground">
+                  {project.heroMetric.label}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {project.services.map(s => (
                   <span
-                    className="font-mono text-xs text-muted-foreground group-hover:translate-x-1 transition-transform duration-200 hidden sm:block pt-1 shrink-0"
-                    aria-hidden="true"
+                    key={s}
+                    className="text-xs text-muted-foreground border border-border/10 px-3 py-1 rounded-pill"
                   >
-                    &rarr;
+                    {s}
                   </span>
-                </div>
-              </Link>
-            </li>
+                ))}
+              </div>
+            </Link>
           ))}
-        </ol>
+        </div>
       </section>
 
     </div>

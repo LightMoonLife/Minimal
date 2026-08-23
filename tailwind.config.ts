@@ -12,19 +12,31 @@ const config: Config = {
         'muted-foreground': 'rgb(var(--muted-foreground) / <alpha-value>)',
         border: 'rgb(var(--border) / <alpha-value>)',
         accent: 'rgb(var(--accent) / <alpha-value>)',
+        'accent-deep': 'rgb(var(--accent-deep) / <alpha-value>)',
+        panel: 'rgb(var(--panel) / <alpha-value>)',
+        card: 'rgb(var(--card) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'Menlo', 'monospace'],
       },
       maxWidth: {
-        content: '720px',
+        content: '1100px',
+      },
+      borderRadius: {
+        card: '14px',
+        pill: '100px',
       },
       letterSpacing: {
-        widest: '0.2em',
+        widest: '0.16em',
+      },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(.22, 1, .36, 1)',
       },
       transitionDuration: {
+        '320': '320ms',
         '400': '400ms',
+        '550': '550ms',
       },
     },
   },

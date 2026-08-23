@@ -22,7 +22,6 @@ const plans = [
     ],
     cta: 'Start free review',
     highlight: false,
-    gradient: false,
   },
   {
     name: 'Growth Audit',
@@ -38,7 +37,6 @@ const plans = [
     ],
     cta: 'Book my audit',
     highlight: false,
-    gradient: false,
   },
   {
     name: 'Ongoing Growth',
@@ -53,7 +51,6 @@ const plans = [
     ],
     cta: 'Start ongoing growth',
     highlight: false,
-    gradient: false,
   },
   {
     name: 'Growth Partner',
@@ -69,7 +66,6 @@ const plans = [
     ],
     cta: 'Become a growth partner',
     highlight: true,
-    gradient: true,
   },
   {
     name: 'Custom',
@@ -84,21 +80,20 @@ const plans = [
     ],
     cta: 'Talk to me about this',
     highlight: false,
-    gradient: false,
   },
 ]
 
 export default function ReviewPage() {
   return (
-    <div className="max-w-content mx-auto px-6">
+    <div className="max-w-content mx-auto px-6 sm:px-10">
 
       {/* Hero */}
-      <section className="pt-32 sm:pt-40 pb-24 border-b border-border">
-        <SectionLabel number="00" title="Free Review" className="mb-10" />
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extralight text-foreground leading-snug tracking-tight max-w-lg mb-6">
+      <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+        <SectionLabel number="00" title="Free Review" className="mb-8" />
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground leading-snug tracking-tight max-w-lg mb-6">
           Find out what&apos;s costing you customers.
         </h1>
-        <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md mb-16">
+        <p className="text-lg text-muted-foreground leading-relaxed max-w-md mb-12">
           Enter a URL or paste your page&apos;s HTML source to get an instant
           SEO audit with actionable recommendations.
         </p>
@@ -107,72 +102,68 @@ export default function ReviewPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-28 sm:py-32" aria-labelledby="pricing-heading">
-        <SectionLabel number="01" title="Packages" className="mb-10" />
-        <h2 className="text-2xl sm:text-3xl font-extralight text-foreground leading-snug tracking-tight max-w-md mb-6">
+      <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="pricing-heading">
+        <SectionLabel number="01" title="Packages" className="mb-8" />
+        <h2 className="text-2xl sm:text-3xl font-medium text-foreground leading-snug tracking-tight max-w-md mb-6">
           Go deeper with a full growth programme.
         </h2>
-        <p className="text-base font-light text-muted-foreground leading-relaxed max-w-md mb-16">
+        <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-12">
           The free review gives you a starting point. For businesses serious
           about growth, these packages deliver the full picture and the
           support to act on it.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {plans.map(plan => (
             <div
               key={plan.name}
-              className={`border p-8 flex flex-col ${
+              className={`border rounded-card p-6 sm:p-8 flex flex-col ${
                 plan.highlight
-                  ? 'border-transparent bg-gradient-to-br from-pink-500/10 to-emerald-500/10'
-                  : 'border-border'
+                  ? 'border-accent bg-accent/5 ring-1 ring-accent/30'
+                  : 'border-border/10'
               }`}
             >
-              <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-4">
+              <p className="text-xs text-muted-foreground tracking-widest uppercase font-medium mb-4">
                 {plan.name}
               </p>
 
               <div className="flex items-baseline gap-1 mb-2">
-                <span
-                  className={`text-3xl font-extralight tracking-tight leading-none ${
-                    plan.gradient
-                      ? 'bg-gradient-to-r from-pink-500 to-emerald-500 bg-clip-text text-transparent'
-                      : 'text-foreground'
-                  }`}
-                >
+                <span className={`text-3xl font-medium tracking-tight leading-none ${
+                  plan.highlight ? 'text-accent-deep' : 'text-foreground'
+                }`}>
                   {plan.price}
                 </span>
                 {plan.period && (
-                  <span className="font-mono text-xs text-muted-foreground">
+                  <span className="text-xs text-muted-foreground">
                     {plan.period}
                   </span>
                 )}
               </div>
 
-              <p className="text-sm font-light text-muted-foreground leading-relaxed mb-8">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                 {plan.description}
               </p>
 
-              <ul className="space-y-3 mb-10 flex-1">
+              <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map(feature => (
                   <li key={feature} className="flex items-start gap-3">
-                    <span className="font-mono text-xs text-muted-foreground mt-0.5 shrink-0">/</span>
-                    <span className="font-mono text-xs text-foreground">{feature}</span>
+                    <span className="text-accent-deep mt-1 shrink-0" aria-hidden="true">
+                      <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor"><circle cx="3" cy="3" r="3" /></svg>
+                    </span>
+                    <span className="text-sm text-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Link
                 href="/contact"
-                className={`font-mono text-xs tracking-widest text-center py-3.5 transition-all duration-200 block ${
-                  plan.gradient
-                    ? 'bg-gradient-to-r from-pink-500 to-emerald-500 text-white hover:opacity-90'
-                    : plan.highlight
-                    ? 'bg-foreground text-background hover:opacity-90'
-                    : 'border border-border text-foreground hover:bg-muted'
+                className={`text-sm font-medium text-center py-3.5 rounded-pill transition-all duration-200 block ${
+                  plan.highlight
+                    ? 'bg-accent text-foreground hover:bg-accent-deep hover:text-white'
+                    : 'border border-border/15 text-foreground hover:bg-panel'
                 }`}
               >
-                {plan.cta.toUpperCase()}
+                {plan.cta}
               </Link>
             </div>
           ))}

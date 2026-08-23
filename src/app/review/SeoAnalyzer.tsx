@@ -445,7 +445,7 @@ function StatusBadge({ status }: { status: Status }) {
   }
   const c = config[status]
   return (
-    <span className={`font-mono text-xs tracking-wider px-2.5 py-1 ${c.bg}`}>
+    <span className={`text-xs tracking-wider px-2.5 py-1 ${c.bg}`}>
       {c.label}
     </span>
   )
@@ -488,11 +488,11 @@ function ScoreRing({ score, size = 'lg', label }: { score: number; size?: 'sm' |
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={`${isLg ? 'text-4xl' : 'text-lg'} font-extralight ${textColor}`}>{score}</span>
+          <span className={`${isLg ? 'text-4xl' : 'text-lg'} font-medium ${textColor}`}>{score}</span>
         </div>
       </div>
       {label && (
-        <p className="font-mono text-xs text-muted-foreground tracking-widest text-center">
+        <p className="text-xs text-muted-foreground tracking-widest text-center">
           {label}
         </p>
       )}
@@ -503,11 +503,11 @@ function ScoreRing({ score, size = 'lg', label }: { score: number; size?: 'sm' |
 function Spinner() {
   return (
     <div className="flex flex-col items-center gap-4 py-16">
-      <div className="w-10 h-10 border-2 border-border border-t-foreground rounded-full animate-spin" />
-      <p className="font-mono text-xs text-muted-foreground tracking-widest">
+      <div className="w-10 h-10 border-2 border-border/10 border-t-foreground rounded-full animate-spin" />
+      <p className="text-xs text-muted-foreground tracking-widest">
         FETCHING FROM GOOGLE...
       </p>
-      <p className="font-mono text-xs text-muted-foreground/60">
+      <p className="text-xs text-muted-foreground/60">
         This usually takes 10-30 seconds
       </p>
     </div>
@@ -613,10 +613,10 @@ function SerpPreviewTab({ html, url }: { html: string; url: string }) {
   if (!html.trim()) {
     return (
       <div className="py-16 text-center">
-        <p className="text-lg font-extralight text-muted-foreground mb-2">
+        <p className="text-lg font-medium text-muted-foreground mb-2">
           Paste HTML in the On-Page SEO tab first
         </p>
-        <p className="font-mono text-xs text-muted-foreground/60">
+        <p className="text-xs text-muted-foreground/60">
           The SERP preview reads your title, meta description, and URL from the pasted source
         </p>
       </div>
@@ -638,12 +638,12 @@ function SerpPreviewTab({ html, url }: { html: string; url: string }) {
 
   return (
     <div>
-      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-8">
+      <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
         Google Search Preview
       </p>
 
       {/* Mock Google result */}
-      <div className="border border-border p-6 sm:p-8 mb-10 max-w-xl">
+      <div className="border border-border/10 p-6 sm:p-8 mb-10 max-w-xl">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center shrink-0">
             <span className="text-xs font-mono text-muted-foreground">
@@ -669,14 +669,14 @@ function SerpPreviewTab({ html, url }: { html: string; url: string }) {
 
       {/* Analysis */}
       <div className="space-y-0">
-        <div className="border-t border-border py-6">
+        <div className="border-t border-border/10 py-6">
           <div className="flex items-start gap-4">
-            <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">01</span>
+            <span className="text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">01</span>
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-3 mb-2">
                 <h4 className="text-sm font-medium text-foreground">Title Tag</h4>
                 <StatusBadge status={titleStatus} />
-                <span className="font-mono text-xs text-muted-foreground ml-auto">
+                <span className="text-xs text-muted-foreground ml-auto">
                   {titleLen} / 60 chars
                 </span>
               </div>
@@ -694,10 +694,10 @@ function SerpPreviewTab({ html, url }: { html: string; url: string }) {
                     />
                   </div>
                   <div className="flex justify-between mt-1">
-                    <span className="font-mono text-xs text-muted-foreground/50">0</span>
-                    <span className="font-mono text-xs text-muted-foreground/50">30</span>
-                    <span className="font-mono text-xs text-emerald-500/60">60</span>
-                    <span className="font-mono text-xs text-muted-foreground/50">70</span>
+                    <span className="text-xs text-muted-foreground/50">0</span>
+                    <span className="text-xs text-muted-foreground/50">30</span>
+                    <span className="text-xs text-emerald-500/60">60</span>
+                    <span className="text-xs text-muted-foreground/50">70</span>
                   </div>
                   {titleLen > 60 && (
                     <p className="text-sm font-light text-foreground leading-relaxed mt-3">
@@ -719,14 +719,14 @@ function SerpPreviewTab({ html, url }: { html: string; url: string }) {
           </div>
         </div>
 
-        <div className="border-t border-border py-6">
+        <div className="border-t border-border/10 py-6">
           <div className="flex items-start gap-4">
-            <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">02</span>
+            <span className="text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">02</span>
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-3 mb-2">
                 <h4 className="text-sm font-medium text-foreground">Meta Description</h4>
                 <StatusBadge status={descStatus} />
-                <span className="font-mono text-xs text-muted-foreground ml-auto">
+                <span className="text-xs text-muted-foreground ml-auto">
                   {descLen} / 160 chars
                 </span>
               </div>
@@ -744,10 +744,10 @@ function SerpPreviewTab({ html, url }: { html: string; url: string }) {
                     />
                   </div>
                   <div className="flex justify-between mt-1">
-                    <span className="font-mono text-xs text-muted-foreground/50">0</span>
-                    <span className="font-mono text-xs text-muted-foreground/50">120</span>
-                    <span className="font-mono text-xs text-emerald-500/60">160</span>
-                    <span className="font-mono text-xs text-muted-foreground/50">200</span>
+                    <span className="text-xs text-muted-foreground/50">0</span>
+                    <span className="text-xs text-muted-foreground/50">120</span>
+                    <span className="text-xs text-emerald-500/60">160</span>
+                    <span className="text-xs text-muted-foreground/50">200</span>
                   </div>
                   {descLen > 160 && (
                     <p className="text-sm font-light text-foreground leading-relaxed mt-3">
@@ -769,9 +769,9 @@ function SerpPreviewTab({ html, url }: { html: string; url: string }) {
           </div>
         </div>
 
-        <div className="border-t border-b border-border py-6">
+        <div className="border-t border-b border-border/10 py-6">
           <div className="flex items-start gap-4">
-            <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">03</span>
+            <span className="text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">03</span>
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-3 mb-2">
                 <h4 className="text-sm font-medium text-foreground">Canonical URL</h4>
@@ -922,10 +922,10 @@ function SocialPreviewTab({ html, url }: { html: string; url: string }) {
   if (!html.trim()) {
     return (
       <div className="py-16 text-center">
-        <p className="text-lg font-extralight text-muted-foreground mb-2">
+        <p className="text-lg font-medium text-muted-foreground mb-2">
           Paste HTML in the On-Page SEO tab first
         </p>
-        <p className="font-mono text-xs text-muted-foreground/60">
+        <p className="text-xs text-muted-foreground/60">
           The social preview reads Open Graph and Twitter Card meta tags from the pasted source
         </p>
       </div>
@@ -954,43 +954,43 @@ function SocialPreviewTab({ html, url }: { html: string; url: string }) {
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mb-16">
         <ScoreRing score={score} label={score >= 80 ? 'READY' : score >= 50 ? 'PARTIAL' : 'INCOMPLETE'} />
         <div className="flex-1 text-center sm:text-left">
-          <h3 className="text-2xl font-extralight text-foreground mb-2">
+          <h3 className="text-2xl font-medium text-foreground mb-2">
             Social Share Readiness
           </h3>
-          <p className="font-mono text-xs text-muted-foreground mb-1">
+          <p className="text-xs text-muted-foreground mb-1">
             {passCount} of {totalCount} tags set
           </p>
           <div className="flex items-center gap-4 mt-4 justify-center sm:justify-start">
-            <span className="font-mono text-xs text-emerald-500">{passCount} set</span>
-            <span className="font-mono text-xs text-amber-500">{checks.filter(c => c.status === 'warning').length} missing</span>
-            <span className="font-mono text-xs text-red-500">{checks.filter(c => c.status === 'fail').length} critical</span>
+            <span className="text-xs text-emerald-500">{passCount} set</span>
+            <span className="text-xs text-amber-500">{checks.filter(c => c.status === 'warning').length} missing</span>
+            <span className="text-xs text-red-500">{checks.filter(c => c.status === 'fail').length} critical</span>
           </div>
         </div>
       </div>
 
       {/* Facebook / LinkedIn preview */}
-      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-6">
+      <p className="text-xs text-muted-foreground tracking-widest uppercase mb-6">
         Facebook / LinkedIn Preview
       </p>
-      <div className="border border-border max-w-md mb-12 overflow-hidden">
+      <div className="border border-border/10 max-w-md mb-12 overflow-hidden">
         {hasImage ? (
-          <div className="bg-muted h-52 flex items-center justify-center border-b border-border">
+          <div className="bg-muted h-52 flex items-center justify-center border-b border-border/10">
             <div className="text-center">
               <svg className="w-10 h-10 mx-auto text-muted-foreground/30 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
                 <rect x="3" y="3" width="18" height="18" rx="2" />
                 <circle cx="8.5" cy="8.5" r="1.5" />
                 <path d="m21 15-5-5L5 21" />
               </svg>
-              <p className="font-mono text-xs text-muted-foreground/40">og:image preview</p>
+              <p className="text-xs text-muted-foreground/40">og:image preview</p>
             </div>
           </div>
         ) : (
-          <div className="bg-red-500/5 h-32 flex items-center justify-center border-b border-border">
-            <p className="font-mono text-xs text-red-500/60">No og:image set</p>
+          <div className="bg-red-500/5 h-32 flex items-center justify-center border-b border-border/10">
+            <p className="text-xs text-red-500/60">No og:image set</p>
           </div>
         )}
         <div className="p-4 bg-muted/50">
-          <p className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-1">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
             {fbDomain}
           </p>
           <p className="text-base font-medium text-foreground leading-snug mb-1 line-clamp-2">
@@ -1003,26 +1003,26 @@ function SocialPreviewTab({ html, url }: { html: string; url: string }) {
       </div>
 
       {/* X / Twitter preview */}
-      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-6">
+      <p className="text-xs text-muted-foreground tracking-widest uppercase mb-6">
         X / Twitter Preview
       </p>
-      <div className={`border border-border max-w-md mb-12 overflow-hidden ${twCard === 'summary_large_image' ? '' : 'flex'}`}>
+      <div className={`border border-border/10 max-w-md mb-12 overflow-hidden ${twCard === 'summary_large_image' ? '' : 'flex'}`}>
         {twCard === 'summary_large_image' ? (
           <>
             {hasImage ? (
-              <div className="bg-muted h-52 flex items-center justify-center border-b border-border">
+              <div className="bg-muted h-52 flex items-center justify-center border-b border-border/10">
                 <div className="text-center">
                   <svg className="w-10 h-10 mx-auto text-muted-foreground/30 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <circle cx="8.5" cy="8.5" r="1.5" />
                     <path d="m21 15-5-5L5 21" />
                   </svg>
-                  <p className="font-mono text-xs text-muted-foreground/40">twitter:image</p>
+                  <p className="text-xs text-muted-foreground/40">twitter:image</p>
                 </div>
               </div>
             ) : (
-              <div className="bg-red-500/5 h-32 flex items-center justify-center border-b border-border">
-                <p className="font-mono text-xs text-red-500/60">No image set</p>
+              <div className="bg-red-500/5 h-32 flex items-center justify-center border-b border-border/10">
+                <p className="text-xs text-red-500/60">No image set</p>
               </div>
             )}
             <div className="p-4">
@@ -1032,7 +1032,7 @@ function SocialPreviewTab({ html, url }: { html: string; url: string }) {
               <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                 {truncate(twDesc, 125)}
               </p>
-              <p className="font-mono text-xs text-muted-foreground/60 mt-2">
+              <p className="text-xs text-muted-foreground/60 mt-2">
                 {fbDomain}
               </p>
             </div>
@@ -1040,7 +1040,7 @@ function SocialPreviewTab({ html, url }: { html: string; url: string }) {
         ) : (
           <>
             {hasImage ? (
-              <div className="bg-muted w-32 shrink-0 flex items-center justify-center border-r border-border">
+              <div className="bg-muted w-32 shrink-0 flex items-center justify-center border-r border-border/10">
                 <svg className="w-8 h-8 text-muted-foreground/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" />
@@ -1048,12 +1048,12 @@ function SocialPreviewTab({ html, url }: { html: string; url: string }) {
                 </svg>
               </div>
             ) : (
-              <div className="bg-red-500/5 w-32 shrink-0 flex items-center justify-center border-r border-border">
-                <p className="font-mono text-xs text-red-500/40">No img</p>
+              <div className="bg-red-500/5 w-32 shrink-0 flex items-center justify-center border-r border-border/10">
+                <p className="text-xs text-red-500/40">No img</p>
               </div>
             )}
             <div className="p-4 min-w-0">
-              <p className="font-mono text-xs text-muted-foreground/60 mb-1">{fbDomain}</p>
+              <p className="text-xs text-muted-foreground/60 mb-1">{fbDomain}</p>
               <p className="text-sm font-medium text-foreground leading-snug mb-1 line-clamp-1">
                 {truncate(twTitle, 70)}
               </p>
@@ -1066,14 +1066,14 @@ function SocialPreviewTab({ html, url }: { html: string; url: string }) {
       </div>
 
       {/* Tag checklist */}
-      <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-6">
+      <p className="text-xs text-muted-foreground tracking-widest uppercase mb-6">
         Tag Checklist
       </p>
       <div className="space-y-0">
         {checks.map((check, i) => (
-          <div key={check.name} className={`border-t border-border py-4 ${i === checks.length - 1 ? 'border-b' : ''}`}>
+          <div key={check.name} className={`border-t border-border/10 py-4 ${i === checks.length - 1 ? 'border-b' : ''}`}>
             <div className="flex items-start gap-4">
-              <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">
+              <span className="text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div className="flex-1 min-w-0">
@@ -1154,12 +1154,12 @@ function PageSpeedTab({ url, apiKey }: { url: string; apiKey: string }) {
           value={speedUrl}
           onChange={e => setSpeedUrl(e.target.value)}
           placeholder="https://yourwebsite.com"
-          className="flex-1 bg-transparent border border-border px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
+          className="flex-1 bg-transparent border border-border/15 rounded-card px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
         />
         <button
           onClick={runTest}
           disabled={loading || !speedUrl.trim()}
-          className="bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-xs tracking-widest px-8 py-3.5 hover:opacity-90 transition-opacity duration-200 disabled:opacity-30 shrink-0"
+          className="bg-accent text-foreground font-medium text-sm px-8 py-3.5 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200 disabled:opacity-30 shrink-0"
         >
           {loading ? 'TESTING...' : 'TEST SPEED'}
         </button>
@@ -1169,7 +1169,7 @@ function PageSpeedTab({ url, apiKey }: { url: string; apiKey: string }) {
 
       {error && (
         <div className="border border-red-500/30 bg-red-500/5 p-6 mt-4">
-          <p className="font-mono text-xs text-red-500 mb-2">Error</p>
+          <p className="text-xs text-red-500 mb-2">Error</p>
           <p className="text-sm font-light text-foreground">{error}</p>
         </div>
       )}
@@ -1180,13 +1180,13 @@ function PageSpeedTab({ url, apiKey }: { url: string; apiKey: string }) {
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mb-16">
             <ScoreRing score={result.performanceScore} label={result.performanceScore >= 80 ? 'FAST' : result.performanceScore >= 50 ? 'MODERATE' : 'SLOW'} />
             <div className="flex-1 text-center sm:text-left">
-              <h3 className="text-2xl font-extralight text-foreground mb-2">
+              <h3 className="text-2xl font-medium text-foreground mb-2">
                 Performance Score
               </h3>
-              <p className="font-mono text-xs text-muted-foreground mb-1 break-all">
+              <p className="text-xs text-muted-foreground mb-1 break-all">
                 {result.fetchedUrl}
               </p>
-              <p className="font-mono text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-muted-foreground mt-2">
                 Mobile / Lighthouse
               </p>
             </div>
@@ -1194,28 +1194,28 @@ function PageSpeedTab({ url, apiKey }: { url: string; apiKey: string }) {
 
           {/* Core Web Vitals */}
           <div className="mb-8">
-            <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-8">
+            <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
               Core Web Vitals
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {result.vitals.map(vital => {
                 const status = vitalScore(vital.id, vital.numericValue, vital.thresholds.good, vital.thresholds.poor)
                 return (
-                  <div key={vital.id} className="border border-border p-6">
+                  <div key={vital.id} className="border border-border/10 p-6">
                     <div className="flex items-center justify-between mb-4">
                       <ScoreRing score={vital.score} size="sm" />
                       <StatusBadge status={status} />
                     </div>
-                    <p className="text-2xl font-extralight text-foreground tracking-tight mb-1">
+                    <p className="text-2xl font-medium text-foreground tracking-tight mb-1">
                       {vital.value}
                     </p>
-                    <p className="font-mono text-xs text-muted-foreground leading-relaxed">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       {vital.label}
                     </p>
                     <div className="mt-4 flex items-center gap-3">
                       <div className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                        <span className="font-mono text-xs text-muted-foreground">
+                        <span className="text-xs text-muted-foreground">
                           {vital.id === 'cumulative-layout-shift'
                             ? `< ${vital.thresholds.good}`
                             : `< ${vital.thresholds.good}ms`}
@@ -1223,7 +1223,7 @@ function PageSpeedTab({ url, apiKey }: { url: string; apiKey: string }) {
                       </div>
                       <div className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-red-500" />
-                        <span className="font-mono text-xs text-muted-foreground">
+                        <span className="text-xs text-muted-foreground">
                           {vital.id === 'cumulative-layout-shift'
                             ? `> ${vital.thresholds.poor}`
                             : `> ${vital.thresholds.poor}ms`}
@@ -1237,8 +1237,8 @@ function PageSpeedTab({ url, apiKey }: { url: string; apiKey: string }) {
           </div>
 
           {/* Suggestions based on vitals */}
-          <div className="border-t border-border pt-8 mt-8">
-            <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-6">
+          <div className="border-t border-border/10 pt-8 mt-8">
+            <p className="text-xs text-muted-foreground tracking-widest uppercase mb-6">
               Recommendations
             </p>
             <div className="space-y-4">
@@ -1276,8 +1276,8 @@ function PageSpeedTab({ url, apiKey }: { url: string; apiKey: string }) {
 
       {!result && !loading && !error && (
         <div className="py-16 text-center">
-          <p className="text-lg font-extralight text-muted-foreground mb-2">Enter a URL and test</p>
-          <p className="font-mono text-xs text-muted-foreground/60">
+          <p className="text-lg font-medium text-muted-foreground mb-2">Enter a URL and test</p>
+          <p className="text-xs text-muted-foreground/60">
             Uses Google PageSpeed Insights API to measure real performance data
           </p>
         </div>
@@ -1329,43 +1329,43 @@ export function SeoAnalyzer() {
   return (
     <div>
       {/* Tabs */}
-      <div className="flex items-center gap-0 border-b border-border mb-10">
+      <div className="flex items-center gap-1 p-1 border border-border/10 rounded-card mb-10 bg-panel/30">
         <button
           onClick={() => setTab('seo')}
-          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+          className={`text-sm font-medium px-4 sm:px-5 py-2.5 rounded-pill transition-all duration-200 ${
             tab === 'seo'
-              ? 'border-foreground text-foreground'
-              : 'border-transparent text-muted-foreground hover:text-foreground'
+              ? 'bg-accent/15 text-accent-deep'
+              : 'text-muted-foreground hover:text-foreground'
           }`}
         >
           SEO
         </button>
         <button
           onClick={() => setTab('serp')}
-          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+          className={`text-sm font-medium px-4 sm:px-5 py-2.5 rounded-pill transition-all duration-200 ${
             tab === 'serp'
-              ? 'border-foreground text-foreground'
-              : 'border-transparent text-muted-foreground hover:text-foreground'
+              ? 'bg-accent/15 text-accent-deep'
+              : 'text-muted-foreground hover:text-foreground'
           }`}
         >
           SERP
         </button>
         <button
           onClick={() => setTab('social')}
-          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+          className={`text-sm font-medium px-4 sm:px-5 py-2.5 rounded-pill transition-all duration-200 ${
             tab === 'social'
-              ? 'border-foreground text-foreground'
-              : 'border-transparent text-muted-foreground hover:text-foreground'
+              ? 'bg-accent/15 text-accent-deep'
+              : 'text-muted-foreground hover:text-foreground'
           }`}
         >
           SOCIAL
         </button>
         <button
           onClick={() => setTab('speed')}
-          className={`font-mono text-xs tracking-widest px-4 sm:px-6 py-3 transition-colors duration-200 border-b-2 -mb-px ${
+          className={`text-sm font-medium px-4 sm:px-5 py-2.5 rounded-pill transition-all duration-200 ${
             tab === 'speed'
-              ? 'border-foreground text-foreground'
-              : 'border-transparent text-muted-foreground hover:text-foreground'
+              ? 'bg-accent/15 text-accent-deep'
+              : 'text-muted-foreground hover:text-foreground'
           }`}
         >
           SPEED
@@ -1375,7 +1375,7 @@ export function SeoAnalyzer() {
       {/* API key (only shown on speed tab) */}
       {tab === 'speed' && (
         <div className="mb-8">
-          <label htmlFor="api-key" className="block font-mono text-xs text-muted-foreground mb-2">
+          <label htmlFor="api-key" className="block text-xs text-muted-foreground mb-2">
             Google API Key <span className="text-muted-foreground/50">(optional, increases rate limits)</span>
           </label>
           <input
@@ -1384,7 +1384,7 @@ export function SeoAnalyzer() {
             value={apiKey}
             onChange={e => setApiKey(e.target.value)}
             placeholder="AIza..."
-            className="w-full sm:w-80 bg-transparent border border-border px-4 py-2.5 font-mono text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
+            className="w-full sm:w-80 bg-transparent border border-border/10 px-4 py-2.5 text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
           />
         </div>
       )}
@@ -1395,7 +1395,7 @@ export function SeoAnalyzer() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="seo-keyword" className="block font-mono text-xs text-muted-foreground mb-2">
+                <label htmlFor="seo-keyword" className="block text-xs text-muted-foreground mb-2">
                   Target Keyword
                 </label>
                 <input
@@ -1405,11 +1405,11 @@ export function SeoAnalyzer() {
                   onChange={e => { setKeyword(e.target.value); setSubmitted(false) }}
                   required
                   placeholder="e.g. B2B coffee machines Suffolk"
-                  className="w-full bg-transparent border border-border px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
+                  className="w-full bg-transparent border border-border/15 rounded-card px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
                 />
               </div>
               <div>
-                <label htmlFor="seo-url" className="block font-mono text-xs text-muted-foreground mb-2">
+                <label htmlFor="seo-url" className="block text-xs text-muted-foreground mb-2">
                   Page URL <span className="text-muted-foreground/50">(optional, for report label)</span>
                 </label>
                 <input
@@ -1418,16 +1418,16 @@ export function SeoAnalyzer() {
                   value={url}
                   onChange={e => setUrl(e.target.value)}
                   placeholder="https://yourwebsite.com/page"
-                  className="w-full bg-transparent border border-border px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
+                  className="w-full bg-transparent border border-border/15 rounded-card px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="seo-html" className="block font-mono text-xs text-muted-foreground mb-2">
+              <label htmlFor="seo-html" className="block text-xs text-muted-foreground mb-2">
                 Page HTML Source
               </label>
-              <p className="font-mono text-xs text-muted-foreground/60 mb-3">
+              <p className="text-xs text-muted-foreground/60 mb-3">
                 Right-click your page &rarr; View Page Source &rarr; Select All &rarr; Copy &rarr; Paste below
               </p>
               <textarea
@@ -1437,7 +1437,7 @@ export function SeoAnalyzer() {
                 required
                 rows={8}
                 placeholder="Paste your page's HTML source code here..."
-                className="w-full bg-transparent border border-border px-4 py-3 font-mono text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200 resize-y leading-relaxed"
+                className="w-full bg-transparent border border-border/15 rounded-card px-4 py-3 text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors duration-200 resize-y leading-relaxed"
               />
             </div>
 
@@ -1445,7 +1445,7 @@ export function SeoAnalyzer() {
               <button
                 type="submit"
                 disabled={!html.trim() || !keyword.trim()}
-                className="bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-mono text-xs tracking-widest px-8 py-3.5 hover:opacity-90 transition-opacity duration-200 disabled:opacity-30"
+                className="bg-accent text-foreground font-medium text-sm px-8 py-3.5 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200 disabled:opacity-30"
               >
                 ANALYSE
               </button>
@@ -1453,7 +1453,7 @@ export function SeoAnalyzer() {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
                   Reset
                 </button>
@@ -1462,39 +1462,39 @@ export function SeoAnalyzer() {
           </form>
 
           {results && (
-            <div className="mt-16 border-t border-border pt-16">
+            <div className="mt-16 border-t border-border/10 pt-16">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mb-16">
                 <ScoreRing score={score} label={score >= 80 ? 'HEALTHY' : score >= 50 ? 'NEEDS WORK' : 'CRITICAL'} />
                 <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-2xl font-extralight text-foreground mb-2">
+                  <h3 className="text-2xl font-medium text-foreground mb-2">
                     SEO Health Score
                   </h3>
                   {url && (
-                    <p className="font-mono text-xs text-muted-foreground mb-4 break-all">{url}</p>
+                    <p className="text-xs text-muted-foreground mb-4 break-all">{url}</p>
                   )}
-                  <p className="font-mono text-xs text-muted-foreground mb-1">
+                  <p className="text-xs text-muted-foreground mb-1">
                     Keyword: <span className="text-foreground">&quot;{keyword}&quot;</span>
                   </p>
                   <div className="flex items-center gap-4 mt-4 justify-center sm:justify-start">
-                    <span className="font-mono text-xs text-emerald-500">{passCount} passed</span>
-                    <span className="font-mono text-xs text-amber-500">{warnCount} warnings</span>
-                    <span className="font-mono text-xs text-red-500">{failCount} failed</span>
+                    <span className="text-xs text-emerald-500">{passCount} passed</span>
+                    <span className="text-xs text-amber-500">{warnCount} warnings</span>
+                    <span className="text-xs text-red-500">{failCount} failed</span>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-0">
                 {results.map((r, i) => (
-                  <div key={r.name} className="border-t border-border py-6 last:border-b">
+                  <div key={r.name} className="border-t border-border/10 py-6 last:border-b">
                     <div className="flex items-start gap-4">
-                      <span className="font-mono text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">
+                      <span className="text-xs text-muted-foreground tabular-nums pt-1 w-5 shrink-0">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-3 mb-2">
                           <h4 className="text-sm font-medium text-foreground">{r.name}</h4>
                           <StatusBadge status={r.status} />
-                          <span className="font-mono text-xs text-muted-foreground ml-auto">
+                          <span className="text-xs text-muted-foreground ml-auto">
                             {r.points}/{r.maxPoints}
                           </span>
                         </div>
@@ -1510,15 +1510,15 @@ export function SeoAnalyzer() {
                 ))}
               </div>
 
-              <div className="mt-16 bg-gradient-to-br from-pink-500/5 to-emerald-500/5 border border-border p-10">
-                <p className="font-mono text-xs text-muted-foreground tracking-widest uppercase mb-4">
+              <div className="mt-16 bg-gradient-to-br from-pink-500/5 to-emerald-500/5 border border-border/10 p-10">
+                <p className="text-xs text-muted-foreground tracking-widest uppercase mb-4">
                   Want the full picture?
                 </p>
-                <p className="text-lg font-extralight text-foreground leading-relaxed mb-6 max-w-lg">
+                <p className="text-lg font-medium text-foreground leading-relaxed mb-6 max-w-lg">
                   This free tool covers the basics. A full Growth Audit analyses your entire site,
                   your competitors, and builds you a prioritised action plan.
                 </p>
-                <p className="font-mono text-xs text-muted-foreground mb-6">
+                <p className="text-xs text-muted-foreground mb-6">
                   See the packages below to go deeper.
                 </p>
               </div>
