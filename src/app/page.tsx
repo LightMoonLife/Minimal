@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { projects } from '@/lib/projects'
 import { posts } from '@/lib/blog'
@@ -21,21 +22,44 @@ export default function HomePage() {
         {/* Hero */}
         <section className="pt-32 sm:pt-40 pb-20" aria-label="Introduction">
           <div className="space-y-8">
-            <div>
-              <p className="font-mono text-xs text-muted-foreground tracking-widest">
-                Jack Paul Brookes
-              </p>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extralight text-foreground leading-[1.05] tracking-tight mt-4">
-                I build the
-                <br className="hidden sm:block" />
-                {' '}digital systems
-                <br className="hidden sm:block" />
-                {' '}that turn your
-                <br className="hidden sm:block" />
-                {' '}operations
-                <br className="hidden sm:block" />
-                {' '}into revenue.
-              </h1>
+            <div className="flex items-start gap-6">
+              <div className="flex-1 min-w-0">
+                <p className="font-mono text-xs text-muted-foreground tracking-widest">
+                  Jack Paul Brookes
+                </p>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extralight text-foreground leading-[1.05] tracking-tight mt-4">
+                  I build the
+                  <br className="hidden sm:block" />
+                  {' '}digital systems
+                  <br className="hidden sm:block" />
+                  {' '}that turn your
+                  <br className="hidden sm:block" />
+                  {' '}operations
+                  <br className="hidden sm:block" />
+                  {' '}into revenue.
+                </h1>
+              </div>
+              <div className="hidden sm:block shrink-0">
+                <Image
+                  src="/headshot.webp"
+                  alt="Jack Paul Brookes"
+                  width={160}
+                  height={160}
+                  className="rounded-full object-cover object-top w-28 h-28 sm:w-40 sm:h-40 grayscale"
+                  priority
+                />
+              </div>
+            </div>
+
+            <div className="sm:hidden">
+              <Image
+                src="/headshot.webp"
+                alt="Jack Paul Brookes"
+                width={96}
+                height={96}
+                className="rounded-full object-cover object-top w-24 h-24 grayscale"
+                priority
+              />
             </div>
 
             <p className="text-lg font-light text-muted-foreground leading-relaxed max-w-md">
