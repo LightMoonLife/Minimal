@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoAnalyzer } from './SeoAnalyzer'
+import { GrowthBenchmark } from './GrowthBenchmark'
 import { SectionLabel } from '@/components/SectionLabel'
 
 export const metadata: Metadata = {
@@ -101,9 +102,23 @@ export default function ReviewPage() {
         <SeoAnalyzer />
       </section>
 
+      {/* Growth Benchmark */}
+      <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="benchmark-heading">
+        <SectionLabel number="01" title="Benchmark" className="mb-8" />
+        <h2 id="benchmark-heading" className="text-2xl sm:text-3xl font-medium text-foreground leading-snug tracking-tight max-w-md mb-6">
+          See how you compare to your industry.
+        </h2>
+        <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-12">
+          Enter your monthly numbers and select your industry to see where you sit
+          against real benchmarks — and how much revenue you could be leaving on the table.
+        </p>
+
+        <GrowthBenchmark />
+      </section>
+
       {/* Pricing */}
       <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="pricing-heading">
-        <SectionLabel number="01" title="Packages" className="mb-8" />
+        <SectionLabel number="02" title="Packages" className="mb-8" />
         <h2 className="text-2xl sm:text-3xl font-medium text-foreground leading-snug tracking-tight max-w-md mb-6">
           Go deeper with a full growth programme.
         </h2>
