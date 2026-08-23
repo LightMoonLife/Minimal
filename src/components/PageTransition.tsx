@@ -15,7 +15,7 @@ const pageLabels: [RegExp, string][] = [
   [/^\/portfolio$/, 'Selected work'],
   [/^\/blog\/.+/, 'Article'],
   [/^\/blog$/, 'Writing'],
-  [/^\/cv$/, 'Profile'],
+  [/^\/cv$/, 'About'],
   [/^\/contact$/, 'Contact'],
   [/^\/review$/, 'Free review'],
 ]
