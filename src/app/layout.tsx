@@ -19,12 +19,13 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://jackpbrookes.com'),
   title: {
     template: '%s | Jack Paul Brookes',
-    default: 'Jack Paul Brookes | Digital Growth Architect',
+    default: 'Jack Paul Brookes | Digital Growth Architect, Suffolk',
   },
   description:
-    'Digital Growth Architect. I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
+    'Digital Growth Architect in Suffolk. I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
   openGraph: {
     type: 'website',
     locale: 'en_GB',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="en-GB" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

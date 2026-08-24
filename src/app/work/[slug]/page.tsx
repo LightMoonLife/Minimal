@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { projects, getProjectBySlug, getAdjacentProjects } from '@/lib/projects'
 import { SectionLabel } from '@/components/SectionLabel'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { caseStudyJsonLd, JsonLd } from '@/lib/schema'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -22,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default async function ProjectPage({ params }: PageProps) {
+export default async function WorkProjectPage({ params }: PageProps) {
   const { slug } = await params
   const project = getProjectBySlug(slug)
   if (!project) notFound()
@@ -31,18 +33,14 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <div className="max-w-content mx-auto px-6 sm:px-10">
+      <JsonLd data={caseStudyJsonLd(project)} />
 
       {/* Header */}
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
-        <div className="mb-6">
-          <Link
-            href="/portfolio"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
-          >
-            <span aria-hidden="true">&larr;</span>
-            <span>Back to work</span>
-          </Link>
-        </div>
+        <Breadcrumb items={[
+          { name: 'Work', href: '/work' },
+          { name: project.title, href: `/work/${project.slug}` },
+        ]} />
 
         <h1 className="text-3xl sm:text-4xl font-medium text-foreground leading-snug tracking-tight mb-2">
           {project.title}
@@ -163,7 +161,7 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="flex flex-col sm:flex-row gap-5">
           {prev ? (
             <Link
-              href={`/portfolio/${prev.slug}`}
+              href={`/work/${prev.slug}`}
               className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200"
             >
               <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
@@ -176,7 +174,7 @@ export default async function ProjectPage({ params }: PageProps) {
           )}
           {next && (
             <Link
-              href={`/portfolio/${next.slug}`}
+              href={`/work/${next.slug}`}
               className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200 sm:text-right"
             >
               <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">

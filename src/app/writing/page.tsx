@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { posts, categories } from '@/lib/blog'
 import { SectionLabel } from '@/components/SectionLabel'
+import { Breadcrumb } from '@/components/Breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Writing',
@@ -9,11 +10,12 @@ export const metadata: Metadata = {
     'Practical guides on digital transformation, CRO, B2B revenue systems, and AI for manufacturing businesses. By Jack Paul Brookes, Digital Growth Architect.',
 }
 
-export default function BlogPage() {
+export default function WritingPage() {
   return (
     <div className="max-w-content mx-auto px-6 sm:px-10">
 
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+        <Breadcrumb items={[{ name: 'Writing', href: '/writing' }]} />
         <SectionLabel number="00" title="Writing" className="mb-8" />
         <h1 className="text-3xl sm:text-4xl font-medium text-foreground leading-snug tracking-tight max-w-md mb-6">
           Guides on building revenue systems for B2B businesses.
@@ -48,7 +50,7 @@ export default function BlogPage() {
           {posts.map((post) => (
             <Link
               key={post.slug}
-              href={`/blog/${post.slug}`}
+              href={`/writing/${post.slug}`}
               className="group block border border-border/10 rounded-card p-6 sm:p-8 hover:bg-panel/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
             >
               <div className="flex flex-wrap items-center gap-3 mb-3">

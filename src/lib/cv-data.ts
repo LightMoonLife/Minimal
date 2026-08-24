@@ -21,6 +21,7 @@ export interface SkillGroup {
 
 export interface Service {
   number: string
+  slug: string
   title: string
   description: string
   deliverables: string[]
@@ -30,13 +31,14 @@ export interface ImpactMetric {
   value: string
   label: string
   context: string
+  source: string
 }
 
 export const impactMetrics: ImpactMetric[] = [
-  { value: '£2.2M', label: 'Revenue scaled', context: 'from £600K on <2% budget' },
-  { value: '75%', label: 'Faster onboarding', context: '4 weeks down to 1' },
-  { value: '4.29%', label: 'Conversion rate', context: 'from 1.72%, +£90K/mo' },
-  { value: '61:1', label: 'ROAS', context: '£90 CPA vs £5,500 LTV' },
+  { value: '£2.2M', label: 'Revenue scaled', context: 'from £600K on <2% budget', source: 'Delivered in-house at Liquidline' },
+  { value: '75%', label: 'Faster onboarding', context: '4 weeks down to 1', source: 'Delivered in-house at Liquidline' },
+  { value: '4.29%', label: 'Conversion rate', context: 'from 1.72%, +£90K/mo', source: 'Delivered in-house at Liquidline' },
+  { value: '61:1', label: 'ROAS', context: '£90 CPA vs £5,500 LTV', source: 'Delivered in-house at Tchibo' },
 ]
 
 export const experience: Role[] = [
@@ -153,6 +155,7 @@ export const skills: SkillGroup[] = [
 export const services: Service[] = [
   {
     number: '01',
+    slug: 'digital-transformation',
     title: 'Digital Transformation',
     description:
       'Technology strategy and platform architecture for businesses ready to modernise their operations. I map the commercial opportunity, define the roadmap, and lead the build.',
@@ -160,6 +163,7 @@ export const services: Service[] = [
   },
   {
     number: '02',
+    slug: 'revenue-platforms',
     title: 'Revenue Platforms',
     description:
       'Custom B2B portals, e-commerce builds, and internal tools that generate measurable commercial returns. Laravel, HubSpot, API integrations. Whatever the problem needs.',
@@ -167,6 +171,7 @@ export const services: Service[] = [
   },
   {
     number: '03',
+    slug: 'conversion-and-growth',
     title: 'Conversion & Growth',
     description:
       'CRO programmes, SEO, PPC, and data-driven optimisation that turns existing traffic into revenue. Evidence-first methodology: every recommendation comes with a number.',
@@ -174,6 +179,7 @@ export const services: Service[] = [
   },
   {
     number: '04',
+    slug: 'marketing-operations',
     title: 'Marketing Operations',
     description:
       'HubSpot implementation, automation workflows, and the operational infrastructure that makes growth repeatable. Systems that scale, not hacks that break.',

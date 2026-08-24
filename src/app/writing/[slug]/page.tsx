@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { posts, getPostBySlug, getAdjacentPosts } from '@/lib/blog'
 import { SectionLabel } from '@/components/SectionLabel'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { articleJsonLd, faqPageJsonLd, JsonLd } from '@/lib/schema'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -22,39 +24,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.dateModified ?? post.date,
       authors: ['Jack Paul Brookes'],
     },
   }
 }
 
-function ArticleJsonLd({ post }: { post: NonNullable<ReturnType<typeof getPostBySlug>> }) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date,
-    author: {
-      '@type': 'Person',
-      name: 'Jack Paul Brookes',
-      jobTitle: 'Digital Growth Architect',
-      url: 'https://linkedin.com/in/jackpbrookes',
-    },
-    publisher: {
-      '@type': 'Person',
-      name: 'Jack Paul Brookes',
-    },
-  }
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  )
-}
-
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function WritingPostPage({ params }: PageProps) {
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) notFound()
@@ -63,19 +39,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="max-w-content mx-auto px-6 sm:px-10">
-      <ArticleJsonLd post={post} />
+      <JsonLd data={articleJsonLd(post)} />
+      <JsonLd data={faqPageJsonLd(post.faq)} />
 
       {/* Header */}
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
-        <div className="mb-6">
-          <Link
-            href="/blog"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 inline-flex items-center gap-2"
-          >
-            <span aria-hidden="true">&larr;</span>
-            <span>All posts</span>
-          </Link>
-        </div>
+        <Breadcrumb items={[
+          { name: 'Writing', href: '/writing' },
+          { name: post.title, href: `/writing/${post.slug}` },
+        ]} />
 
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <span className="text-xs text-accent-deep border border-accent/30 px-3 py-1 rounded-pill bg-accent/10">
@@ -191,7 +163,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="flex flex-col sm:flex-row gap-5">
           {prev ? (
             <Link
-              href={`/blog/${prev.slug}`}
+              href={`/writing/${prev.slug}`}
               className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200"
             >
               <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
@@ -204,7 +176,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           )}
           {next && (
             <Link
-              href={`/blog/${next.slug}`}
+              href={`/writing/${next.slug}`}
               className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200 sm:text-right"
             >
               <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">

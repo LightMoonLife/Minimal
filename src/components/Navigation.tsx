@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
-  { href: '/portfolio', label: 'Work' },
-  { href: '/blog', label: 'Writing' },
+  { href: '/work', label: 'Work' },
+  { href: '/writing', label: 'Writing' },
   { href: '/cv', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]

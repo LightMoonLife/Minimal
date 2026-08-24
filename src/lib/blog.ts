@@ -8,10 +8,18 @@ export interface FAQ {
   answer: string
 }
 
+export type Pillar =
+  | 'Digital Transformation'
+  | 'Revenue Platforms'
+  | 'Conversion & Growth'
+  | 'Marketing Operations'
+
 export interface BlogPost {
   slug: string
   title: string
   date: string
+  dateModified?: string
+  pillar: Pillar
   category: 'Digital Transformation' | 'Revenue Growth' | 'Strategy & Operations'
   excerpt: string
   readingTime: number
@@ -19,6 +27,7 @@ export interface BlogPost {
   sections: BlogSection[]
   faq: FAQ[]
   cta: string
+  relatedSlugs?: string[]
 }
 
 export const categories = [
@@ -32,6 +41,7 @@ export const posts: BlogPost[] = [
     slug: 'b2b-website-conversion-rate-not-design-problem',
     title: 'Your B2B Website Has a 1.7% Conversion Rate. That\'s Not a Design Problem.',
     date: '2026-08-14',
+    pillar: 'Conversion & Growth',
     category: 'Revenue Growth',
     excerpt: 'Most B2B websites convert at 1-2% not because they look bad, but because they\'re built for browsing instead of buying. The fix is conversion architecture, not a redesign.',
     readingTime: 5,
@@ -103,6 +113,7 @@ export const posts: BlogPost[] = [
     slug: 'ai-wont-fix-b2b-operations',
     title: 'AI Won\'t Fix Your B2B Operations. Here\'s What Will.',
     date: '2026-08-07',
+    pillar: 'Digital Transformation',
     category: 'Digital Transformation',
     excerpt: 'B2B businesses are being sold AI tools when what they need is connected systems and clean processes. AI is powerful, but it\'s a layer, not a foundation.',
     readingTime: 5,
@@ -174,6 +185,7 @@ export const posts: BlogPost[] = [
     slug: 'cut-b2b-onboarding-4-weeks-to-1',
     title: 'How We Cut B2B Customer Onboarding From 4 Weeks to 1',
     date: '2026-07-28',
+    pillar: 'Digital Transformation',
     category: 'Digital Transformation',
     excerpt: 'A B2B equipment supplier\'s onboarding process had 47 steps, 4 teams, and cost £512 per customer. We mapped it, cut it, connected the systems, and brought it down to 1 week and £196.',
     readingTime: 6,
@@ -248,6 +260,7 @@ export const posts: BlogPost[] = [
     slug: 'stop-hiring-agencies-build-revenue-system',
     title: 'Stop Hiring Marketing Agencies. Build a Revenue System.',
     date: '2026-07-14',
+    pillar: 'Marketing Operations',
     category: 'Strategy & Operations',
     excerpt: 'Most B2B businesses hire agencies because they think they can\'t build in-house capability. I scaled digital revenue from £600K to £2.2M with an internal team on less than 2% budget.',
     readingTime: 5,
@@ -319,6 +332,7 @@ export const posts: BlogPost[] = [
     slug: 'landing-page-generated-300k-six-months',
     title: 'The Landing Page That Generated £300K in Six Months',
     date: '2026-07-07',
+    pillar: 'Conversion & Growth',
     category: 'Revenue Growth',
     excerpt: 'One landing page, optimised for one keyword, generated £300K in revenue for a B2B supplier while I was working on it one day per week. Here\'s the methodology.',
     readingTime: 5,

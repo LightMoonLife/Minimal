@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { projects } from '@/lib/projects'
 import { SectionLabel } from '@/components/SectionLabel'
+import { Breadcrumb } from '@/components/Breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Work',
@@ -9,11 +10,12 @@ export const metadata: Metadata = {
     'Case studies in B2B digital transformation, revenue platform engineering, and conversion optimisation.',
 }
 
-export default function PortfolioPage() {
+export default function WorkPage() {
   return (
     <div className="max-w-content mx-auto px-6 sm:px-10">
 
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+        <Breadcrumb items={[{ name: 'Work', href: '/work' }]} />
         <SectionLabel number="00" title="Work" className="mb-8" />
         <h1 className="text-3xl sm:text-4xl font-medium text-foreground leading-snug tracking-tight max-w-md">
           Case studies in digital transformation, platform engineering, and revenue growth.
@@ -25,7 +27,7 @@ export default function PortfolioPage() {
           {projects.map((project) => (
             <Link
               key={project.slug}
-              href={`/portfolio/${project.slug}`}
+              href={`/work/${project.slug}`}
               className="group block border border-border/10 rounded-card p-6 sm:p-8 bg-panel/50 hover:bg-panel hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
             >
               <p className="text-xs text-muted-foreground mb-3">

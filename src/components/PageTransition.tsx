@@ -11,10 +11,11 @@ const REVEAL_DUR = 520
 
 const pageLabels: [RegExp, string][] = [
   [/^\/$/, 'Home'],
-  [/^\/portfolio\/.+/, 'Case study'],
-  [/^\/portfolio$/, 'Selected work'],
-  [/^\/blog\/.+/, 'Article'],
-  [/^\/blog$/, 'Writing'],
+  [/^\/work\/.+/, 'Case study'],
+  [/^\/work$/, 'Selected work'],
+  [/^\/writing\/.+/, 'Article'],
+  [/^\/writing$/, 'Writing'],
+  [/^\/services\/.+/, 'Services'],
   [/^\/cv$/, 'About'],
   [/^\/contact$/, 'Contact'],
   [/^\/review$/, 'Free review'],
@@ -34,8 +35,9 @@ function prefersReducedMotion() {
 function isInternalRoute(href: string): boolean {
   return (
     href === '/' ||
-    href.startsWith('/portfolio') ||
-    href.startsWith('/blog') ||
+    href.startsWith('/work') ||
+    href.startsWith('/writing') ||
+    href.startsWith('/services') ||
     href === '/cv' ||
     href === '/contact' ||
     href === '/review'
