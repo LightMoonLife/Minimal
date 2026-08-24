@@ -25,7 +25,7 @@ export default function HomePage() {
 
         {/* Hero — outcome-led */}
         <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-28" aria-label="Introduction">
-          <div className="flex flex-col sm:flex-row items-start gap-10 sm:gap-16">
+          <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-14">
             <div className="flex-1 min-w-0 space-y-8">
               <div>
                 <SectionLabel number="00" title="Welcome" className="mb-6" />
@@ -61,13 +61,13 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="shrink-0 sm:pt-8">
+            <div className="shrink-0">
               <Image
                 src="/headshot.webp"
                 alt="Jack Paul Brookes"
-                width={200}
-                height={200}
-                className="rounded-2xl object-cover object-top w-28 h-28 sm:w-44 sm:h-44 lg:w-52 lg:h-52"
+                width={400}
+                height={400}
+                className="rounded-2xl object-cover object-top w-48 h-48 sm:w-72 sm:h-72 lg:w-80 lg:h-80"
                 priority
               />
             </div>
