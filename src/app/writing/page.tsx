@@ -17,10 +17,10 @@ export default function WritingPage() {
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
         <Breadcrumb items={[{ name: 'Writing', href: '/writing' }]} />
         <SectionLabel number="00" title="Writing" className="mb-8" />
-        <h1 className="text-3xl sm:text-4xl font-medium text-foreground leading-snug tracking-tight max-w-md mb-6">
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[.95] tracking-tight max-w-md mb-6">
           Guides on building revenue systems for B2B businesses.
         </h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+        <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-md">
           Practical guides on digital transformation, conversion optimisation,
           and what actually works, from someone who&apos;s done the work, not just
           written about it.
@@ -35,7 +35,7 @@ export default function WritingPage() {
             return (
               <span
                 key={cat}
-                className="text-xs text-muted-foreground border border-border/10 px-3 py-1.5 rounded-pill"
+                className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1.5 rounded-pill"
               >
                 {cat} ({count})
               </span>
@@ -57,10 +57,10 @@ export default function WritingPage() {
                 <span className="text-xs text-accent-deep border border-accent/30 px-3 py-1 rounded-pill bg-accent/10">
                   {post.category}
                 </span>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs font-extralight text-muted-foreground">
                   {post.readingTime} min read
                 </span>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs font-extralight text-muted-foreground">
                   {new Date(post.date).toLocaleDateString('en-GB', {
                     day: 'numeric',
                     month: 'short',
@@ -68,10 +68,10 @@ export default function WritingPage() {
                   })}
                 </span>
               </div>
-              <h2 className="text-lg font-medium text-foreground leading-snug mb-2 group-hover:text-accent-deep transition-colors duration-200 max-w-lg">
+              <h2 className="font-display text-lg font-extrabold text-foreground leading-snug mb-2 group-hover:text-accent-deep transition-colors duration-200 max-w-lg">
                 {post.title}
               </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
+              <p className="text-sm font-extralight text-muted-foreground leading-relaxed max-w-md">
                 {post.excerpt}
               </p>
             </Link>

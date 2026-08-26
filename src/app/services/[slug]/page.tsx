@@ -5,6 +5,7 @@ import { pillars, getPillarBySlug } from '@/lib/pillars'
 import { SectionLabel } from '@/components/SectionLabel'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { professionalServiceJsonLd, JsonLd } from '@/lib/schema'
+import { Button } from '@/components/ui/button'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -39,10 +40,10 @@ export default async function ServicePage({ params }: PageProps) {
           { name: pillar.title, href: `/services/${pillar.slug}` },
         ]} />
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground leading-snug tracking-tight mb-4">
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[.95] tracking-tight mb-4">
           {pillar.headline}
         </h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+        <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-lg">
           {pillar.description}
         </p>
       </section>
@@ -56,7 +57,7 @@ export default async function ServicePage({ params }: PageProps) {
           <SectionLabel number={String(i + 1).padStart(2, '0')} title={section.heading} className="mb-8" />
           <div className="space-y-5 max-w-lg">
             {section.content.map((paragraph, j) => (
-              <p key={j} className="text-base text-foreground leading-relaxed">
+              <p key={j} className="text-base font-extralight text-foreground leading-relaxed">
                 {paragraph}
               </p>
             ))}
@@ -68,7 +69,7 @@ export default async function ServicePage({ params }: PageProps) {
         <SectionLabel number={String(pillar.sections.length + 1).padStart(2, '0')} title="Deliverables" className="mb-8" />
         <div className="flex flex-wrap gap-2">
           {pillar.deliverables.map(d => (
-            <span key={d} className="text-xs text-muted-foreground border border-border/10 px-3 py-1.5 rounded-pill">
+            <span key={d} className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1.5 rounded-pill">
               {d}
             </span>
           ))}
@@ -77,24 +78,23 @@ export default async function ServicePage({ params }: PageProps) {
 
       <section className="py-20 sm:py-28 border-t border-border/10">
         <div className="border border-border/10 rounded-card p-8 sm:p-14 bg-panel/50 text-center space-y-6">
-          <h2 className="text-2xl sm:text-3xl font-medium text-foreground leading-snug tracking-tight max-w-md mx-auto">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-foreground leading-snug tracking-tight max-w-md mx-auto">
             Ready to talk about {pillar.title.toLowerCase()}?
           </h2>
-          <p className="text-base text-muted-foreground leading-relaxed max-w-md mx-auto">
+          <p className="text-base font-extralight text-muted-foreground leading-relaxed max-w-md mx-auto">
             Book a free 30-minute growth review. I&apos;ll assess your current
             setup and identify the highest-impact opportunities.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-accent text-foreground font-medium text-sm px-8 py-4 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-320 ease-smooth hover:-translate-y-0.5"
-            >
-              Book your free review
-              <span aria-hidden="true">&rarr;</span>
-            </Link>
+            <Button size="lg" asChild>
+              <Link href="/contact">
+                Book your free review
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </Button>
             <Link
               href="/review"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-sm font-extralight text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               or try the free review tool &rarr;
             </Link>
@@ -115,10 +115,10 @@ export default async function ServicePage({ params }: PageProps) {
                 href={`/services/${p.slug}`}
                 className="group border border-border/10 rounded-card p-5 hover:bg-panel/50 transition-all duration-200"
               >
-                <h3 className="text-sm font-medium text-foreground group-hover:text-accent-deep transition-colors duration-200 mb-1">
+                <h3 className="font-display text-sm font-extrabold text-foreground group-hover:text-accent-deep transition-colors duration-200 mb-1">
                   {p.title}
                 </h3>
-                <p className="text-xs text-muted-foreground line-clamp-2">
+                <p className="text-xs font-extralight text-muted-foreground line-clamp-2">
                   {p.description}
                 </p>
               </Link>

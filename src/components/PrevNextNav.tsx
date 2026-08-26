@@ -21,9 +21,9 @@ export function PrevNextNav({ prev, next, basePath }: PrevNextNavProps) {
             className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200"
           >
             <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
-              &larr; Previous
+              &larr; Prev
             </span>
-            <span className="block text-base font-medium text-foreground mt-1">{prev.title}</span>
+            <span className="block font-display text-base font-extrabold text-foreground mt-1">{prev.title}</span>
           </Link>
         ) : (
           <div className="flex-1" />
@@ -36,7 +36,7 @@ export function PrevNextNav({ prev, next, basePath }: PrevNextNavProps) {
             <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
               Next &rarr;
             </span>
-            <span className="block text-base font-medium text-foreground mt-1">{next.title}</span>
+            <span className="block font-display text-base font-extrabold text-foreground mt-1">{next.title}</span>
           </Link>
         )}
       </div>

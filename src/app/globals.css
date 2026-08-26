@@ -66,12 +66,73 @@ body {
   outline-offset: 3px;
 }
 
+/* Reveal animations */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 .animate-in {
-  animation: fade-in-up .4s cubic-bezier(.22, 1, .36, 1) both;
+  animation: fade-in-up .6s cubic-bezier(.22, 1, .36, 1) both;
+}
+.animate-fade {
+  animation: fade-in .5s ease both;
+}
+.animate-scale {
+  animation: scale-in .5s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.reveal-1 { animation-delay: .08s; }
+.reveal-2 { animation-delay: .16s; }
+.reveal-3 { animation-delay: .24s; }
+.reveal-4 { animation-delay: .32s; }
+.reveal-5 { animation-delay: .4s; }
+
+/* Atmospheric hero background */
+.hero-atmosphere {
+  position: relative;
+  overflow: hidden;
+}
+.hero-atmosphere::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(var(--accent), .08), transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(var(--accent-deep), .05), transparent 60%),
+    radial-gradient(circle at 50% 0%, rgba(var(--accent), .04), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(var(--foreground), .015) 0 1px,
+      transparent 1px 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--foreground), .015) 0 1px,
+      transparent 1px 80px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-atmosphere > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Page transition curtain */
@@ -150,11 +211,12 @@ body {
 .sv-curtain.show-label .sv-curtain-label { opacity: 1; }
 
 .sv-curtain-label .name {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 500;
-  font-size: max(42px, 5.6vw);
-  letter-spacing: -.045em;
-  line-height: .92;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 800;
+  font-size: max(48px, 6vw);
+  letter-spacing: -.035em;
+  line-height: .88;
+  font-style: italic;
 }
 .sv-curtain-label .name .d {
   color: rgb(var(--accent));

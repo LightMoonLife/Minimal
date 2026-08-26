@@ -6,6 +6,7 @@ import { SectionLabel } from '@/components/SectionLabel'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { PrevNextNav } from '@/components/PrevNextNav'
 import { articleJsonLd, faqPageJsonLd, JsonLd } from '@/lib/schema'
+import { Button } from '@/components/ui/button'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -54,10 +55,10 @@ export default async function WritingPostPage({ params }: PageProps) {
           <span className="text-xs text-accent-deep border border-accent/30 px-3 py-1 rounded-pill bg-accent/10">
             {post.category}
           </span>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs font-extralight text-muted-foreground">
             {post.readingTime} min read
           </span>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs font-extralight text-muted-foreground">
             {new Date(post.date).toLocaleDateString('en-GB', {
               day: 'numeric',
               month: 'short',
@@ -66,7 +67,7 @@ export default async function WritingPostPage({ params }: PageProps) {
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-medium text-foreground leading-snug tracking-tight max-w-lg">
+        <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-[.95] tracking-tight max-w-lg">
           {post.title}
         </h1>
       </section>
@@ -77,7 +78,7 @@ export default async function WritingPostPage({ params }: PageProps) {
           <p className="text-xs text-accent-deep tracking-widest uppercase font-medium mb-3">
             TL;DR
           </p>
-          <p className="text-sm text-foreground leading-relaxed max-w-lg">
+          <p className="text-sm font-extralight text-foreground leading-relaxed max-w-lg">
             {post.tldr}
           </p>
         </div>
@@ -92,7 +93,7 @@ export default async function WritingPostPage({ params }: PageProps) {
         >
           <h2
             id={`section-${i}`}
-            className="text-lg font-medium text-foreground leading-snug mb-6 max-w-lg"
+            className="font-display text-xl font-extrabold text-foreground leading-snug mb-6 max-w-lg"
           >
             {section.heading}
           </h2>
@@ -100,7 +101,7 @@ export default async function WritingPostPage({ params }: PageProps) {
             {section.content.map((paragraph, j) => (
               <p
                 key={j}
-                className="text-sm text-foreground leading-relaxed max-w-lg"
+                className="text-sm font-extralight text-foreground leading-relaxed max-w-lg"
               >
                 {paragraph}
               </p>
@@ -116,10 +117,10 @@ export default async function WritingPostPage({ params }: PageProps) {
           <dl className="space-y-8">
             {post.faq.map((item, i) => (
               <div key={i} className="border border-border/10 rounded-card p-6">
-                <dt className="text-sm font-medium text-foreground mb-2 max-w-lg">
+                <dt className="font-display text-sm font-extrabold text-foreground mb-2 max-w-lg">
                   {item.question}
                 </dt>
-                <dd className="text-sm text-muted-foreground leading-relaxed max-w-lg">
+                <dd className="text-sm font-extralight text-muted-foreground leading-relaxed max-w-lg">
                   {item.answer}
                 </dd>
               </div>
@@ -131,16 +132,15 @@ export default async function WritingPostPage({ params }: PageProps) {
       {/* CTA */}
       <section className="py-16 border-b border-border/10" aria-label="Contact">
         <div className="border border-border/10 rounded-card p-6 sm:p-8 bg-panel/50">
-          <p className="text-lg text-foreground leading-relaxed max-w-lg mb-6">
+          <p className="font-display text-xl font-extrabold text-foreground leading-relaxed max-w-lg mb-6">
             {post.cta}
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-accent text-foreground font-medium text-sm px-6 py-3 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200"
-          >
-            Get in touch
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
+          <Button asChild>
+            <Link href="/contact">
+              Get in touch
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -152,7 +152,7 @@ export default async function WritingPostPage({ params }: PageProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-foreground">Jack Paul Brookes</p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs font-extralight text-muted-foreground">
               Digital Growth Architect &middot; Ipswich, Suffolk
             </p>
           </div>

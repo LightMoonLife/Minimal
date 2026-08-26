@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { SeoAnalyzer } from './SeoAnalyzer'
 import { GrowthBenchmark } from './GrowthBenchmark'
 import { SectionLabel } from '@/components/SectionLabel'
+import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
   title: 'Free Review',
@@ -91,10 +92,10 @@ export default function ReviewPage() {
       {/* Hero */}
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
         <SectionLabel number="00" title="Free Review" className="mb-8" />
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground leading-snug tracking-tight max-w-lg mb-6">
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[.95] tracking-tight max-w-lg mb-6">
           Find out what&apos;s costing you customers.
         </h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-md mb-12">
+        <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-md mb-12">
           Enter a URL or paste your page&apos;s HTML source to get an instant
           SEO audit with actionable recommendations.
         </p>
@@ -105,10 +106,10 @@ export default function ReviewPage() {
       {/* Growth Benchmark */}
       <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="benchmark-heading">
         <SectionLabel number="01" title="Benchmark" className="mb-8" />
-        <h2 id="benchmark-heading" className="text-2xl sm:text-3xl font-medium text-foreground leading-snug tracking-tight max-w-md mb-6">
+        <h2 id="benchmark-heading" className="font-display text-3xl sm:text-4xl font-extrabold text-foreground leading-snug tracking-tight max-w-md mb-6">
           See how you compare to your industry.
         </h2>
-        <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-12">
+        <p className="text-base font-extralight text-muted-foreground leading-relaxed max-w-md mb-12">
           Enter your monthly numbers and select your industry to see where you sit
           against real benchmarks — and how much revenue you could be leaving on the table.
         </p>
@@ -119,10 +120,10 @@ export default function ReviewPage() {
       {/* Pricing */}
       <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="pricing-heading">
         <SectionLabel number="02" title="Packages" className="mb-8" />
-        <h2 className="text-2xl sm:text-3xl font-medium text-foreground leading-snug tracking-tight max-w-md mb-6">
+        <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-foreground leading-snug tracking-tight max-w-md mb-6">
           Go deeper with a full growth programme.
         </h2>
-        <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-12">
+        <p className="text-base font-extralight text-muted-foreground leading-relaxed max-w-md mb-12">
           The free review gives you a starting point. For businesses serious
           about growth, these packages deliver the full picture and the
           support to act on it.
@@ -143,19 +144,19 @@ export default function ReviewPage() {
               </p>
 
               <div className="flex items-baseline gap-1 mb-2">
-                <span className={`text-3xl font-medium tracking-tight leading-none ${
+                <span className={`font-display text-4xl font-extrabold tracking-tighter leading-none ${
                   plan.highlight ? 'text-accent-deep' : 'text-foreground'
                 }`}>
                   {plan.price}
                 </span>
                 {plan.period && (
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-xs font-extralight text-muted-foreground">
                     {plan.period}
                   </span>
                 )}
               </div>
 
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+              <p className="text-sm font-extralight text-muted-foreground leading-relaxed mb-6">
                 {plan.description}
               </p>
 
@@ -165,21 +166,20 @@ export default function ReviewPage() {
                     <span className="text-accent-deep mt-1 shrink-0" aria-hidden="true">
                       <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor"><circle cx="3" cy="3" r="3" /></svg>
                     </span>
-                    <span className="text-sm text-foreground">{feature}</span>
+                    <span className="text-sm font-extralight text-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <Link
-                href="/contact"
-                className={`text-sm font-medium text-center py-3.5 rounded-pill transition-all duration-200 block ${
-                  plan.highlight
-                    ? 'bg-accent text-foreground hover:bg-accent-deep hover:text-white'
-                    : 'border border-border/15 text-foreground hover:bg-panel'
-                }`}
+              <Button
+                variant={plan.highlight ? 'default' : 'outline'}
+                className="w-full"
+                asChild
               >
-                {plan.cta}
-              </Link>
+                <Link href="/contact">
+                  {plan.cta}
+                </Link>
+              </Button>
             </div>
           ))}
         </div>

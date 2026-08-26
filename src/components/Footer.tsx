@@ -16,7 +16,7 @@ export function Footer() {
       <div className="max-w-content mx-auto px-6 sm:px-10 py-12 sm:py-16">
         <div className="flex flex-col sm:flex-row items-start justify-between gap-10">
           <div className="space-y-3">
-            <p className="text-lg font-medium text-foreground">{CONTACT.name}</p>
+            <p className="font-display text-lg font-extrabold text-foreground">{CONTACT.name}</p>
             <p className="text-sm text-muted-foreground">
               {CONTACT.jobTitle}
             </p>

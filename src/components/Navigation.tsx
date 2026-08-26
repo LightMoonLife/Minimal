@@ -46,7 +46,7 @@ export function Navigation() {
         <div className="max-w-content mx-auto px-6 sm:px-10 h-16 flex items-center">
           <Link
             href="/"
-            className="text-base font-semibold tracking-tight text-foreground hover:text-accent-deep transition-colors duration-200 shrink-0"
+            className="font-display text-base font-extrabold tracking-tight text-foreground hover:text-accent-deep transition-colors duration-200 shrink-0"
             aria-label="Home"
           >
             Jack Brookes
@@ -116,7 +116,7 @@ export function Navigation() {
                   className="group block"
                   tabIndex={open ? 0 : -1}
                 >
-                  <span className={`text-4xl font-medium tracking-tight transition-colors duration-200 ${
+                  <span className={`font-display text-5xl font-extrabold tracking-tight transition-colors duration-200 ${
                     pathname === href ? 'text-accent' : 'text-foreground/70 group-hover:text-foreground'
                   }`}>
                     {label}
