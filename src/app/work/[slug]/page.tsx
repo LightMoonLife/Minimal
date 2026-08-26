@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import { projects, getProjectBySlug, getAdjacentProjects } from '@/lib/projects'
 import { SectionLabel } from '@/components/SectionLabel'
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { PrevNextNav } from '@/components/PrevNextNav'
 import { caseStudyJsonLd, JsonLd } from '@/lib/schema'
 
 interface PageProps {
@@ -156,35 +156,7 @@ export default async function WorkProjectPage({ params }: PageProps) {
         </ol>
       </section>
 
-      {/* Prev / Next navigation */}
-      <nav className="py-16 sm:py-20 border-t border-border/10" aria-label="Project navigation">
-        <div className="flex flex-col sm:flex-row gap-5">
-          {prev ? (
-            <Link
-              href={`/work/${prev.slug}`}
-              className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200"
-            >
-              <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
-                &larr; Previous
-              </span>
-              <span className="block text-base font-medium text-foreground mt-1">{prev.title}</span>
-            </Link>
-          ) : (
-            <div className="flex-1" />
-          )}
-          {next && (
-            <Link
-              href={`/work/${next.slug}`}
-              className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200 sm:text-right"
-            >
-              <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
-                Next &rarr;
-              </span>
-              <span className="block text-base font-medium text-foreground mt-1">{next.title}</span>
-            </Link>
-          )}
-        </div>
-      </nav>
+      <PrevNextNav prev={prev} next={next} basePath="/work" />
 
     </div>
   )

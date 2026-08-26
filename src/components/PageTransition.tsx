@@ -33,15 +33,7 @@ function prefersReducedMotion() {
 }
 
 function isInternalRoute(href: string): boolean {
-  return (
-    href === '/' ||
-    href.startsWith('/work') ||
-    href.startsWith('/writing') ||
-    href.startsWith('/services') ||
-    href === '/cv' ||
-    href === '/contact' ||
-    href === '/review'
-  )
+  return href.startsWith('/') && !href.startsWith('//')
 }
 
 export function PageTransition() {

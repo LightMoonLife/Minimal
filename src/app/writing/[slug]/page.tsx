@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { posts, getPostBySlug, getAdjacentPosts } from '@/lib/blog'
 import { SectionLabel } from '@/components/SectionLabel'
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { PrevNextNav } from '@/components/PrevNextNav'
 import { articleJsonLd, faqPageJsonLd, JsonLd } from '@/lib/schema'
 
 interface PageProps {
@@ -158,35 +159,7 @@ export default async function WritingPostPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Prev / Next */}
-      <nav className="py-16" aria-label="Post navigation">
-        <div className="flex flex-col sm:flex-row gap-5">
-          {prev ? (
-            <Link
-              href={`/writing/${prev.slug}`}
-              className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200"
-            >
-              <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
-                &larr; Previous
-              </span>
-              <span className="block text-sm font-medium text-foreground mt-1 max-w-[280px]">{prev.title}</span>
-            </Link>
-          ) : (
-            <div className="flex-1" />
-          )}
-          {next && (
-            <Link
-              href={`/writing/${next.slug}`}
-              className="group flex-1 border border-border/10 rounded-card p-6 hover:bg-panel/50 transition-all duration-200 sm:text-right"
-            >
-              <span className="text-xs text-muted-foreground group-hover:text-accent-deep transition-colors">
-                Next &rarr;
-              </span>
-              <span className="block text-sm font-medium text-foreground mt-1 max-w-[280px] sm:ml-auto">{next.title}</span>
-            </Link>
-          )}
-        </div>
-      </nav>
+      <PrevNextNav prev={prev} next={next} basePath="/writing" />
 
     </div>
   )

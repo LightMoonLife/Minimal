@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CONTACT } from '@/lib/constants'
 
 const footerLinks = [
   { href: '/work', label: 'Work' },
@@ -15,18 +16,18 @@ export function Footer() {
       <div className="max-w-content mx-auto px-6 sm:px-10 py-12 sm:py-16">
         <div className="flex flex-col sm:flex-row items-start justify-between gap-10">
           <div className="space-y-3">
-            <p className="text-lg font-medium text-foreground">Jack Paul Brookes</p>
+            <p className="text-lg font-medium text-foreground">{CONTACT.name}</p>
             <p className="text-sm text-muted-foreground">
-              Digital Growth Architect
+              {CONTACT.jobTitle}
             </p>
             <address className="not-italic text-sm text-muted-foreground space-y-1">
-              <p>Ipswich, Suffolk, United Kingdom</p>
+              <p>{CONTACT.location.locality}, {CONTACT.location.region}, {CONTACT.location.country}</p>
               <p>
                 <a
-                  href="mailto:jackpbrookes@gmail.com"
+                  href={`mailto:${CONTACT.email}`}
                   className="text-foreground hover:text-accent-deep transition-colors duration-200"
                 >
-                  jackpbrookes@gmail.com
+                  {CONTACT.email}
                 </a>
               </p>
             </address>
@@ -50,7 +51,7 @@ export function Footer() {
 
             <div className="flex items-start gap-6">
               <a
-                href="https://linkedin.com/in/jackpbrookes"
+                href={CONTACT.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
@@ -63,7 +64,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-border/10">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Jack Paul Brookes. All rights reserved.
+            &copy; {new Date().getFullYear()} {CONTACT.name}. All rights reserved.
           </p>
         </div>
       </div>

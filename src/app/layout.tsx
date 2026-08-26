@@ -4,6 +4,7 @@ import './globals.css'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { PageTransition } from '@/components/PageTransition'
+import { SITE_URL } from '@/lib/constants'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jackpbrookes.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: '%s | Jack Paul Brookes',
     default: 'Jack Paul Brookes | Digital Growth Architect, Suffolk',

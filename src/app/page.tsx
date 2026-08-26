@@ -8,6 +8,7 @@ import { SectionLabel } from '@/components/SectionLabel'
 import { StickyCTA } from '@/components/StickyCTA'
 import { LifecycleDiagram } from '@/components/LifecycleDiagram'
 import { personJsonLd, professionalServiceJsonLd, JsonLd } from '@/lib/schema'
+import { CONTACT } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Jack Paul Brookes | Digital Growth Architect, Suffolk',
@@ -313,7 +314,7 @@ export default function HomePage() {
                 <span aria-hidden="true">&rarr;</span>
               </Link>
               <a
-                href="mailto:jackpbrookes@gmail.com"
+                href={`mailto:${CONTACT.email}`}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 or email directly &rarr;

@@ -1,19 +1,18 @@
 import type { BlogPost } from './blog'
 import type { Project } from './projects'
-
-const SITE_URL = 'https://jackpbrookes.com'
+import { SITE_URL, CONTACT } from './constants'
 
 const personBase = {
   '@type': 'Person' as const,
-  name: 'Jack Paul Brookes',
-  jobTitle: 'Digital Growth Architect',
+  name: CONTACT.name,
+  jobTitle: CONTACT.jobTitle,
   url: SITE_URL,
-  sameAs: ['https://linkedin.com/in/jackpbrookes'],
+  sameAs: [CONTACT.linkedin],
   address: {
     '@type': 'PostalAddress' as const,
-    addressLocality: 'Ipswich',
-    addressRegion: 'Suffolk',
-    addressCountry: 'GB',
+    addressLocality: CONTACT.location.locality,
+    addressRegion: CONTACT.location.region,
+    addressCountry: CONTACT.location.countryCode,
   },
 }
 
@@ -28,14 +27,14 @@ export function professionalServiceJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Jack Paul Brookes — Digital Growth Architect',
+    name: `${CONTACT.name} — ${CONTACT.jobTitle}`,
     url: SITE_URL,
     description:
       'Digital transformation, B2B commerce, and conversion optimisation for businesses in Suffolk ready to scale.',
     provider: personBase,
     areaServed: {
       '@type': 'Place',
-      name: 'Suffolk, United Kingdom',
+      name: `${CONTACT.location.region}, ${CONTACT.location.country}`,
     },
     serviceType: [
       'Digital Transformation',
@@ -57,7 +56,7 @@ export function articleJsonLd(post: BlogPost) {
     author: personBase,
     publisher: {
       '@type': 'Person',
-      name: 'Jack Paul Brookes',
+      name: CONTACT.name,
     },
   }
 }
@@ -102,7 +101,7 @@ export function caseStudyJsonLd(project: Project) {
     author: personBase,
     publisher: {
       '@type': 'Person',
-      name: 'Jack Paul Brookes',
+      name: CONTACT.name,
     },
   }
 }

@@ -2,8 +2,7 @@ import type { MetadataRoute } from 'next'
 import { posts } from '@/lib/blog'
 import { projects } from '@/lib/projects'
 import { pillars } from '@/lib/pillars'
-
-const BASE = 'https://jackpbrookes.com'
+import { SITE_URL as BASE } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

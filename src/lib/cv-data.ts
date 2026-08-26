@@ -152,37 +152,12 @@ export const skills: SkillGroup[] = [
   },
 ]
 
-export const services: Service[] = [
-  {
-    number: '01',
-    slug: 'digital-transformation',
-    title: 'Digital Transformation',
-    description:
-      'Technology strategy and platform architecture for businesses ready to modernise their operations. I map the commercial opportunity, define the roadmap, and lead the build.',
-    deliverables: ['Technology audits', 'Platform roadmaps', 'Process re-engineering', 'Team scaling'],
-  },
-  {
-    number: '02',
-    slug: 'revenue-platforms',
-    title: 'Revenue Platforms',
-    description:
-      'Custom B2B portals, e-commerce builds, and internal tools that generate measurable commercial returns. Laravel, HubSpot, API integrations. Whatever the problem needs.',
-    deliverables: ['B2B portals', 'E-commerce platforms', 'Sales tools', 'API integrations'],
-  },
-  {
-    number: '03',
-    slug: 'conversion-and-growth',
-    title: 'Conversion & Growth',
-    description:
-      'CRO programmes, SEO, PPC, and data-driven optimisation that turns existing traffic into revenue. Evidence-first methodology: every recommendation comes with a number.',
-    deliverables: ['CRO audits & programmes', 'Landing page optimisation', 'SEO strategy', 'PPC management'],
-  },
-  {
-    number: '04',
-    slug: 'marketing-operations',
-    title: 'Marketing Operations',
-    description:
-      'HubSpot implementation, automation workflows, and the operational infrastructure that makes growth repeatable. Systems that scale, not hacks that break.',
-    deliverables: ['HubSpot CRM setup', 'Marketing automation', 'Reporting frameworks', 'Sales enablement'],
-  },
-]
+import { pillars } from './pillars'
+
+export const services: Service[] = pillars.map((p, i) => ({
+  number: String(i + 1).padStart(2, '0'),
+  slug: p.slug,
+  title: p.title,
+  description: p.description,
+  deliverables: p.deliverables.slice(0, 4),
+}))
