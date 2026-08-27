@@ -3,10 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { projects } from '@/lib/projects'
 import { posts } from '@/lib/blog'
-import { impactMetrics, services } from '@/lib/cv-data'
+import { impactMetrics } from '@/lib/cv-data'
 import { SectionLabel } from '@/components/SectionLabel'
 import { StickyCTA } from '@/components/StickyCTA'
-import { LifecycleDiagram } from '@/components/LifecycleDiagram'
+import { ProcessSteps } from '@/components/ProcessSteps'
 import { personJsonLd, professionalServiceJsonLd, JsonLd } from '@/lib/schema'
 import { CONTACT } from '@/lib/constants'
 import { Button } from '@/components/ui/button'
@@ -17,7 +17,52 @@ export const metadata: Metadata = {
     'I turn B2B operations into revenue systems. Digital transformation, platform engineering, and conversion optimisation for manufacturers and equipment suppliers in Suffolk.',
 }
 
+const statLinks: Record<string, string> = {
+  '£2.2M': '/work/digital-revenue-engine',
+  '75%': '/work/onboarding-transformation',
+  '4.29%': '/work/conversion-architecture',
+  '61:1': '/work/revenue-channel-build',
+}
+
+const homepageServices = [
+  {
+    slug: 'digital-transformation',
+    heading: 'Modernise operations, unlock revenue',
+    description:
+      'Replace disconnected tools and manual processes with connected systems that drive commercial outcomes. Technology audits, platform roadmaps, CRM implementation, and process re-engineering.',
+    deliverables: ['Technology audits', 'Process re-engineering', 'CRM & automation', 'Team scaling'],
+  },
+  {
+    slug: 'revenue-platforms',
+    heading: 'Build platforms your customers actually use',
+    description:
+      'Custom B2B portals, e-commerce builds, and internal tools engineered around how your customers buy — not how B2C shoppers browse.',
+    deliverables: ['B2B portals', 'E-commerce platforms', 'Sales tools', 'API integrations'],
+  },
+  {
+    slug: 'conversion-and-growth',
+    heading: 'Turn existing traffic into measurable revenue',
+    description:
+      'CRO programmes, SEO, and PPC managed against revenue targets, not vanity metrics. Every recommendation backed by data, every test run to statistical significance.',
+    deliverables: ['CRO programmes', 'A/B testing', 'SEO strategy', 'PPC management'],
+  },
+]
+
+const testimonials = [
+  {
+    quote:
+      "Jack took our digital revenue from zero to £2.2M. He didn’t just build the platform — he built the team, the process, and the commercial engine behind it.",
+    attribution: 'Senior stakeholder, B2B equipment supplier',
+    context: 'Delivered in-house at Liquidline',
+  },
+  // {{TESTIMONIAL_2}} — Add additional client testimonials here.
+  // Each entry needs: quote, attribution (name + role if permitted), context (delivery label).
+  // {{TESTIMONIAL_3}}
+]
+
 export default function HomePage() {
+  const visibleTestimonials = testimonials.filter((t) => !t.quote.startsWith('{{'))
+
   return (
     <>
       <JsonLd data={personJsonLd()} />
@@ -25,37 +70,32 @@ export default function HomePage() {
       <StickyCTA />
       <div className="max-w-content mx-auto px-6 sm:px-10">
 
-        {/* Hero — outcome-led */}
+        {/* Hero */}
         <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-28 hero-atmosphere" aria-label="Introduction">
           <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-14">
             <div className="flex-1 min-w-0 space-y-8">
               <div>
                 <SectionLabel number="00" title="Welcome" className="mb-6 animate-in reveal-1" />
                 <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold text-foreground leading-[.95] tracking-tight animate-in reveal-2">
-                  Turn your B2B
+                  Digital growth for
                   <br className="hidden sm:block" />
-                  {' '}operations into a
+                  {' '}manufacturers &amp;
                   <br className="hidden sm:block" />
-                  {' '}<span className="text-accent-deep italic">revenue system.</span>
+                  {' '}<span className="text-accent-deep italic">equipment suppliers.</span>
                 </h1>
               </div>
 
               <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-md animate-in reveal-3">
-                Digital transformation, platform engineering, and conversion
-                optimisation for manufacturers and equipment suppliers in
-                Suffolk and beyond.
+                I turn B2B operations into revenue systems — platform engineering,
+                conversion optimisation, and digital transformation that drives
+                measurable commercial outcomes.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 animate-in reveal-4">
-                <Button asChild>
-                  <Link href="/review">
-                    Free growth review
-                    <span aria-hidden="true">&rarr;</span>
-                  </Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/work">
-                    See my work
+              <div className="animate-in reveal-4">
+                <Button size="lg" asChild>
+                  <Link href="/contact">
+                    Book your free review
+                    <span aria-hidden="true" className="ml-1">&rarr;</span>
                   </Link>
                 </Button>
               </div>
@@ -67,66 +107,36 @@ export default function HomePage() {
                 alt="Jack Paul Brookes"
                 width={400}
                 height={400}
-                className="rounded-2xl object-cover object-top w-48 h-48 sm:w-72 sm:h-72 lg:w-80 lg:h-80"
+                className="rounded-2xl object-cover object-top w-40 h-40 sm:w-60 sm:h-60 lg:w-72 lg:h-72"
                 priority
               />
             </div>
           </div>
         </section>
 
-        {/* Proof bar with source labels */}
+        {/* Proof bar */}
         <section className="py-16 sm:py-20 border-t border-b border-border/10" aria-label="Impact metrics">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
             {impactMetrics.map((metric) => (
-              <div key={metric.label} className="space-y-1.5">
-                <p className="font-display text-4xl sm:text-5xl font-extrabold text-foreground tracking-tighter leading-none">
+              <Link
+                key={metric.label}
+                href={statLinks[metric.value] || '/work'}
+                className="group space-y-1.5"
+              >
+                <p className="font-display text-4xl sm:text-5xl font-extrabold text-foreground tracking-tighter leading-none group-hover:text-accent-deep transition-colors duration-200">
                   {metric.value}
                 </p>
                 <p className="text-sm font-medium text-foreground">{metric.label}</p>
                 <p className="text-xs font-extralight text-muted-foreground">{metric.context}</p>
-                <p className="text-[10px] font-extralight text-muted-foreground/60 italic">{metric.source}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Services — 4 pillar cards */}
-        <section className="py-20 sm:py-28" aria-labelledby="services-heading">
-          <SectionLabel number="01" title="What I Do" className="mb-12" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {services.map((service) => (
-              <Link
-                key={service.number}
-                href={`/services/${service.slug}`}
-                className="group border border-border/10 rounded-card p-6 sm:p-8 hover:bg-panel/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-medium text-accent-deep">
-                    {service.number}
-                  </span>
-                  <h3 className="font-display text-base font-extrabold text-foreground group-hover:text-accent-deep transition-colors duration-200">
-                    {service.title}
-                  </h3>
-                </div>
-                <p className="text-sm font-extralight text-muted-foreground leading-relaxed mb-5">
-                  {service.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {service.deliverables.map((d) => (
-                    <span key={d} className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1 rounded-pill">
-                      {d}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-[11px] font-extralight text-muted-foreground italic">{metric.source}</p>
               </Link>
             ))}
           </div>
         </section>
 
         {/* Selected Work */}
-        <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="work-heading">
-          <SectionLabel number="02" title="Selected Work" className="mb-12" />
+        <section id="work" className="py-20 sm:py-28" aria-labelledby="work-heading">
+          <SectionLabel number="01" title="Selected Work" className="mb-12" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {projects.slice(0, 4).map((project) => (
@@ -167,130 +177,78 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* How I Work — lifecycle diagram */}
-        <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="approach-heading">
-          <SectionLabel number="03" title="How I Work" className="mb-12" />
+        {/* Services — 3 outcome-focused cards */}
+        <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="services-heading">
+          <SectionLabel number="02" title="What I Do" className="mb-12" />
 
-          <div className="space-y-12">
-            <LifecycleDiagram />
-
-            <div className="sm:flex gap-16 items-start">
-              <div className="flex-1 space-y-6 max-w-lg">
-                <p className="text-lg font-extralight text-foreground leading-relaxed">
-                  Start with the commercial outcome. Work backwards to the platform, the
-                  process, and the team that delivers it. Every recommendation is backed
-                  by evidence. If I can&apos;t measure the impact, I won&apos;t propose the work.
-                </p>
-                <p className="text-lg font-extralight text-foreground leading-relaxed">
-                  I&apos;ve built teams from 1 to 10, delivered platforms that handle real
-                  commercial complexity, and run CRO programmes that move revenue, not
-                  just conversion rates. I work at the intersection of strategy and
-                  execution because that&apos;s where value gets lost.
-                </p>
-              </div>
-
-              <div className="mt-8 sm:mt-0 flex flex-col gap-3 shrink-0">
-                <Button asChild>
-                  <Link href="/review">
-                    Try the free review tool
-                  </Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/cv">
-                    Full background &rarr;
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonial */}
-        <section className="py-20 sm:py-28 border-t border-border/10" aria-label="Client testimonial">
-          <div className="border border-border/10 rounded-card p-8 sm:p-12 bg-panel/50">
-            <blockquote className="space-y-6">
-              <p className="font-display text-2xl sm:text-3xl font-extrabold text-foreground leading-snug tracking-tight max-w-lg italic">
-                &ldquo;Jack took our digital revenue from zero to £2.2M. He didn&apos;t
-                just build the platform&mdash;he built the team, the process, and
-                the commercial engine behind it.&rdquo;
-              </p>
-              <footer className="text-sm font-extralight text-muted-foreground">
-                Senior stakeholder, B2B equipment supplier
-              </footer>
-            </blockquote>
-          </div>
-        </section>
-
-        {/* Writing */}
-        <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="writing-heading">
-          <SectionLabel number="04" title="Writing" className="mb-12" />
-
-          <div className="space-y-3">
-            {posts.slice(0, 3).map((post) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {homepageServices.map((service, i) => (
               <Link
-                key={post.slug}
-                href={`/writing/${post.slug}`}
-                className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 py-5 px-5 rounded-card border border-transparent hover:border-border/10 hover:bg-panel/50 transition-all duration-200"
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group border border-border/10 rounded-card p-6 sm:p-8 hover:bg-panel/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
               >
-                <span className="flex-1 min-w-0">
-                  <span className="block text-sm font-medium text-foreground group-hover:text-accent-deep transition-colors duration-200 leading-snug">
-                    {post.title}
-                  </span>
+                <span className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-medium text-accent-deep mb-4">
+                  {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="flex items-center gap-4 shrink-0">
-                  <span className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1 rounded-pill">
-                    {post.category}
-                  </span>
-                  <span className="text-xs font-extralight text-muted-foreground">
-                    {post.readingTime} min
-                  </span>
-                </span>
+                <h3 className="font-display text-base font-extrabold text-foreground mb-3 group-hover:text-accent-deep transition-colors duration-200">
+                  {service.heading}
+                </h3>
+                <p className="text-sm font-extralight text-muted-foreground leading-relaxed mb-5">
+                  {service.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {service.deliverables.map((d) => (
+                    <span key={d} className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1 rounded-pill">
+                      {d}
+                    </span>
+                  ))}
+                </div>
               </Link>
             ))}
           </div>
-
-          <div className="mt-8 text-center">
-            <Link
-              href="/writing"
-              className="inline-flex items-center gap-2 text-sm font-extralight text-muted-foreground hover:text-foreground transition-colors duration-200"
-            >
-              <span>All posts</span>
-              <span aria-hidden="true">&rarr;</span>
-            </Link>
-          </div>
         </section>
 
-        {/* Free Review Tool CTA */}
-        <section className="py-20 sm:py-28 border-t border-border/10" aria-label="Free review tool">
-          <div className="border border-accent/20 rounded-card p-8 sm:p-12 bg-accent/5">
-            <div className="sm:flex items-center gap-10">
-              <div className="flex-1 space-y-4">
-                <p className="text-xs text-accent-deep tracking-widest uppercase font-medium">
-                  Free tool
-                </p>
-                <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground leading-snug tracking-tight max-w-md">
-                  Benchmark your website against your industry in 60 seconds.
-                </h2>
-                <p className="text-sm font-extralight text-muted-foreground leading-relaxed max-w-md">
-                  Enter your conversion rate, traffic, and leads. See exactly where
-                  you sit versus industry benchmarks and how much revenue you&apos;re leaving
-                  on the table.
-                </p>
-              </div>
-              <div className="mt-6 sm:mt-0 shrink-0">
-                <Button size="lg" asChild>
-                  <Link href="/review">
-                    Try the free review
-                    <span aria-hidden="true">&rarr;</span>
-                  </Link>
-                </Button>
-              </div>
+        {/* How I Work */}
+        <section id="process" className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="approach-heading">
+          <SectionLabel number="03" title="How I Work" className="mb-12" />
+
+          <div className="space-y-12">
+            <ProcessSteps />
+
+            <div className="max-w-lg space-y-6">
+              <p className="text-lg font-extralight text-foreground leading-relaxed">
+                Start with the commercial outcome. Work backwards to the platform, the
+                process, and the team that delivers it. Every recommendation is backed
+                by evidence. If I can&apos;t measure the impact, I won&apos;t propose the work.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-24 sm:py-32" aria-labelledby="contact-heading">
+        {/* Testimonials */}
+        <section className="py-20 sm:py-28 border-t border-border/10" aria-label="Client testimonials">
+          <SectionLabel number="04" title="What Clients Say" className="mb-12" />
+
+          <div className="space-y-5">
+            {visibleTestimonials.map((t, i) => (
+              <div key={i} className="border border-border/10 rounded-card p-8 sm:p-12 bg-panel/50">
+                <blockquote className="space-y-6">
+                  <p className="font-display text-2xl sm:text-3xl font-extrabold text-foreground leading-snug tracking-tight max-w-lg italic">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <footer className="space-y-1">
+                    <p className="text-sm text-foreground">{t.attribution}</p>
+                    <p className="text-xs font-extralight text-muted-foreground italic">{t.context}</p>
+                  </footer>
+                </blockquote>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section id="contact" className="py-24 sm:py-32" aria-labelledby="contact-heading">
           <div className="border border-border/10 rounded-card p-8 sm:p-14 bg-panel/50 text-center space-y-6">
             <SectionLabel number="05" title="Next Step" className="justify-center mb-4" />
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-foreground leading-snug tracking-tight max-w-md mx-auto">
@@ -301,19 +259,58 @@ export default function HomePage() {
               your systems, and your numbers, and tell you exactly where the
               biggest opportunities are.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Button size="lg" asChild>
                 <Link href="/contact">
                   Book your free review
-                  <span aria-hidden="true">&rarr;</span>
+                  <span aria-hidden="true" className="ml-1">&rarr;</span>
                 </Link>
               </Button>
+              <Button variant="outline" asChild>
+                <Link href="/review">
+                  Try the free benchmark tool
+                </Link>
+              </Button>
+            </div>
+            <p className="text-xs font-extralight text-muted-foreground">
+              or email directly:{' '}
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="text-sm font-extralight text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-foreground hover:text-accent-deep transition-colors duration-200"
               >
-                or email directly &rarr;
+                {CONTACT.email}
               </a>
+            </p>
+          </div>
+        </section>
+
+        {/* Writing — compact */}
+        <section className="pb-20 sm:pb-28" aria-labelledby="writing-heading">
+          <div className="border-t border-border/10 pt-12">
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-xs tracking-widest text-muted-foreground uppercase font-medium">Latest writing</p>
+              <Link
+                href="/writing"
+                className="text-xs font-extralight text-muted-foreground hover:text-foreground transition-colors duration-200"
+              >
+                All posts &rarr;
+              </Link>
+            </div>
+            <div className="divide-y divide-border/10">
+              {posts.slice(0, 3).map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/writing/${post.slug}`}
+                  className="group flex items-center justify-between gap-4 py-4"
+                >
+                  <span className="text-sm text-foreground group-hover:text-accent-deep transition-colors duration-200 leading-snug truncate">
+                    {post.title}
+                  </span>
+                  <span className="text-xs font-extralight text-muted-foreground shrink-0">
+                    {post.readingTime} min
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

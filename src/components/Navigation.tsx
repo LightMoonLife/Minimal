@@ -6,16 +6,17 @@ import { useState, useEffect } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
-  { href: '/work', label: 'Work' },
+  { href: '/work', homeHref: '/#work', label: 'Work' },
   { href: '/writing', label: 'Writing' },
   { href: '/cv', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/contact', homeHref: '/#contact', label: 'Contact' },
 ]
 
 export function Navigation() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const isHome = pathname === '/'
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40)
@@ -33,6 +34,11 @@ export function Navigation() {
   useEffect(() => {
     setOpen(false)
   }, [pathname])
+
+  function resolveHref(link: typeof navLinks[number]) {
+    if (isHome && link.homeHref) return link.homeHref
+    return link.href
+  }
 
   return (
     <>
@@ -54,26 +60,29 @@ export function Navigation() {
 
           <nav aria-label="Main navigation" className="hidden sm:flex items-center flex-1">
             <ul className="flex items-center gap-8 ml-auto" role="list">
-              {navLinks.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className={`text-sm transition-colors duration-200 hover:text-foreground ${
-                      pathname.startsWith(href)
-                        ? 'text-foreground font-medium'
-                        : 'text-muted-foreground'
-                    }`}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const resolved = resolveHref(link)
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={resolved}
+                      className={`text-sm transition-colors duration-200 hover:text-foreground ${
+                        pathname.startsWith(link.href)
+                          ? 'text-foreground font-medium'
+                          : 'text-muted-foreground'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              })}
               <li>
                 <Link
-                  href="/review"
+                  href={isHome ? '/#contact' : '/contact'}
                   className="bg-accent text-foreground text-sm font-medium px-5 py-2 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200"
                 >
-                  Free Review
+                  Book your free review
                 </Link>
               </li>
             </ul>
@@ -108,30 +117,33 @@ export function Navigation() {
       >
         <nav aria-label="Mobile navigation">
           <ul className="space-y-6" role="list">
-            {[{ href: '/', label: 'Home' }, ...navLinks].map(({ href, label }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  onClick={() => setOpen(false)}
-                  className="group block"
-                  tabIndex={open ? 0 : -1}
-                >
-                  <span className={`font-display text-5xl font-extrabold tracking-tight transition-colors duration-200 ${
-                    pathname === href ? 'text-accent' : 'text-foreground/70 group-hover:text-foreground'
-                  }`}>
-                    {label}
-                  </span>
-                </Link>
-              </li>
-            ))}
+            {[{ href: '/', label: 'Home' }, ...navLinks].map((link) => {
+              const resolved = 'homeHref' in link ? resolveHref(link as typeof navLinks[number]) : link.href
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={resolved}
+                    onClick={() => setOpen(false)}
+                    className="group block"
+                    tabIndex={open ? 0 : -1}
+                  >
+                    <span className={`font-display text-5xl font-extrabold tracking-tight transition-colors duration-200 ${
+                      pathname === link.href ? 'text-accent' : 'text-foreground/70 group-hover:text-foreground'
+                    }`}>
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
           <Link
-            href="/review"
+            href={isHome ? '/#contact' : '/contact'}
             onClick={() => setOpen(false)}
             className="mt-10 block text-center bg-accent text-foreground font-medium text-sm py-4 rounded-card hover:bg-accent-deep hover:text-white transition-all duration-200"
             tabIndex={open ? 0 : -1}
           >
-            Free Review
+            Book your free review
           </Link>
         </nav>
       </div>

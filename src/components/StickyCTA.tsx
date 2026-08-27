@@ -26,7 +26,7 @@ export function StickyCTA() {
           href="/contact"
           className="shrink-0 bg-accent text-foreground font-medium text-xs px-5 py-2.5 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200"
         >
-          Book now
+          Book your free review
         </Link>
       </div>
     </div>
