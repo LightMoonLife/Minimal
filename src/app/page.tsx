@@ -143,24 +143,33 @@ export default function HomePage() {
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
-                className="group block border border-border/10 rounded-card p-6 sm:p-8 bg-panel/50 hover:bg-panel hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
+                className="group block border border-border/10 rounded-card overflow-hidden bg-panel/50 hover:bg-panel hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
               >
-                <p className="text-xs font-extralight text-muted-foreground mb-3">
-                  {project.deliveryTag} &middot; {project.year}
-                </p>
-                <h3 className="font-display text-lg font-extrabold text-foreground mb-2 group-hover:text-accent-deep transition-colors duration-200">
-                  {project.title}
-                </h3>
-                <p className="text-sm font-extralight text-muted-foreground leading-relaxed mb-6 line-clamp-2">
-                  {project.tagline}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="font-display text-3xl font-extrabold text-foreground tracking-tighter">
-                    {project.heroMetric.value}
-                  </span>
-                  <span className="text-xs font-extralight text-muted-foreground group-hover:text-accent-deep group-hover:translate-x-1 transition-all duration-200">
-                    View case study &rarr;
-                  </span>
+                <Image
+                  src={`/work/${project.slug}.webp`}
+                  alt={project.title}
+                  width={1200}
+                  height={680}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="p-6 sm:p-8">
+                  <p className="text-xs font-extralight text-muted-foreground mb-3">
+                    {project.deliveryTag} &middot; {project.year}
+                  </p>
+                  <h3 className="font-display text-lg font-extrabold text-foreground mb-2 group-hover:text-accent-deep transition-colors duration-200">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm font-extralight text-muted-foreground leading-relaxed mb-6 line-clamp-2">
+                    {project.tagline}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-3xl font-extrabold text-foreground tracking-tighter">
+                      {project.heroMetric.value}
+                    </span>
+                    <span className="text-xs font-extralight text-muted-foreground group-hover:text-accent-deep group-hover:translate-x-1 transition-all duration-200">
+                      View case study &rarr;
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
