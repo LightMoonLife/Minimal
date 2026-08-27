@@ -51,7 +51,7 @@ const homepageServices = [
 const testimonials = [
   {
     quote:
-      "Jack took our digital revenue from zero to £2.2M. He didn’t just build the platform — he built the team, the process, and the commercial engine behind it.",
+      "Jack took our digital revenue from zero to £2.2M. He didn't just build the platform — he built the team, the process, and the commercial engine behind it.",
     attribution: 'Senior stakeholder, B2B equipment supplier',
     context: 'Delivered in-house at Liquidline',
   },
@@ -71,27 +71,27 @@ export default function HomePage() {
       <div className="max-w-content mx-auto px-6 sm:px-10">
 
         {/* Hero */}
-        <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-28 hero-atmosphere" aria-label="Introduction">
+        <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-28" aria-label="Introduction">
           <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-14">
             <div className="flex-1 min-w-0 space-y-8">
               <div>
-                <SectionLabel number="00" title="Welcome" className="mb-6 animate-in reveal-1" />
-                <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold text-foreground leading-[.95] tracking-tight animate-in reveal-2">
+                <SectionLabel number="00" title="Welcome" className="mb-6" />
+                <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-ink leading-[.95] tracking-tight">
                   Digital growth for
                   <br className="hidden sm:block" />
                   {' '}manufacturers &amp;
                   <br className="hidden sm:block" />
-                  {' '}<span className="text-accent-deep italic">equipment suppliers.</span>
+                  {' '}<span className="text-blueprint italic">equipment suppliers.</span>
                 </h1>
               </div>
 
-              <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-md animate-in reveal-3">
+              <p className="text-lg text-ink-soft leading-relaxed max-w-md">
                 I turn B2B operations into revenue systems — platform engineering,
                 conversion optimisation, and digital transformation that drives
                 measurable commercial outcomes.
               </p>
 
-              <div className="animate-in reveal-4">
+              <div>
                 <Button size="lg" asChild>
                   <Link href="/contact">
                     Book your free review
@@ -101,13 +101,13 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="shrink-0 animate-scale reveal-3">
+            <div className="shrink-0">
               <Image
                 src="/headshot.webp"
                 alt="Jack Paul Brookes"
                 width={400}
                 height={400}
-                className="rounded-2xl object-cover object-top w-40 h-40 sm:w-60 sm:h-60 lg:w-72 lg:h-72"
+                className="object-cover object-top w-40 h-40 sm:w-60 sm:h-60 lg:w-72 lg:h-72"
                 priority
               />
             </div>
@@ -115,7 +115,7 @@ export default function HomePage() {
         </section>
 
         {/* Proof bar */}
-        <section className="py-16 sm:py-20 border-t border-b border-border/10" aria-label="Impact metrics">
+        <section className="py-16 sm:py-20 border-t border-b border-line" aria-label="Impact metrics">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
             {impactMetrics.map((metric) => (
               <Link
@@ -123,12 +123,12 @@ export default function HomePage() {
                 href={statLinks[metric.value] || '/work'}
                 className="group space-y-1.5"
               >
-                <p className="font-display text-4xl sm:text-5xl font-extrabold text-foreground tracking-tighter leading-none group-hover:text-accent-deep transition-colors duration-200">
+                <p className="font-mono text-4xl sm:text-5xl font-bold text-blueprint tracking-tighter leading-none tabular-nums group-hover:text-ink transition-colors duration-200">
                   {metric.value}
                 </p>
-                <p className="text-sm font-medium text-foreground">{metric.label}</p>
-                <p className="text-xs font-extralight text-muted-foreground">{metric.context}</p>
-                <p className="text-[11px] font-extralight text-muted-foreground italic">{metric.source}</p>
+                <p className="text-sm font-medium text-ink">{metric.label}</p>
+                <p className="text-xs text-ink-soft">{metric.context}</p>
+                <p className="text-[11px] text-ink-faint italic">{metric.source}</p>
               </Link>
             ))}
           </div>
@@ -143,7 +143,7 @@ export default function HomePage() {
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
-                className="group block border border-border/10 rounded-card overflow-hidden bg-panel/50 hover:bg-panel hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
+                className="group block bracket-frame bg-surface/50 hover:bg-surface transition-colors duration-200"
               >
                 <Image
                   src={`/work/${project.slug}.webp`}
@@ -153,20 +153,20 @@ export default function HomePage() {
                   className="w-full h-auto object-cover"
                 />
                 <div className="p-6 sm:p-8">
-                  <p className="text-xs font-extralight text-muted-foreground mb-3">
+                  <p className="text-xs text-ink-faint mb-3">
                     {project.deliveryTag} &middot; {project.year}
                   </p>
-                  <h3 className="font-display text-lg font-extrabold text-foreground mb-2 group-hover:text-accent-deep transition-colors duration-200">
+                  <h3 className="font-display text-lg font-bold text-ink mb-2 group-hover:text-blueprint transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <p className="text-sm font-extralight text-muted-foreground leading-relaxed mb-6 line-clamp-2">
+                  <p className="text-sm text-ink-soft leading-relaxed mb-6 line-clamp-2">
                     {project.tagline}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-3xl font-extrabold text-foreground tracking-tighter">
+                    <span className="font-mono text-3xl font-bold text-blueprint tracking-tighter tabular-nums">
                       {project.heroMetric.value}
                     </span>
-                    <span className="text-xs font-extralight text-muted-foreground group-hover:text-accent-deep group-hover:translate-x-1 transition-all duration-200">
+                    <span className="text-xs text-ink-soft group-hover:text-blueprint transition-colors duration-200">
                       View case study &rarr;
                     </span>
                   </div>
@@ -178,7 +178,7 @@ export default function HomePage() {
           <div className="mt-8 text-center">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 text-sm font-extralight text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-sm text-ink-soft hover:text-ink transition-colors duration-200"
             >
               <span>All case studies</span>
               <span aria-hidden="true">&rarr;</span>
@@ -187,7 +187,7 @@ export default function HomePage() {
         </section>
 
         {/* Services — 3 outcome-focused cards */}
-        <section className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="services-heading">
+        <section className="py-20 sm:py-28 border-t border-line" aria-labelledby="services-heading">
           <SectionLabel number="02" title="What I Do" className="mb-12" />
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -195,20 +195,20 @@ export default function HomePage() {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group border border-border/10 rounded-card p-6 sm:p-8 hover:bg-panel/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
+                className="group bracket-frame p-6 sm:p-8 hover:bg-surface/50 transition-colors duration-200"
               >
-                <span className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-xs font-medium text-accent-deep mb-4">
+                <span className="font-mono text-xs text-blueprint tabular-nums mb-4 block">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-display text-base font-extrabold text-foreground mb-3 group-hover:text-accent-deep transition-colors duration-200">
+                <h3 className="font-display text-base font-bold text-ink mb-3 group-hover:text-blueprint transition-colors duration-200">
                   {service.heading}
                 </h3>
-                <p className="text-sm font-extralight text-muted-foreground leading-relaxed mb-5">
+                <p className="text-sm text-ink-soft leading-relaxed mb-5">
                   {service.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {service.deliverables.map((d) => (
-                    <span key={d} className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1 rounded-pill">
+                    <span key={d} className="text-xs text-ink-faint border border-line px-3 py-1">
                       {d}
                     </span>
                   ))}
@@ -219,14 +219,14 @@ export default function HomePage() {
         </section>
 
         {/* How I Work */}
-        <section id="process" className="py-20 sm:py-28 border-t border-border/10" aria-labelledby="approach-heading">
+        <section id="process" className="py-20 sm:py-28 border-t border-line" aria-labelledby="approach-heading">
           <SectionLabel number="03" title="How I Work" className="mb-12" />
 
           <div className="space-y-12">
             <ProcessSteps />
 
             <div className="max-w-lg space-y-6">
-              <p className="text-lg font-extralight text-foreground leading-relaxed">
+              <p className="text-lg text-ink leading-relaxed">
                 Start with the commercial outcome. Work backwards to the platform, the
                 process, and the team that delivers it. Every recommendation is backed
                 by evidence. If I can&apos;t measure the impact, I won&apos;t propose the work.
@@ -236,19 +236,19 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 sm:py-28 border-t border-border/10" aria-label="Client testimonials">
+        <section className="py-20 sm:py-28 border-t border-line" aria-label="Client testimonials">
           <SectionLabel number="04" title="What Clients Say" className="mb-12" />
 
           <div className="space-y-5">
             {visibleTestimonials.map((t, i) => (
-              <div key={i} className="border border-border/10 rounded-card p-8 sm:p-12 bg-panel/50">
+              <div key={i} className="bracket-frame p-8 sm:p-12 bg-surface/50">
                 <blockquote className="space-y-6">
-                  <p className="font-display text-2xl sm:text-3xl font-extrabold text-foreground leading-snug tracking-tight max-w-lg italic">
+                  <p className="font-display text-2xl sm:text-3xl font-bold text-ink leading-snug tracking-tight max-w-lg italic">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <footer className="space-y-1">
-                    <p className="text-sm text-foreground">{t.attribution}</p>
-                    <p className="text-xs font-extralight text-muted-foreground italic">{t.context}</p>
+                    <p className="text-sm text-ink">{t.attribution}</p>
+                    <p className="text-xs text-ink-faint italic">{t.context}</p>
                   </footer>
                 </blockquote>
               </div>
@@ -258,12 +258,12 @@ export default function HomePage() {
 
         {/* CTA */}
         <section id="contact" className="py-24 sm:py-32" aria-labelledby="contact-heading">
-          <div className="border border-border/10 rounded-card p-8 sm:p-14 bg-panel/50 text-center space-y-6">
+          <div className="bracket-frame p-8 sm:p-14 bg-surface/50 text-center space-y-6">
             <SectionLabel number="05" title="Next Step" className="justify-center mb-4" />
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-foreground leading-snug tracking-tight max-w-md mx-auto">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink leading-snug tracking-tight max-w-md mx-auto">
               Find out what&apos;s costing you revenue.
             </h2>
-            <p className="text-base font-extralight text-muted-foreground leading-relaxed max-w-md mx-auto">
+            <p className="text-base text-ink-soft leading-relaxed max-w-md mx-auto">
               Book a free 30-minute growth review. I&apos;ll look at your website,
               your systems, and your numbers, and tell you exactly where the
               biggest opportunities are.
@@ -281,11 +281,11 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <p className="text-xs font-extralight text-muted-foreground">
+            <p className="text-xs text-ink-faint">
               or email directly:{' '}
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="text-foreground hover:text-accent-deep transition-colors duration-200"
+                className="text-ink hover:text-blueprint transition-colors duration-200"
               >
                 {CONTACT.email}
               </a>
@@ -295,27 +295,27 @@ export default function HomePage() {
 
         {/* Writing — compact */}
         <section className="pb-20 sm:pb-28" aria-labelledby="writing-heading">
-          <div className="border-t border-border/10 pt-12">
+          <div className="border-t border-line pt-12">
             <div className="flex items-center justify-between mb-6">
-              <p className="text-xs tracking-widest text-muted-foreground uppercase font-medium">Latest writing</p>
+              <p className="text-xs tracking-widest text-ink-faint uppercase font-medium font-mono">Latest writing</p>
               <Link
                 href="/writing"
-                className="text-xs font-extralight text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-xs text-ink-soft hover:text-ink transition-colors duration-200"
               >
                 All posts &rarr;
               </Link>
             </div>
-            <div className="divide-y divide-border/10">
+            <div className="divide-y divide-line">
               {posts.slice(0, 3).map((post) => (
                 <Link
                   key={post.slug}
                   href={`/writing/${post.slug}`}
                   className="group flex items-center justify-between gap-4 py-4"
                 >
-                  <span className="text-sm text-foreground group-hover:text-accent-deep transition-colors duration-200 leading-snug truncate">
+                  <span className="text-sm text-ink group-hover:text-blueprint transition-colors duration-200 leading-snug truncate">
                     {post.title}
                   </span>
-                  <span className="text-xs font-extralight text-muted-foreground shrink-0">
+                  <span className="text-xs text-ink-faint shrink-0 font-mono tabular-nums">
                     {post.readingTime} min
                   </span>
                 </Link>

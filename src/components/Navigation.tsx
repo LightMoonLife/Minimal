@@ -43,16 +43,16 @@ export function Navigation() {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-320 ease-smooth ${
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
           scrolled
-            ? 'bg-background/90 backdrop-blur-md border-b border-border/10'
+            ? 'bg-bg/90 backdrop-blur-md border-b border-line'
             : 'bg-transparent'
         }`}
       >
         <div className="max-w-content mx-auto px-6 sm:px-10 h-16 flex items-center">
           <Link
             href="/"
-            className="font-display text-base font-extrabold tracking-tight text-foreground hover:text-accent-deep transition-colors duration-200 shrink-0"
+            className="font-display text-base font-bold tracking-tight text-ink hover:text-blueprint transition-colors duration-200 shrink-0"
             aria-label="Home"
           >
             Jack Brookes
@@ -66,10 +66,10 @@ export function Navigation() {
                   <li key={link.href}>
                     <Link
                       href={resolved}
-                      className={`text-sm transition-colors duration-200 hover:text-foreground ${
+                      className={`text-sm font-mono transition-colors duration-200 hover:text-ink ${
                         pathname.startsWith(link.href)
-                          ? 'text-foreground font-medium'
-                          : 'text-muted-foreground'
+                          ? 'text-ink font-medium'
+                          : 'text-ink-soft'
                       }`}
                     >
                       {link.label}
@@ -80,7 +80,7 @@ export function Navigation() {
               <li>
                 <Link
                   href={isHome ? '/#contact' : '/contact'}
-                  className="bg-accent text-foreground text-sm font-medium px-5 py-2 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200"
+                  className="bg-signal text-[#14171C] text-sm font-medium px-5 py-2 hover:brightness-110 transition-all duration-200"
                 >
                   Book your free review
                 </Link>
@@ -94,7 +94,7 @@ export function Navigation() {
           <div className="flex items-center gap-5 sm:hidden ml-auto">
             <ThemeToggle />
             <button
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-sm font-mono text-ink-soft hover:text-ink transition-colors duration-200"
               onClick={() => setOpen(v => !v)}
               aria-label={open ? 'Close navigation' : 'Open navigation'}
               aria-expanded={open}
@@ -111,7 +111,7 @@ export function Navigation() {
         role="dialog"
         aria-label="Navigation menu"
         aria-modal="true"
-        className={`fixed inset-0 z-40 bg-background flex flex-col justify-end pb-16 px-8 sm:hidden transition-opacity duration-320 ease-smooth ${
+        className={`fixed inset-0 z-40 bg-bg flex flex-col justify-end pb-16 px-8 sm:hidden transition-opacity duration-200 ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -127,8 +127,8 @@ export function Navigation() {
                     className="group block"
                     tabIndex={open ? 0 : -1}
                   >
-                    <span className={`font-display text-5xl font-extrabold tracking-tight transition-colors duration-200 ${
-                      pathname === link.href ? 'text-accent' : 'text-foreground/70 group-hover:text-foreground'
+                    <span className={`font-display text-5xl font-bold tracking-tight transition-colors duration-200 ${
+                      pathname === link.href ? 'text-blueprint' : 'text-ink/70 group-hover:text-ink'
                     }`}>
                       {link.label}
                     </span>
@@ -140,7 +140,7 @@ export function Navigation() {
           <Link
             href={isHome ? '/#contact' : '/contact'}
             onClick={() => setOpen(false)}
-            className="mt-10 block text-center bg-accent text-foreground font-medium text-sm py-4 rounded-card hover:bg-accent-deep hover:text-white transition-all duration-200"
+            className="mt-10 block text-center bg-signal text-[#14171C] font-medium text-sm py-4 hover:brightness-110 transition-all duration-200"
             tabIndex={open ? 0 : -1}
           >
             Book your free review

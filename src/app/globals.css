@@ -2,33 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Paper (light) tokens ── */
 :root {
-  --background: 255 252 240;
-  --foreground: 22 20 14;
-  --muted: 243 237 214;
-  --muted-foreground: 139 133 119;
-  --border: 22 20 14;
-  --accent: 243 180 74;
-  --accent-deep: 199 126 10;
-  --panel: 251 247 230;
-  --card: 239 233 210;
-
-  --border-alpha: .12;
-  --lift: -3px;
+  --bg: 231 228 219;
+  --surface: 221 217 203;
+  --ink: 20 23 28;
+  --ink-soft: 83 88 95;
+  --ink-faint: 139 141 130;
+  --blueprint: 36 84 222;
+  --signal: 184 121 42;
+  --line: rgba(20,23,28,.16);
+  --line-strong: rgba(20,23,28,.32);
 }
 
-.dark {
-  --background: 19 18 13;
-  --foreground: 241 238 230;
-  --muted: 34 31 19;
-  --muted-foreground: 146 140 126;
-  --border: 241 238 230;
-  --accent: 243 180 74;
-  --accent-deep: 249 203 128;
-  --panel: 23 22 14;
-  --card: 34 31 19;
+/* ── Cyanotype (dark) tokens — OS preference ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: 20 23 28;
+    --surface: 30 34 42;
+    --ink: 213 214 210;
+    --ink-soft: 143 147 153;
+    --ink-faint: 100 104 110;
+    --blueprint: 88 135 245;
+    --signal: 218 160 72;
+    --line: rgba(213,214,210,.12);
+    --line-strong: rgba(213,214,210,.24);
+  }
+}
 
-  --border-alpha: .16;
+/* ── Cyanotype (dark) tokens — manual toggle ── */
+:root[data-theme="dark"] {
+  --bg: 20 23 28;
+  --surface: 30 34 42;
+  --ink: 213 214 210;
+  --ink-soft: 143 147 153;
+  --ink-faint: 100 104 110;
+  --blueprint: 88 135 245;
+  --signal: 218 160 72;
+  --line: rgba(213,214,210,.12);
+  --line-strong: rgba(213,214,210,.24);
 }
 
 html {
@@ -38,11 +50,36 @@ html {
 }
 
 body {
-  background-color: rgb(var(--background));
-  color: rgb(var(--foreground));
+  background-color: rgb(var(--bg));
+  color: rgb(var(--ink));
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* ── Corner bracket framing ── */
+.bracket-frame {
+  position: relative;
+  border: 1px solid var(--line);
+}
+.bracket-frame::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background:
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 0 0 / 12px 2px no-repeat,
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 0 0 / 2px 12px no-repeat,
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 100% 0 / 12px 2px no-repeat,
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 100% 0 / 2px 12px no-repeat,
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 0 100% / 12px 2px no-repeat,
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 0 100% / 2px 12px no-repeat,
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 100% 100% / 12px 2px no-repeat,
+    linear-gradient(rgb(var(--blueprint)), rgb(var(--blueprint))) 100% 100% / 2px 12px no-repeat;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -59,85 +96,16 @@ body {
 }
 
 ::selection {
-  background-color: rgb(var(--accent));
-  color: rgb(var(--background));
+  background-color: rgb(var(--blueprint));
+  color: rgb(var(--bg));
 }
 
 :focus-visible {
-  outline: 2px solid rgb(var(--accent));
+  outline: 2px solid rgb(var(--blueprint));
   outline-offset: 3px;
 }
 
-/* Reveal animations */
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.animate-in {
-  animation: fade-in-up .6s cubic-bezier(.22, 1, .36, 1) both;
-}
-.animate-fade {
-  animation: fade-in .5s ease both;
-}
-.animate-scale {
-  animation: scale-in .5s cubic-bezier(.22, 1, .36, 1) both;
-}
-
-.reveal-1 { animation-delay: .08s; }
-.reveal-2 { animation-delay: .16s; }
-.reveal-3 { animation-delay: .24s; }
-.reveal-4 { animation-delay: .32s; }
-.reveal-5 { animation-delay: .4s; }
-
-/* Atmospheric hero background */
-.hero-atmosphere {
-  position: relative;
-  overflow: hidden;
-}
-.hero-atmosphere::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(var(--accent), .08), transparent 70%),
-    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(var(--accent-deep), .05), transparent 60%),
-    radial-gradient(circle at 50% 0%, rgba(var(--accent), .04), transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-atmosphere::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(var(--foreground), .015) 0 1px,
-      transparent 1px 80px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(var(--foreground), .015) 0 1px,
-      transparent 1px 80px
-    );
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-atmosphere > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Page transition curtain */
+/* ── Page transition curtain ── */
 .sv-curtain {
   position: fixed;
   top: 0;
@@ -161,10 +129,10 @@ body {
   height: 100%;
   left: calc(var(--i) * var(--cw));
   width: calc(var(--cw) + 1.5px);
-  background-color: rgb(var(--panel));
+  background-color: rgb(var(--surface));
   background-image:
-    repeating-linear-gradient(0deg, rgba(var(--foreground), .04) 0 1px, transparent 1px 4px),
-    linear-gradient(180deg, rgb(var(--panel)), rgb(var(--muted)));
+    repeating-linear-gradient(0deg, rgba(var(--ink), .04) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, rgb(var(--surface)), rgb(var(--surface)));
   transform: translateY(-101%);
   will-change: transform;
   transition: transform var(--cover) cubic-bezier(.72, 0, .22, 1);
@@ -177,7 +145,7 @@ body {
   right: 0;
   bottom: 0;
   height: 2px;
-  background: rgb(var(--accent));
+  background: rgb(var(--blueprint));
   opacity: .9;
 }
 
@@ -205,7 +173,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: rgb(var(--foreground));
+  color: rgb(var(--ink));
   opacity: 0;
   transition: opacity .3s ease;
   will-change: opacity;
@@ -213,15 +181,14 @@ body {
 .sv-curtain.show-label .sv-curtain-label { opacity: 1; }
 
 .sv-curtain-label .name {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 800;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
   font-size: max(48px, 6vw);
   letter-spacing: -.035em;
   line-height: .88;
-  font-style: italic;
 }
 .sv-curtain-label .name .d {
-  color: rgb(var(--accent));
+  color: rgb(var(--blueprint));
 }
 
 @media (prefers-reduced-motion: reduce) {

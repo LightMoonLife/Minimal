@@ -12,20 +12,20 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/10 mt-24">
+    <footer className="border-t border-line mt-24">
       <div className="max-w-content mx-auto px-6 sm:px-10 py-12 sm:py-16">
         <div className="flex flex-col sm:flex-row items-start justify-between gap-10">
           <div className="space-y-3">
-            <p className="font-display text-lg font-extrabold text-foreground">{CONTACT.name}</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="font-display text-lg font-bold text-ink">{CONTACT.name}</p>
+            <p className="text-sm text-ink-soft">
               {CONTACT.jobTitle}
             </p>
-            <address className="not-italic text-sm text-muted-foreground space-y-1">
+            <address className="not-italic text-sm text-ink-soft space-y-1">
               <p>{CONTACT.location.locality}, {CONTACT.location.region}, {CONTACT.location.country}</p>
               <p>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="text-foreground hover:text-accent-deep transition-colors duration-200"
+                  className="text-ink hover:text-blueprint transition-colors duration-200"
                 >
                   {CONTACT.email}
                 </a>
@@ -40,7 +40,7 @@ export function Footer() {
                   <li key={href}>
                     <Link
                       href={href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      className="text-sm text-ink-soft hover:text-ink transition-colors duration-200"
                     >
                       {label}
                     </Link>
@@ -54,7 +54,7 @@ export function Footer() {
                 href={CONTACT.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-sm text-ink-soft hover:text-ink transition-colors duration-200"
               >
                 LinkedIn
               </a>
@@ -62,8 +62,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-border/10">
-          <p className="text-xs text-muted-foreground">
+        <div className="mt-12 pt-6 border-t border-line">
+          <p className="text-xs text-ink-faint">
             &copy; {new Date().getFullYear()} {CONTACT.name}. All rights reserved.
           </p>
         </div>

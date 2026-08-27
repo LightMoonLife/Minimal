@@ -14,17 +14,17 @@ export function StickyCTA() {
 
   return (
     <div
-      className={`fixed bottom-0 inset-x-0 z-40 bg-background/90 backdrop-blur-md border-t border-border/10 transition-all duration-320 ease-smooth sm:hidden ${
+      className={`fixed bottom-0 inset-x-0 z-40 bg-bg/90 backdrop-blur-md border-t border-line transition-all duration-200 sm:hidden ${
         visible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
       <div className="max-w-content mx-auto px-6 py-3 flex items-center justify-between gap-4">
-        <p className="text-xs text-muted-foreground truncate">
+        <p className="text-xs text-ink-soft truncate">
           Free 30-min growth review
         </p>
         <Link
           href="/contact"
-          className="shrink-0 bg-accent text-foreground font-medium text-xs px-5 py-2.5 rounded-pill hover:bg-accent-deep hover:text-white transition-all duration-200"
+          className="shrink-0 bg-signal text-[#14171C] font-medium text-xs px-5 py-2.5 hover:brightness-110 transition-all duration-200"
         >
           Book your free review
         </Link>

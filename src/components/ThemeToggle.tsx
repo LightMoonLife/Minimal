@@ -64,7 +64,7 @@ export function ThemeToggle() {
     const next = !dark
     setDark(next)
     localStorage.setItem('theme', next ? 'dark' : 'light')
-    document.documentElement.classList.toggle('dark', next)
+    document.documentElement.setAttribute('data-theme', next ? 'dark' : 'light')
   }
 
   if (!mounted) return <div className="w-4 h-4" />
@@ -72,7 +72,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="text-muted-foreground hover:text-foreground transition-colors duration-200 p-1"
+      className="text-ink-soft hover:text-blueprint transition-colors duration-200 p-1"
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {dark ? <SunIcon /> : <MoonIcon />}

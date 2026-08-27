@@ -104,6 +104,8 @@ export function PageTransition() {
       if (anchor.hasAttribute('download')) return
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
 
+      if (href.includes('#')) return
+
       if (isInternalRoute(href) && href !== pathname) {
         e.preventDefault()
         e.stopPropagation()
