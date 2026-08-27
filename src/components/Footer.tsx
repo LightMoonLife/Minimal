@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="border-t border-border mt-24">
       <div className="max-w-content mx-auto px-6 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <p className="font-mono text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Your Name
+          © {new Date().getFullYear()} Jack Brookes
         </p>
         <ul className="flex items-center gap-6" role="list">
           <li>

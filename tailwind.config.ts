@@ -2,15 +2,16 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: '#FFFFFF',
-        foreground: '#4E4C4A',
-        muted: '#F5F5F5',
-        'muted-foreground': '#9B9998',
-        border: '#EBEBEB',
-        accent: '#2D4395',
+        background: 'var(--color-background)',
+        foreground: 'var(--color-foreground)',
+        muted: 'var(--color-muted)',
+        'muted-foreground': 'var(--color-muted-foreground)',
+        border: 'var(--color-border)',
+        accent: 'var(--color-accent)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

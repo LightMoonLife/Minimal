@@ -2,13 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-background: #FFFFFF;
+  --color-foreground: #4E4C4A;
+  --color-muted: #F5F5F5;
+  --color-muted-foreground: #9B9998;
+  --color-border: #EBEBEB;
+  --color-accent: #2D4395;
+}
+
+.dark {
+  --color-background: #0A0A0A;
+  --color-foreground: #E5E5E5;
+  --color-muted: #1A1A1A;
+  --color-muted-foreground: #737373;
+  --color-border: #262626;
+  --color-accent: #6B8AFF;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #FAFAF8;
-  color: #171717;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,12 +45,12 @@ body {
 
 /* Selection colour */
 ::selection {
-  background-color: #2D4395;
+  background-color: var(--color-accent);
   color: #FFFFFF;
 }
 
 /* Focus visible ring — consistent, accessible */
 :focus-visible {
-  outline: 2px solid #2D4395;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }

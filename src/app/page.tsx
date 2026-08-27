@@ -4,7 +4,7 @@ import { projects } from '@/lib/projects'
 import { SectionLabel } from '@/components/SectionLabel'
 
 export const metadata: Metadata = {
-  title: 'Your Name — CRO & UX Specialist',
+  title: 'Jack Brookes — CRO & UX Specialist',
   description:
     'CRO and UX specialist turning behavioural data into design decisions. Eight years of optimising digital experiences for e-commerce, SaaS, and financial services.',
 }
@@ -18,7 +18,7 @@ export default function HomePage() {
         <div className="space-y-8">
           <div>
             <h1 className="text-2xl font-light text-foreground leading-snug tracking-tight">
-              Your Name
+              Jack Brookes
             </h1>
             <p className="font-mono text-xs text-muted-foreground tracking-widest mt-1">
               CRO &amp; UX Specialist
