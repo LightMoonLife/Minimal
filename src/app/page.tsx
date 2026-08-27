@@ -72,44 +72,31 @@ export default function HomePage() {
 
         {/* Hero */}
         <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-28" aria-label="Introduction">
-          <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-14">
-            <div className="flex-1 min-w-0 space-y-8">
-              <div>
-                <SectionLabel number="00" title="Welcome" className="mb-6" />
-                <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-ink leading-[.95] tracking-tight">
-                  Digital growth for
-                  <br className="hidden sm:block" />
-                  {' '}manufacturers &amp;
-                  <br className="hidden sm:block" />
-                  {' '}<span className="text-blueprint italic">equipment suppliers.</span>
-                </h1>
-              </div>
-
-              <p className="text-lg text-ink-soft leading-relaxed max-w-md">
-                I turn B2B operations into revenue systems — platform engineering,
-                conversion optimisation, and digital transformation that drives
-                measurable commercial outcomes.
-              </p>
-
-              <div>
-                <Button size="lg" asChild>
-                  <Link href="/contact">
-                    Book your free review
-                    <span aria-hidden="true" className="ml-1">&rarr;</span>
-                  </Link>
-                </Button>
-              </div>
+          <div className="max-w-2xl space-y-8">
+            <div>
+              <SectionLabel number="00" title="Welcome" className="mb-6" />
+              <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-ink leading-[.95] tracking-tight">
+                Digital growth for
+                <br className="hidden sm:block" />
+                {' '}manufacturers &amp;
+                <br className="hidden sm:block" />
+                {' '}<span className="text-blueprint italic">equipment suppliers.</span>
+              </h1>
             </div>
 
-            <div className="shrink-0">
-              <Image
-                src="/headshot.webp"
-                alt="Jack Paul Brookes"
-                width={400}
-                height={400}
-                className="object-cover object-top w-40 h-40 sm:w-60 sm:h-60 lg:w-72 lg:h-72"
-                priority
-              />
+            <p className="text-lg text-ink-soft leading-relaxed max-w-md">
+              I turn B2B operations into revenue systems — platform engineering,
+              conversion optimisation, and digital transformation that drives
+              measurable commercial outcomes.
+            </p>
+
+            <div>
+              <Button size="lg" asChild>
+                <Link href="/contact">
+                  Book your free review
+                  <span aria-hidden="true" className="ml-1">&rarr;</span>
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
