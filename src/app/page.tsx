@@ -71,11 +71,11 @@ export default function HomePage() {
       <div className="max-w-content mx-auto px-6 sm:px-10">
 
         {/* Hero */}
-        <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 sm:pb-28" aria-label="Introduction">
-          <div className="max-w-2xl space-y-8">
+        <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-24" aria-label="Introduction">
+          <div className="max-w-2xl space-y-6">
             <div>
-              <SectionLabel number="00" title="Welcome" className="mb-6" />
-              <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-ink leading-[.95] tracking-tight">
+              <SectionLabel number="00" title="Welcome" className="mb-5" />
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight">
                 Digital growth for
                 <br className="hidden sm:block" />
                 {' '}manufacturers &amp;
@@ -102,7 +102,7 @@ export default function HomePage() {
         </section>
 
         {/* Proof bar */}
-        <section className="py-16 sm:py-20 border-t border-b border-line" aria-label="Impact metrics">
+        <section className="py-14 sm:py-16 border-t border-b border-line" aria-label="Impact metrics">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
             {impactMetrics.map((metric) => (
               <Link
@@ -110,7 +110,7 @@ export default function HomePage() {
                 href={statLinks[metric.value] || '/work'}
                 className="group space-y-1.5"
               >
-                <p className="font-mono text-4xl sm:text-5xl font-bold text-blueprint tracking-tighter leading-none tabular-nums group-hover:text-ink transition-colors duration-200">
+                <p className="font-mono text-2xl sm:text-3xl font-bold text-blueprint tracking-tighter leading-none tabular-nums group-hover:text-ink transition-colors duration-200">
                   {metric.value}
                 </p>
                 <p className="text-sm font-medium text-ink">{metric.label}</p>
@@ -122,8 +122,8 @@ export default function HomePage() {
         </section>
 
         {/* Selected Work */}
-        <section id="work" className="py-20 sm:py-28" aria-labelledby="work-heading">
-          <SectionLabel number="01" title="Selected Work" className="mb-12" />
+        <section id="work" className="py-16 sm:py-24" aria-labelledby="work-heading">
+          <SectionLabel number="01" title="Selected Work" className="mb-10" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {projects.slice(0, 4).map((project) => (
@@ -139,18 +139,18 @@ export default function HomePage() {
                   height={680}
                   className="w-full h-auto object-cover"
                 />
-                <div className="p-6 sm:p-8">
-                  <p className="text-xs text-ink-faint mb-3">
+                <div className="p-5 sm:p-6">
+                  <p className="text-xs text-ink-faint mb-2">
                     {project.deliveryTag} &middot; {project.year}
                   </p>
-                  <h3 className="font-display text-lg font-bold text-ink mb-2 group-hover:text-blueprint transition-colors duration-200">
+                  <h3 className="font-display text-lg font-bold text-ink mb-1.5 group-hover:text-blueprint transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-ink-soft leading-relaxed mb-6 line-clamp-2">
+                  <p className="text-sm text-ink-soft leading-relaxed mb-5 line-clamp-2">
                     {project.tagline}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-3xl font-bold text-blueprint tracking-tighter tabular-nums">
+                    <span className="font-mono text-xl font-bold text-blueprint tracking-tighter tabular-nums">
                       {project.heroMetric.value}
                     </span>
                     <span className="text-xs text-ink-soft group-hover:text-blueprint transition-colors duration-200">
@@ -174,23 +174,23 @@ export default function HomePage() {
         </section>
 
         {/* Services — 3 outcome-focused cards */}
-        <section className="py-20 sm:py-28 border-t border-line" aria-labelledby="services-heading">
-          <SectionLabel number="02" title="What I Do" className="mb-12" />
+        <section className="py-16 sm:py-24 border-t border-line" aria-labelledby="services-heading">
+          <SectionLabel number="02" title="What I Do" className="mb-10" />
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {homepageServices.map((service, i) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group bracket-frame p-6 sm:p-8 hover:bg-surface/50 transition-colors duration-200"
+                className="group bracket-frame p-5 sm:p-6 hover:bg-surface/50 transition-colors duration-200"
               >
-                <span className="font-mono text-xs text-blueprint tabular-nums mb-4 block">
+                <span className="font-mono text-xs text-blueprint tabular-nums mb-3 block">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-display text-base font-bold text-ink mb-3 group-hover:text-blueprint transition-colors duration-200">
+                <h3 className="font-display text-base font-bold text-ink mb-2 group-hover:text-blueprint transition-colors duration-200">
                   {service.heading}
                 </h3>
-                <p className="text-sm text-ink-soft leading-relaxed mb-5">
+                <p className="text-sm text-ink-soft leading-relaxed mb-4">
                   {service.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -206,13 +206,13 @@ export default function HomePage() {
         </section>
 
         {/* How I Work */}
-        <section id="process" className="py-20 sm:py-28 border-t border-line" aria-labelledby="approach-heading">
-          <SectionLabel number="03" title="How I Work" className="mb-12" />
+        <section id="process" className="py-16 sm:py-24 border-t border-line" aria-labelledby="approach-heading">
+          <SectionLabel number="03" title="How I Work" className="mb-10" />
 
-          <div className="space-y-12">
+          <div className="space-y-10">
             <ProcessSteps />
 
-            <div className="max-w-lg space-y-6">
+            <div className="max-w-lg space-y-4">
               <p className="text-lg text-ink leading-relaxed">
                 Start with the commercial outcome. Work backwards to the platform, the
                 process, and the team that delivers it. Every recommendation is backed
@@ -223,14 +223,14 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 sm:py-28 border-t border-line" aria-label="Client testimonials">
-          <SectionLabel number="04" title="What Clients Say" className="mb-12" />
+        <section className="py-16 sm:py-24 border-t border-line" aria-label="Client testimonials">
+          <SectionLabel number="04" title="What Clients Say" className="mb-10" />
 
           <div className="space-y-5">
             {visibleTestimonials.map((t, i) => (
-              <div key={i} className="bracket-frame p-8 sm:p-12 bg-surface/50">
-                <blockquote className="space-y-6">
-                  <p className="font-display text-2xl sm:text-3xl font-bold text-ink leading-snug tracking-tight max-w-lg italic">
+              <div key={i} className="bracket-frame p-6 sm:p-10 bg-surface/50">
+                <blockquote className="space-y-5">
+                  <p className="font-display text-xl lg:text-2xl font-bold text-ink leading-snug tracking-tight max-w-lg italic">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <footer className="space-y-1">
@@ -244,10 +244,10 @@ export default function HomePage() {
         </section>
 
         {/* CTA */}
-        <section id="contact" className="py-24 sm:py-32" aria-labelledby="contact-heading">
-          <div className="bracket-frame p-8 sm:p-14 bg-surface/50 text-center space-y-6">
-            <SectionLabel number="05" title="Next Step" className="justify-center mb-4" />
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink leading-snug tracking-tight max-w-md mx-auto">
+        <section id="contact" className="py-20 sm:py-28" aria-labelledby="contact-heading">
+          <div className="bracket-frame p-6 sm:p-12 bg-surface/50 text-center space-y-5">
+            <SectionLabel number="05" title="Next Step" className="justify-center mb-3" />
+            <h2 className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug tracking-tight max-w-md mx-auto">
               Find out what&apos;s costing you revenue.
             </h2>
             <p className="text-base text-ink-soft leading-relaxed max-w-md mx-auto">
@@ -281,9 +281,9 @@ export default function HomePage() {
         </section>
 
         {/* Writing — compact */}
-        <section className="pb-20 sm:pb-28" aria-labelledby="writing-heading">
-          <div className="border-t border-line pt-12">
-            <div className="flex items-center justify-between mb-6">
+        <section className="pb-16 sm:pb-24" aria-labelledby="writing-heading">
+          <div className="border-t border-line pt-10">
+            <div className="flex items-center justify-between mb-5">
               <p className="text-xs tracking-widest text-ink-faint uppercase font-medium font-mono">Latest writing</p>
               <Link
                 href="/writing"
@@ -297,7 +297,7 @@ export default function HomePage() {
                 <Link
                   key={post.slug}
                   href={`/writing/${post.slug}`}
-                  className="group flex items-center justify-between gap-4 py-4"
+                  className="group flex items-center justify-between gap-4 py-3.5"
                 >
                   <span className="text-sm text-ink group-hover:text-blueprint transition-colors duration-200 leading-snug truncate">
                     {post.title}

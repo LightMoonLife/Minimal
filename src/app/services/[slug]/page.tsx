@@ -34,16 +34,16 @@ export default async function ServicePage({ params }: PageProps) {
     <div className="max-w-content mx-auto px-6 sm:px-10">
       <JsonLd data={professionalServiceJsonLd()} />
 
-      <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+      <section className="pt-24 sm:pt-32 lg:pt-40 pb-14 sm:pb-16">
         <Breadcrumb items={[
           { name: 'Services', href: '/services/' + pillars[0].slug },
           { name: pillar.title, href: `/services/${pillar.slug}` },
         ]} />
 
-        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[.95] tracking-tight mb-4">
+        <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight mb-4">
           {pillar.headline}
         </h1>
-        <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-lg">
+        <p className="text-lg text-ink-soft leading-relaxed max-w-lg">
           {pillar.description}
         </p>
       </section>
@@ -51,13 +51,13 @@ export default async function ServicePage({ params }: PageProps) {
       {pillar.sections.map((section, i) => (
         <section
           key={section.heading}
-          className="py-16 sm:py-20 border-t border-border/10"
+          className="py-14 sm:py-16 border-t border-line"
           aria-labelledby={`section-${i}`}
         >
-          <SectionLabel number={String(i + 1).padStart(2, '0')} title={section.heading} className="mb-8" />
-          <div className="space-y-5 max-w-lg">
+          <SectionLabel number={String(i + 1).padStart(2, '0')} title={section.heading} className="mb-6" />
+          <div className="space-y-4 max-w-lg">
             {section.content.map((paragraph, j) => (
-              <p key={j} className="text-base font-extralight text-foreground leading-relaxed">
+              <p key={j} className="text-base text-ink leading-relaxed">
                 {paragraph}
               </p>
             ))}
@@ -65,23 +65,23 @@ export default async function ServicePage({ params }: PageProps) {
         </section>
       ))}
 
-      <section className="py-16 sm:py-20 border-t border-border/10" aria-labelledby="deliverables-heading">
-        <SectionLabel number={String(pillar.sections.length + 1).padStart(2, '0')} title="Deliverables" className="mb-8" />
+      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="deliverables-heading">
+        <SectionLabel number={String(pillar.sections.length + 1).padStart(2, '0')} title="Deliverables" className="mb-6" />
         <div className="flex flex-wrap gap-2">
           {pillar.deliverables.map(d => (
-            <span key={d} className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1.5 rounded-pill">
+            <span key={d} className="text-xs text-ink-faint border border-line px-3 py-1.5">
               {d}
             </span>
           ))}
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 border-t border-border/10">
-        <div className="border border-border/10 rounded-card p-8 sm:p-14 bg-panel/50 text-center space-y-6">
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-foreground leading-snug tracking-tight max-w-md mx-auto">
+      <section className="py-16 sm:py-24 border-t border-line">
+        <div className="bracket-frame p-6 sm:p-12 bg-surface/50 text-center space-y-5">
+          <h2 className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug tracking-tight max-w-md mx-auto">
             Ready to talk about {pillar.title.toLowerCase()}?
           </h2>
-          <p className="text-base font-extralight text-muted-foreground leading-relaxed max-w-md mx-auto">
+          <p className="text-base text-ink-soft leading-relaxed max-w-md mx-auto">
             Book a free 30-minute growth review. I&apos;ll assess your current
             setup and identify the highest-impact opportunities.
           </p>
@@ -94,7 +94,7 @@ export default async function ServicePage({ params }: PageProps) {
             </Button>
             <Link
               href="/review"
-              className="text-sm font-extralight text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-sm text-ink-soft hover:text-ink transition-colors duration-200"
             >
               or try the free review tool &rarr;
             </Link>
@@ -102,8 +102,8 @@ export default async function ServicePage({ params }: PageProps) {
         </div>
       </section>
 
-      <nav className="py-16 sm:py-20 border-t border-border/10" aria-label="Other services">
-        <p className="text-xs text-muted-foreground tracking-widest uppercase font-medium mb-6">
+      <nav className="py-14 sm:py-16 border-t border-line" aria-label="Other services">
+        <p className="text-xs text-ink-faint tracking-widest uppercase font-medium font-mono mb-5">
           Other services
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -113,12 +113,12 @@ export default async function ServicePage({ params }: PageProps) {
               <Link
                 key={p.slug}
                 href={`/services/${p.slug}`}
-                className="group border border-border/10 rounded-card p-5 hover:bg-panel/50 transition-all duration-200"
+                className="group bracket-frame p-5 hover:bg-surface/50 transition-colors duration-200"
               >
-                <h3 className="font-display text-sm font-extrabold text-foreground group-hover:text-accent-deep transition-colors duration-200 mb-1">
+                <h3 className="font-display text-sm font-bold text-ink group-hover:text-blueprint transition-colors duration-200 mb-1">
                   {p.title}
                 </h3>
-                <p className="text-xs font-extralight text-muted-foreground line-clamp-2">
+                <p className="text-xs text-ink-soft line-clamp-2">
                   {p.description}
                 </p>
               </Link>

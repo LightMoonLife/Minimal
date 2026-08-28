@@ -14,13 +14,13 @@ export default function WritingPage() {
   return (
     <div className="max-w-content mx-auto px-6 sm:px-10">
 
-      <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+      <section className="pt-24 sm:pt-32 lg:pt-40 pb-14 sm:pb-16">
         <Breadcrumb items={[{ name: 'Writing', href: '/writing' }]} />
-        <SectionLabel number="00" title="Writing" className="mb-8" />
-        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[.95] tracking-tight max-w-md mb-6">
+        <SectionLabel number="00" title="Writing" className="mb-6" />
+        <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight max-w-md mb-5">
           Guides on building revenue systems for B2B businesses.
         </h1>
-        <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-md">
+        <p className="text-lg text-ink-soft leading-relaxed max-w-md">
           Practical guides on digital transformation, conversion optimisation,
           and what actually works, from someone who&apos;s done the work, not just
           written about it.
@@ -28,14 +28,14 @@ export default function WritingPage() {
       </section>
 
       {/* Category filter */}
-      <section className="pb-8 border-b border-border/10" aria-label="Filter by category">
+      <section className="pb-6 border-b border-line" aria-label="Filter by category">
         <div className="flex flex-wrap items-center gap-2">
           {categories.map(cat => {
             const count = posts.filter(p => p.category === cat).length
             return (
               <span
                 key={cat}
-                className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1.5 rounded-pill"
+                className="text-xs text-ink-faint border border-line px-3 py-1.5"
               >
                 {cat} ({count})
               </span>
@@ -51,16 +51,16 @@ export default function WritingPage() {
             <Link
               key={post.slug}
               href={`/writing/${post.slug}`}
-              className="group block border border-border/10 rounded-card p-6 sm:p-8 hover:bg-panel/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-320 ease-smooth"
+              className="group block bracket-frame p-5 sm:p-6 hover:bg-surface/50 transition-colors duration-200"
             >
-              <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="text-xs text-accent-deep border border-accent/30 px-3 py-1 rounded-pill bg-accent/10">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <span className="text-xs text-blueprint border border-blueprint/30 px-3 py-1 bg-blueprint/10">
                   {post.category}
                 </span>
-                <span className="text-xs font-extralight text-muted-foreground">
+                <span className="text-xs text-ink-faint">
                   {post.readingTime} min read
                 </span>
-                <span className="text-xs font-extralight text-muted-foreground">
+                <span className="text-xs text-ink-faint">
                   {new Date(post.date).toLocaleDateString('en-GB', {
                     day: 'numeric',
                     month: 'short',
@@ -68,10 +68,10 @@ export default function WritingPage() {
                   })}
                 </span>
               </div>
-              <h2 className="font-display text-lg font-extrabold text-foreground leading-snug mb-2 group-hover:text-accent-deep transition-colors duration-200 max-w-lg">
+              <h2 className="font-display text-lg font-bold text-ink leading-snug mb-1.5 group-hover:text-blueprint transition-colors duration-200 max-w-lg">
                 {post.title}
               </h2>
-              <p className="text-sm font-extralight text-muted-foreground leading-relaxed max-w-md">
+              <p className="text-sm text-ink-soft leading-relaxed max-w-md">
                 {post.excerpt}
               </p>
             </Link>

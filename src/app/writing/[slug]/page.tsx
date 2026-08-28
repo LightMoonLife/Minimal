@@ -45,20 +45,20 @@ export default async function WritingPostPage({ params }: PageProps) {
       <JsonLd data={faqPageJsonLd(post.faq)} />
 
       {/* Header */}
-      <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+      <section className="pt-24 sm:pt-32 lg:pt-40 pb-14 sm:pb-16">
         <Breadcrumb items={[
           { name: 'Writing', href: '/writing' },
           { name: post.title, href: `/writing/${post.slug}` },
         ]} />
 
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="text-xs text-accent-deep border border-accent/30 px-3 py-1 rounded-pill bg-accent/10">
+        <div className="flex flex-wrap items-center gap-3 mb-5">
+          <span className="text-xs text-blueprint border border-blueprint/30 px-3 py-1 bg-blueprint/10">
             {post.category}
           </span>
-          <span className="text-xs font-extralight text-muted-foreground">
+          <span className="text-xs text-ink-faint">
             {post.readingTime} min read
           </span>
-          <span className="text-xs font-extralight text-muted-foreground">
+          <span className="text-xs text-ink-faint">
             {new Date(post.date).toLocaleDateString('en-GB', {
               day: 'numeric',
               month: 'short',
@@ -67,18 +67,18 @@ export default async function WritingPostPage({ params }: PageProps) {
           </span>
         </div>
 
-        <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-[.95] tracking-tight max-w-lg">
+        <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink leading-tight tracking-tight max-w-lg">
           {post.title}
         </h1>
       </section>
 
       {/* TL;DR */}
-      <section className="pb-12 border-b border-border/10" aria-label="Summary">
-        <div className="border border-accent/20 rounded-card p-6 sm:p-8 bg-accent/5">
-          <p className="text-xs text-accent-deep tracking-widest uppercase font-medium mb-3">
+      <section className="pb-10 border-b border-line" aria-label="Summary">
+        <div className="bracket-frame p-5 sm:p-6 bg-blueprint/5">
+          <p className="text-xs text-blueprint tracking-widest uppercase font-medium mb-2">
             TL;DR
           </p>
-          <p className="text-sm font-extralight text-foreground leading-relaxed max-w-lg">
+          <p className="text-sm text-ink leading-relaxed max-w-lg">
             {post.tldr}
           </p>
         </div>
@@ -88,20 +88,20 @@ export default async function WritingPostPage({ params }: PageProps) {
       {post.sections.map((section, i) => (
         <section
           key={i}
-          className="py-12 border-b border-border/10"
+          className="py-10 border-b border-line"
           aria-labelledby={`section-${i}`}
         >
           <h2
             id={`section-${i}`}
-            className="font-display text-xl font-extrabold text-foreground leading-snug mb-6 max-w-lg"
+            className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug mb-5 max-w-lg"
           >
             {section.heading}
           </h2>
-          <div className="space-y-5">
+          <div className="space-y-4">
             {section.content.map((paragraph, j) => (
               <p
                 key={j}
-                className="text-sm font-extralight text-foreground leading-relaxed max-w-lg"
+                className="text-base text-ink leading-relaxed max-w-lg"
               >
                 {paragraph}
               </p>
@@ -112,15 +112,15 @@ export default async function WritingPostPage({ params }: PageProps) {
 
       {/* FAQ */}
       {post.faq.length > 0 && (
-        <section className="py-16 border-b border-border/10" aria-labelledby="faq-heading">
-          <SectionLabel number="" title="FAQ" className="mb-10" />
-          <dl className="space-y-8">
+        <section className="py-14 border-b border-line" aria-labelledby="faq-heading">
+          <SectionLabel number="" title="FAQ" className="mb-8" />
+          <dl className="space-y-6">
             {post.faq.map((item, i) => (
-              <div key={i} className="border border-border/10 rounded-card p-6">
-                <dt className="font-display text-sm font-extrabold text-foreground mb-2 max-w-lg">
+              <div key={i} className="bracket-frame p-5">
+                <dt className="font-display text-sm font-bold text-ink mb-1.5 max-w-lg">
                   {item.question}
                 </dt>
-                <dd className="text-sm font-extralight text-muted-foreground leading-relaxed max-w-lg">
+                <dd className="text-sm text-ink-soft leading-relaxed max-w-lg">
                   {item.answer}
                 </dd>
               </div>
@@ -130,9 +130,9 @@ export default async function WritingPostPage({ params }: PageProps) {
       )}
 
       {/* CTA */}
-      <section className="py-16 border-b border-border/10" aria-label="Contact">
-        <div className="border border-border/10 rounded-card p-6 sm:p-8 bg-panel/50">
-          <p className="font-display text-xl font-extrabold text-foreground leading-relaxed max-w-lg mb-6">
+      <section className="py-14 border-b border-line" aria-label="Contact">
+        <div className="bracket-frame p-5 sm:p-6 bg-surface/50">
+          <p className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug max-w-lg mb-5">
             {post.cta}
           </p>
           <Button asChild>
@@ -145,14 +145,14 @@ export default async function WritingPostPage({ params }: PageProps) {
       </section>
 
       {/* Author */}
-      <section className="py-12 border-b border-border/10" aria-label="Author">
+      <section className="py-10 border-b border-line" aria-label="Author">
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-sm font-medium text-accent-deep">
+          <div className="w-10 h-10 bg-blueprint/20 flex items-center justify-center text-sm font-medium text-blueprint">
             JP
           </div>
           <div>
-            <p className="text-sm font-medium text-foreground">Jack Paul Brookes</p>
-            <p className="text-xs font-extralight text-muted-foreground">
+            <p className="text-sm font-medium text-ink">Jack Paul Brookes</p>
+            <p className="text-xs text-ink-soft">
               Digital Growth Architect &middot; Ipswich, Suffolk
             </p>
           </div>

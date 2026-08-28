@@ -36,19 +36,19 @@ export default async function WorkProjectPage({ params }: PageProps) {
       <JsonLd data={caseStudyJsonLd(project)} />
 
       {/* Header */}
-      <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20">
+      <section className="pt-24 sm:pt-32 lg:pt-40 pb-14 sm:pb-16">
         <Breadcrumb items={[
           { name: 'Work', href: '/work' },
           { name: project.title, href: `/work/${project.slug}` },
         ]} />
 
-        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[.95] tracking-tight mb-2">
+        <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight mb-2">
           {project.title}
         </h1>
-        <p className="text-sm font-extralight text-muted-foreground mb-6">
+        <p className="text-sm text-ink-soft mb-5">
           {project.deliveryTag}
         </p>
-        <p className="text-lg font-extralight text-muted-foreground leading-relaxed max-w-md mb-10">
+        <p className="text-lg text-ink-soft leading-relaxed max-w-md mb-8">
           {project.tagline}
         </p>
 
@@ -58,7 +58,7 @@ export default async function WorkProjectPage({ params }: PageProps) {
             { label: 'Year', value: project.year },
             ...project.services.map(s => ({ label: '', value: s })),
           ].map((item, i) => (
-            <span key={i} className="text-xs font-extralight text-muted-foreground border border-border/10 px-3 py-1.5 rounded-pill">
+            <span key={i} className="text-xs text-ink-soft border border-line px-3 py-1.5">
               {item.label ? `${item.label}: ${item.value}` : item.value}
             </span>
           ))}
@@ -66,19 +66,19 @@ export default async function WorkProjectPage({ params }: PageProps) {
       </section>
 
       {/* Hero metric */}
-      <section className="py-16 sm:py-20 border-t border-border/10" aria-label="Primary result">
-        <div className="border border-border/10 rounded-card p-8 sm:p-12 bg-panel/50 text-center space-y-3">
-          <p className="text-xs font-extralight text-muted-foreground tracking-widest uppercase">
+      <section className="py-14 sm:py-16 border-t border-line" aria-label="Primary result">
+        <div className="bracket-frame p-6 sm:p-10 bg-surface/50 text-center space-y-2">
+          <p className="text-xs text-ink-faint tracking-widest uppercase">
             Primary result
           </p>
-          <p className="font-display text-7xl sm:text-8xl font-extrabold text-foreground tracking-tighter leading-none">
+          <p className="font-mono text-4xl sm:text-6xl font-bold text-ink tracking-tighter leading-none tabular-nums">
             {project.heroMetric.value}
           </p>
-          <p className="text-sm font-extralight text-muted-foreground">
+          <p className="text-sm text-ink-soft">
             {project.heroMetric.label}
           </p>
           {project.heroMetric.context && (
-            <p className="text-xs font-extralight text-muted-foreground">
+            <p className="text-xs text-ink-faint">
               {project.heroMetric.context}
             </p>
           )}
@@ -86,34 +86,34 @@ export default async function WorkProjectPage({ params }: PageProps) {
       </section>
 
       {/* Overview */}
-      <section className="py-16 sm:py-20 border-t border-border/10" aria-labelledby="overview-heading">
-        <SectionLabel number="01" title="Overview" className="mb-8" />
-        <p className="text-base font-extralight text-foreground leading-relaxed max-w-lg">
+      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="overview-heading">
+        <SectionLabel number="01" title="Overview" className="mb-6" />
+        <p className="text-base text-ink leading-relaxed max-w-lg">
           {project.overview}
         </p>
       </section>
 
       {/* Challenge */}
-      <section className="py-16 sm:py-20 border-t border-border/10" aria-labelledby="challenge-heading">
-        <SectionLabel number="02" title="Challenge" className="mb-8" />
-        <p className="text-base font-extralight text-foreground leading-relaxed max-w-lg">
+      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="challenge-heading">
+        <SectionLabel number="02" title="Challenge" className="mb-6" />
+        <p className="text-base text-ink leading-relaxed max-w-lg">
           {project.challenge}
         </p>
       </section>
 
       {/* Approach */}
-      <section className="py-16 sm:py-20 border-t border-border/10" aria-labelledby="approach-heading">
-        <SectionLabel number="03" title="Approach" className="mb-10" />
+      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="approach-heading">
+        <SectionLabel number="03" title="Approach" className="mb-8" />
         <ol className="space-y-4" aria-label="Approach phases">
           {project.approach.map(phase => (
-            <li key={phase.number} className="border border-border/10 rounded-card p-6 sm:p-8">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-medium text-accent-deep">
+            <li key={phase.number} className="bracket-frame p-5 sm:p-6">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="font-mono text-xs text-blueprint tabular-nums">
                   {phase.number}
                 </span>
-                <h3 className="font-display text-base font-extrabold text-foreground">{phase.title}</h3>
+                <h3 className="font-display text-base font-bold text-ink">{phase.title}</h3>
               </div>
-              <p className="text-sm font-extralight text-muted-foreground leading-relaxed">
+              <p className="text-sm text-ink-soft leading-relaxed">
                 {phase.description}
               </p>
             </li>
@@ -122,17 +122,17 @@ export default async function WorkProjectPage({ params }: PageProps) {
       </section>
 
       {/* Results */}
-      <section className="py-16 sm:py-20 border-t border-border/10" aria-labelledby="results-heading">
-        <SectionLabel number="04" title="Results" className="mb-10" />
+      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="results-heading">
+        <SectionLabel number="04" title="Results" className="mb-8" />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {project.results.map(result => (
-            <div key={result.label} className="border border-border/10 rounded-card p-6 sm:p-8 bg-panel/50 space-y-2">
-              <p className="text-xs font-extralight text-muted-foreground">{result.label}</p>
-              <p className="font-display text-4xl font-extrabold text-foreground tracking-tighter leading-none">
+            <div key={result.label} className="bracket-frame p-5 sm:p-6 bg-surface/50 space-y-1.5">
+              <p className="text-xs text-ink-faint">{result.label}</p>
+              <p className="font-mono text-2xl font-bold text-ink tracking-tighter leading-none tabular-nums">
                 {result.value}
               </p>
               {result.context && (
-                <p className="text-xs font-extralight text-muted-foreground">{result.context}</p>
+                <p className="text-xs text-ink-faint">{result.context}</p>
               )}
             </div>
           ))}
@@ -140,15 +140,15 @@ export default async function WorkProjectPage({ params }: PageProps) {
       </section>
 
       {/* Learnings */}
-      <section className="py-16 sm:py-20 border-t border-border/10" aria-labelledby="learnings-heading">
-        <SectionLabel number="05" title="Learnings" className="mb-10" />
-        <ol className="space-y-6" aria-label="Key learnings">
+      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="learnings-heading">
+        <SectionLabel number="05" title="Learnings" className="mb-8" />
+        <ol className="space-y-5" aria-label="Key learnings">
           {project.learnings.map((learning, i) => (
             <li key={i} className="flex gap-4">
-              <span className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-xs font-medium text-accent-deep shrink-0 mt-0.5">
+              <span className="font-mono text-xs text-blueprint tabular-nums shrink-0 mt-0.5">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <p className="text-sm font-extralight text-foreground leading-relaxed">
+              <p className="text-sm text-ink leading-relaxed">
                 {learning}
               </p>
             </li>
