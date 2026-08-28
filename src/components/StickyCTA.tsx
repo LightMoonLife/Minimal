@@ -24,7 +24,7 @@ export function StickyCTA() {
         </p>
         <Link
           href="/contact"
-          className="shrink-0 bg-signal text-[#14171C] font-medium text-xs px-5 py-2.5 hover:brightness-110 transition-all duration-200"
+          className="shrink-0 bg-signal text-[#EBEDE4] font-medium text-xs px-5 py-2.5 hover:brightness-110 transition-all duration-200"
         >
           Book your free review
         </Link>

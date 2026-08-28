@@ -80,7 +80,7 @@ export function Navigation() {
               <li>
                 <Link
                   href={isHome ? '/#contact' : '/contact'}
-                  className="bg-signal text-[#14171C] text-sm font-medium px-5 py-2 hover:brightness-110 transition-all duration-200"
+                  className="bg-signal text-[#EBEDE4] text-sm font-medium px-5 py-2 hover:brightness-110 transition-all duration-200"
                 >
                   Book your free review
                 </Link>
@@ -140,7 +140,7 @@ export function Navigation() {
           <Link
             href={isHome ? '/#contact' : '/contact'}
             onClick={() => setOpen(false)}
-            className="mt-10 block text-center bg-signal text-[#14171C] font-medium text-sm py-4 hover:brightness-110 transition-all duration-200"
+            className="mt-10 block text-center bg-signal text-[#EBEDE4] font-medium text-sm py-4 hover:brightness-110 transition-all duration-200"
             tabIndex={open ? 0 : -1}
           >
             Book your free review

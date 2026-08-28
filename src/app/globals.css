@@ -2,45 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Paper (light) tokens ── */
+/* ── Light tokens ── */
 :root {
-  --bg: 231 228 219;
-  --surface: 221 217 203;
-  --ink: 20 23 28;
-  --ink-soft: 83 88 95;
-  --ink-faint: 139 141 130;
-  --blueprint: 36 84 222;
-  --signal: 184 121 42;
-  --line: rgba(20,23,28,.16);
-  --line-strong: rgba(20,23,28,.32);
+  --bg: 235 237 228;
+  --surface: 221 223 214;
+  --ink: 17 17 17;
+  --ink-soft: 85 85 85;
+  --ink-faint: 140 140 140;
+  --blueprint: 29 78 216;
+  --signal: 244 63 94;
+  --line: rgba(17,17,17,.16);
+  --line-strong: rgba(17,17,17,.32);
 }
 
-/* ── Cyanotype (dark) tokens — OS preference ── */
+/* ── Dark tokens — OS preference ── */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: 20 23 28;
-    --surface: 30 34 42;
-    --ink: 213 214 210;
-    --ink-soft: 143 147 153;
-    --ink-faint: 100 104 110;
-    --blueprint: 88 135 245;
-    --signal: 218 160 72;
-    --line: rgba(213,214,210,.12);
-    --line-strong: rgba(213,214,210,.24);
+    --bg: 17 17 17;
+    --surface: 30 30 30;
+    --ink: 235 237 228;
+    --ink-soft: 160 162 155;
+    --ink-faint: 110 112 105;
+    --blueprint: 96 145 250;
+    --signal: 251 113 133;
+    --line: rgba(235,237,228,.12);
+    --line-strong: rgba(235,237,228,.24);
   }
 }
 
-/* ── Cyanotype (dark) tokens — manual toggle ── */
+/* ── Dark tokens — manual toggle ── */
 :root[data-theme="dark"] {
-  --bg: 20 23 28;
-  --surface: 30 34 42;
-  --ink: 213 214 210;
-  --ink-soft: 143 147 153;
-  --ink-faint: 100 104 110;
-  --blueprint: 88 135 245;
-  --signal: 218 160 72;
-  --line: rgba(213,214,210,.12);
-  --line-strong: rgba(213,214,210,.24);
+  --bg: 17 17 17;
+  --surface: 30 30 30;
+  --ink: 235 237 228;
+  --ink-soft: 160 162 155;
+  --ink-faint: 110 112 105;
+  --blueprint: 96 145 250;
+  --signal: 251 113 133;
+  --line: rgba(235,237,228,.12);
+  --line-strong: rgba(235,237,228,.24);
 }
 
 html {
