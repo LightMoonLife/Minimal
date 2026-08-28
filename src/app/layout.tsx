@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Familjen_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google'
+import { Ubuntu, Open_Sans, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
@@ -7,14 +7,14 @@ import { PageTransition } from '@/components/PageTransition'
 import { ScrollRuler } from '@/components/ScrollRuler'
 import { SITE_URL } from '@/lib/constants'
 
-const familjenGrotesk = Familjen_Grotesk({
+const ubuntu = Ubuntu({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['500', '600', '700'],
+  weight: ['500', '700'],
   display: 'swap',
 })
 
-const ibmPlexSans = IBM_Plex_Sans({
+const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
   weight: ['400', '500', '600'],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className={`${familjenGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable}`} suppressHydrationWarning>
+    <html lang="en-GB" className={`${ubuntu.variable} ${openSans.variable} ${ibmPlexMono.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
