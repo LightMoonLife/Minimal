@@ -95,7 +95,7 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Button size="lg" asChild>
                   <Link href="/contact">
-                    Apply for a Growth Blueprint Session
+                    Get Guided Growth
                     <svg className="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 3 5 5-5 5"/></svg>
                   </Link>
                 </Button>
