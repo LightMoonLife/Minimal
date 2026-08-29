@@ -11,7 +11,7 @@ const buttonVariants = cva(
         default:
           'bg-signal text-ink hover:bg-ink hover:text-white shadow-[0_0.8rem_1.5rem_rgba(255,153,0,0.26)]',
         secondary:
-          'bg-ink text-white hover:bg-signal hover:text-ink',
+          'bg-white text-ink hover:bg-signal hover:text-ink border border-ink/10',
         outline:
           'border border-line text-ink hover:bg-surface',
         ghost:
