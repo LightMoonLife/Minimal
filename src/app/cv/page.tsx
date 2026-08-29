@@ -5,7 +5,7 @@ import { SectionLabel } from '@/components/SectionLabel'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Digital Growth Architect with 9+ years building revenue systems across B2B digital transformation, platform engineering, and conversion optimisation.',
+    'Digital Marketing Consultant with 9+ years building revenue systems across B2B digital transformation, platform engineering, and conversion optimisation.',
 }
 
 export default function CVPage() {

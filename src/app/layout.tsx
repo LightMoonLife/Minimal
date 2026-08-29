@@ -24,10 +24,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     template: '%s | Jack Paul Brookes',
-    default: 'Jack Paul Brookes | Digital Growth Architect, Suffolk',
+    default: 'Jack Paul Brookes | Digital Marketing Consultant, Suffolk',
   },
   description:
-    'Digital Growth Architect in Suffolk. I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
+    'Digital Marketing Consultant in Suffolk. I build revenue platforms, not just websites. Digital transformation, B2B commerce, and conversion optimisation for businesses ready to scale.',
   openGraph: {
     type: 'website',
     locale: 'en_GB',

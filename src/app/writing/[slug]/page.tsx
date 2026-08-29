@@ -153,7 +153,7 @@ export default async function WritingPostPage({ params }: PageProps) {
           <div>
             <p className="text-sm font-medium text-ink">Jack Paul Brookes</p>
             <p className="text-xs text-ink-soft">
-              Digital Growth Architect &middot; Ipswich, Suffolk
+              Digital Marketing Consultant &middot; Ipswich, Suffolk
             </p>
           </div>
         </div>

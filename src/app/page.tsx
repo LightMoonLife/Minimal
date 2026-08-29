@@ -12,7 +12,7 @@ import { CONTACT } from '@/lib/constants'
 import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'Jack Paul Brookes | Digital Growth Architect, Suffolk',
+  title: 'Jack Paul Brookes | Digital Marketing Consultant, Suffolk',
   description:
     'Architecting the end-to-end B2B customer journey. Platform infrastructure, data pipelines, and conversion mechanics that turn cold traffic into high-value, loyal accounts.',
 }
@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="max-w-content mx-auto">
             <div className="max-w-2xl space-y-6">
               <span className="pill-badge bg-white/10 text-white/80 text-xs backdrop-blur-sm border border-white/10">
-                Digital Growth Architect
+                Digital Marketing Consultant
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight tracking-tighter">
                 Architecting the End-to-End{' '}

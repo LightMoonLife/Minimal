@@ -7,7 +7,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 export const metadata: Metadata = {
   title: 'Writing',
   description:
-    'Practical guides on digital transformation, CRO, B2B revenue systems, and AI for manufacturing businesses. By Jack Paul Brookes, Digital Growth Architect.',
+    'Practical guides on digital transformation, CRO, B2B revenue systems, and AI for manufacturing businesses. By Jack Paul Brookes, Digital Marketing Consultant.',
 }
 
 export default function WritingPage() {
