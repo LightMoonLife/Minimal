@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button'
 export const metadata: Metadata = {
   title: 'Jack Paul Brookes | Digital Marketing Consultant, Suffolk',
   description:
-    'B2B Digital Marketing Consultant for SMBs scaling to $10M+. I fix fragmented marketing setups and build high-yield acquisition funnels that transform seven-figure SMBs into eight-figure industry leaders.',
+    'B2B Digital Marketing Consultant for SMBs scaling to £10M+. I fix fragmented marketing setups and build high-yield acquisition funnels that transform seven-figure SMBs into eight-figure industry leaders.',
 }
 
 const statLinks: Record<string, string> = {
@@ -87,7 +87,7 @@ export default function HomePage() {
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight tracking-tighter">
                 The B2B Digital Marketing Consultant Behind Your Next{' '}
-                <span className="text-signal">$10M in Revenue</span>
+                <span className="text-signal">£10M in Revenue</span>
               </h1>
               <p className="text-lg text-white/65 leading-relaxed max-w-md">
                 I&apos;ve spent 10 years building B2B SaaS platforms in-house — including taking Liquidline&apos;s quoting tool from spreadsheet middleware to a CRM used daily by 50+ BDMs. I bring that same discipline to fixing fragmented marketing systems and building acquisition funnels that hold up under real usage.
