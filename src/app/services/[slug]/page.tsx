@@ -80,7 +80,7 @@ export default async function ServicePage({ params }: PageProps) {
         <div
           className="rounded-section p-6 sm:p-12 text-center space-y-5"
           style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,197,4,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(89,0,255,0.45), transparent 16rem), #0a0a0a',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,153,0,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(255,153,0,0.10), transparent 16rem), #0a0a0a',
             boxShadow: '0 1.8rem 5rem rgba(21,21,21,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
           }}
         >

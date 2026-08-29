@@ -16,7 +16,7 @@ export function Footer() {
       <div
         className="rounded-section overflow-hidden"
         style={{
-          background: 'radial-gradient(circle at 85% 18%, rgba(89, 0, 255, 0.24), transparent 22rem), #050505',
+          background: 'radial-gradient(circle at 85% 18%, rgba(255, 153, 0, 0.18), transparent 22rem), #050505',
         }}
       >
         <div className="max-w-content mx-auto px-6 sm:px-10 py-12 sm:py-16">

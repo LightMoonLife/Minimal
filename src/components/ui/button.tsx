@@ -9,9 +9,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-signal text-ink hover:bg-blueprint hover:text-white shadow-[0_0.8rem_1.5rem_rgba(255,197,4,0.26)]',
+          'bg-signal text-ink hover:bg-ink hover:text-white shadow-[0_0.8rem_1.5rem_rgba(255,153,0,0.26)]',
         secondary:
-          'bg-blueprint text-white hover:bg-white hover:text-ink border border-blueprint hover:border-ink',
+          'bg-ink text-white hover:bg-signal hover:text-ink',
         outline:
           'border border-line text-ink hover:bg-surface',
         ghost:

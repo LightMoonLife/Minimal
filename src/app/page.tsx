@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button'
 export const metadata: Metadata = {
   title: 'Jack Paul Brookes | Digital Growth Architect, Suffolk',
   description:
-    'I turn B2B operations into revenue systems. Digital transformation, platform engineering, and conversion optimisation for manufacturers and equipment suppliers in Suffolk.',
+    'Architecting the end-to-end B2B customer journey. Platform infrastructure, data pipelines, and conversion mechanics that turn cold traffic into high-value, loyal accounts.',
 }
 
 const statLinks: Record<string, string> = {
@@ -74,7 +74,7 @@ export default function HomePage() {
         <div
           className="relative overflow-hidden rounded-section pt-32 sm:pt-40 lg:pt-48 pb-16 sm:pb-20 px-6 sm:px-10"
           style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,197,4,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(89,0,255,0.45), transparent 16rem), #0a0a0a',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,153,0,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(255,153,0,0.10), transparent 16rem), #0a0a0a',
             boxShadow: '0 1.8rem 5rem rgba(21,21,21,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
           }}
         >
@@ -84,16 +84,11 @@ export default function HomePage() {
                 Digital Growth Architect
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight tracking-tighter">
-                Digital growth for
-                <br className="hidden sm:block" />
-                {' '}manufacturers &amp;
-                <br className="hidden sm:block" />
-                {' '}<span className="text-signal italic">equipment suppliers.</span>
+                Architecting the End-to-End{' '}
+                <span className="text-signal">B2B Customer Journey.</span>
               </h1>
               <p className="text-lg text-white/65 leading-relaxed max-w-md">
-                I turn B2B operations into revenue systems — platform engineering,
-                conversion optimisation, and digital transformation that drives
-                measurable commercial outcomes.
+                From initial digital discovery to automated lifetime reorders. I engineering the platform infrastructure, data pipelines, and conversion mechanics required to turn cold B2B traffic into high-value, loyal accounts.
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Button size="lg" asChild>
@@ -262,7 +257,7 @@ export default function HomePage() {
           <div
             className="rounded-section p-8 sm:p-14 text-center space-y-5"
             style={{
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,197,4,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(89,0,255,0.45), transparent 16rem), #0a0a0a',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,153,0,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(255,153,0,0.10), transparent 16rem), #0a0a0a',
               boxShadow: '0 1.8rem 5rem rgba(21,21,21,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
             }}
           >

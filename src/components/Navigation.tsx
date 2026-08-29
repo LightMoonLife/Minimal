@@ -80,7 +80,7 @@ export function Navigation() {
               <li>
                 <Link
                   href={isHome ? '/#contact' : '/contact'}
-                  className="bg-signal text-ink text-sm font-bold px-6 py-2.5 rounded-full hover:bg-blueprint hover:text-white transition-all duration-200 shadow-[0_0.5rem_1rem_rgba(255,197,4,0.2)]"
+                  className="bg-signal text-ink text-sm font-bold px-6 py-2.5 rounded-full hover:bg-ink hover:text-white transition-all duration-200 shadow-[0_0.5rem_1rem_rgba(255,153,0,0.2)]"
                 >
                   Book a Consultation
                 </Link>
@@ -140,7 +140,7 @@ export function Navigation() {
           <Link
             href={isHome ? '/#contact' : '/contact'}
             onClick={() => setOpen(false)}
-            className="mt-10 block text-center bg-signal text-ink font-bold text-sm py-4 rounded-full hover:bg-blueprint hover:text-white transition-all duration-200"
+            className="mt-10 block text-center bg-signal text-ink font-bold text-sm py-4 rounded-full hover:bg-ink hover:text-white transition-all duration-200"
             tabIndex={open ? 0 : -1}
           >
             Book a Consultation
