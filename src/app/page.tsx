@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button'
 export const metadata: Metadata = {
   title: 'Jack Paul Brookes | Digital Marketing Consultant, Suffolk',
   description:
-    'Architecting the end-to-end B2B customer journey. Platform infrastructure, data pipelines, and conversion mechanics that turn cold traffic into high-value, loyal accounts.',
+    'B2B Digital Marketing Consultant for SMBs scaling to $10M+. I fix fragmented marketing setups and build high-yield acquisition funnels that transform seven-figure SMBs into eight-figure industry leaders.',
 }
 
 const statLinks: Record<string, string> = {
@@ -84,16 +84,16 @@ export default function HomePage() {
                 Digital Marketing Consultant
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight tracking-tighter">
-                Architecting the End-to-End{' '}
-                <span className="text-signal">B2B Customer Journey.</span>
+                B2B Digital Marketing Consultant for SMBs{' '}
+                <span className="text-signal">Scaling to $10M+</span>
               </h1>
               <p className="text-lg text-white/65 leading-relaxed max-w-md">
-                From initial digital discovery to automated lifetime reorders. I engineering the platform infrastructure, data pipelines, and conversion mechanics required to turn cold B2B traffic into high-value, loyal accounts.
+                I fix fragmented marketing setups and build high-yield acquisition funnels that transform seven-figure SMBs into eight-figure industry leaders.
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Button size="lg" asChild>
                   <Link href="/contact">
-                    Book a Consultation
+                    Apply for a Growth Blueprint Session
                     <svg className="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 3 5 5-5 5"/></svg>
                   </Link>
                 </Button>
