@@ -36,8 +36,10 @@ export interface ImpactMetric {
 
 export const impactMetrics: ImpactMetric[] = [
   { value: '£2.2M', label: 'Revenue scaled', context: 'from £600K on <2% budget', source: 'Delivered in-house at Liquidline' },
-  { value: '75%', label: 'Faster onboarding', context: '4 weeks down to 1', source: 'Delivered in-house at Liquidline' },
+  { value: '71%', label: 'Quoting time cut', context: '14 min down to 4 min', source: 'Delivered in-house at Liquidline' },
   { value: '4.29%', label: 'Conversion rate', context: 'from 1.72%, +£90K/mo', source: 'Delivered in-house at Liquidline' },
+  { value: '95%', label: 'Monthly active usage', context: 'within 6 months of launch', source: 'Delivered in-house at Liquidline' },
+  { value: '75%', label: 'Faster onboarding', context: '4 weeks down to 1', source: 'Delivered in-house at Liquidline' },
   { value: '61:1', label: 'ROAS', context: '£90 CPA vs £5,500 LTV', source: 'Delivered in-house at Tchibo' },
 ]
 

@@ -19,8 +19,10 @@ export const metadata: Metadata = {
 
 const statLinks: Record<string, string> = {
   '£2.2M': '/work/digital-revenue-engine',
-  '75%': '/work/onboarding-transformation',
+  '71%': '/work/digital-revenue-engine',
   '4.29%': '/work/conversion-architecture',
+  '95%': '/work/digital-revenue-engine',
+  '75%': '/work/onboarding-transformation',
   '61:1': '/work/revenue-channel-build',
 }
 
@@ -29,21 +31,21 @@ const homepageServices = [
     slug: 'digital-transformation',
     heading: 'Modernise operations, unlock revenue',
     description:
-      'Replace disconnected tools and manual processes with connected systems that drive commercial outcomes. Technology audits, platform roadmaps, CRM implementation, and process re-engineering.',
+      'Audit the systems slowing you down, then rebuild the process, CRM, and team structure so growth doesn’t outrun your operations.',
     deliverables: ['Technology audits', 'Process re-engineering', 'CRM & automation', 'Team scaling'],
   },
   {
     slug: 'revenue-platforms',
     heading: 'Build platforms your customers actually use',
     description:
-      'Custom B2B portals, e-commerce builds, and internal tools engineered around how your customers buy — not how B2C shoppers browse.',
+      'I’ve built and shipped a production B2B portal from 0-to-1 — not just advised on one. I know what breaks at 50+ daily users and what ISO 27001 alignment actually requires, because I’ve done both.',
     deliverables: ['B2B portals', 'E-commerce platforms', 'Sales tools', 'API integrations'],
   },
   {
     slug: 'conversion-and-growth',
     heading: 'Turn existing traffic into measurable revenue',
     description:
-      'CRO programmes, SEO, and PPC managed against revenue targets, not vanity metrics. Every recommendation backed by data, every test run to statistical significance.',
+      'CRO, SEO, and PPC aimed at one number: pipeline. Traffic that doesn’t convert isn’t a marketing win.',
     deliverables: ['CRO programmes', 'A/B testing', 'SEO strategy', 'PPC management'],
   },
 ]
@@ -81,14 +83,14 @@ export default function HomePage() {
           <div className="max-w-content mx-auto">
             <div className="max-w-2xl space-y-6">
               <span className="pill-badge bg-white/10 text-white/80 text-xs backdrop-blur-sm border border-white/10">
-                Digital Marketing Consultant
+                B2B Digital Marketing Consultant
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight tracking-tighter">
-                B2B Digital Marketing Consultant for SMBs{' '}
-                <span className="text-signal">Scaling to $10M+</span>
+                The B2B Digital Marketing Consultant Behind Your Next{' '}
+                <span className="text-signal">$10M in Revenue</span>
               </h1>
               <p className="text-lg text-white/65 leading-relaxed max-w-md">
-                I fix fragmented marketing setups and build high-yield acquisition funnels that transform seven-figure SMBs into eight-figure industry leaders.
+                I&apos;ve spent 10 years building B2B SaaS platforms in-house — including taking Liquidline&apos;s quoting tool from spreadsheet middleware to a CRM used daily by 50+ BDMs. I bring that same discipline to fixing fragmented marketing systems and building acquisition funnels that hold up under real usage.
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Button size="lg" asChild>
@@ -112,7 +114,7 @@ export default function HomePage() {
 
         {/* Proof bar */}
         <section className="py-14 sm:py-16" aria-label="Impact metrics">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-10">
             {impactMetrics.map((metric) => (
               <Link
                 key={metric.label}
@@ -223,9 +225,12 @@ export default function HomePage() {
 
             <div className="max-w-lg space-y-4">
               <p className="text-lg text-ink leading-relaxed">
-                Start with the commercial outcome. Work backwards to the platform, the
-                process, and the team that delivers it. Every recommendation is backed
-                by evidence. If I can&apos;t measure the impact, I won&apos;t propose the work.
+                I start with the commercial outcome and work backwards — to the platform,
+                the process, and the team that delivers it. Every recommendation is backed
+                by evidence. If I can&apos;t measure the impact, I don&apos;t propose the work.
+                This isn&apos;t a sales line — I ran 40+ user interviews before writing a
+                single line of the IQ platform spec, and tracked a 95% sprint commitment
+                rate through delivery.
               </p>
             </div>
           </div>
