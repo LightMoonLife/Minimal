@@ -92,7 +92,7 @@ export default function ReviewPage() {
       {/* Hero */}
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-14 sm:pb-16">
         <SectionLabel number="00" title="Free Review" className="mb-6" />
-        <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight max-w-lg mb-5">
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tighter max-w-lg mb-5">
           Find out what&apos;s costing you customers.
         </h1>
         <p className="text-lg text-ink-soft leading-relaxed max-w-md mb-10">
@@ -104,9 +104,9 @@ export default function ReviewPage() {
       </section>
 
       {/* Growth Benchmark */}
-      <section className="py-16 sm:py-24 border-t border-line" aria-labelledby="benchmark-heading">
+      <section className="py-16 sm:py-24" aria-labelledby="benchmark-heading">
         <SectionLabel number="01" title="Benchmark" className="mb-6" />
-        <h2 id="benchmark-heading" className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug tracking-tight max-w-md mb-5">
+        <h2 id="benchmark-heading" className="text-xl lg:text-3xl font-bold text-ink leading-snug tracking-tighter max-w-md mb-5">
           See how you compare to your industry.
         </h2>
         <p className="text-base text-ink-soft leading-relaxed max-w-md mb-10">
@@ -118,9 +118,9 @@ export default function ReviewPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-16 sm:py-24 border-t border-line" aria-labelledby="pricing-heading">
+      <section className="py-16 sm:py-24" aria-labelledby="pricing-heading">
         <SectionLabel number="02" title="Packages" className="mb-6" />
-        <h2 className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug tracking-tight max-w-md mb-5">
+        <h2 className="text-xl lg:text-3xl font-bold text-ink leading-snug tracking-tighter max-w-md mb-5">
           Go deeper with a full growth programme.
         </h2>
         <p className="text-base text-ink-soft leading-relaxed max-w-md mb-10">
@@ -133,9 +133,9 @@ export default function ReviewPage() {
           {plans.map(plan => (
             <div
               key={plan.name}
-              className={`bracket-frame p-5 sm:p-6 flex flex-col ${
+              className={`soft-card p-5 sm:p-6 flex flex-col ${
                 plan.highlight
-                  ? 'border-signal bg-signal/5'
+                  ? 'ring-2 ring-signal'
                   : ''
               }`}
             >

@@ -4,12 +4,10 @@ interface SectionLabelProps {
   className?: string
 }
 
-export function SectionLabel({ number, title, className = '' }: SectionLabelProps) {
+export function SectionLabel({ title, className = '' }: SectionLabelProps) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <span className="text-xs text-blueprint font-mono tabular-nums">{number}</span>
-      <span className="w-6 h-px bg-blueprint" aria-hidden="true" />
-      <span className="text-xs tracking-widest text-ink-faint uppercase font-medium font-mono">
+    <div className={`${className}`}>
+      <span className="pill-badge bg-signal/15 text-ink text-xs font-medium tracking-wide">
         {title}
       </span>
     </div>

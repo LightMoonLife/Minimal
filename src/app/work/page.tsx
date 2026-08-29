@@ -17,7 +17,7 @@ export default function WorkPage() {
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-14 sm:pb-16">
         <Breadcrumb items={[{ name: 'Work', href: '/work' }]} />
         <SectionLabel number="00" title="Work" className="mb-6" />
-        <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight max-w-md">
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tighter max-w-md">
           Case studies in digital transformation, platform engineering, and revenue growth.
         </h1>
       </section>
@@ -28,12 +28,12 @@ export default function WorkPage() {
             <Link
               key={project.slug}
               href={`/work/${project.slug}`}
-              className="group block bracket-frame p-5 sm:p-6 bg-surface/50 hover:bg-surface transition-colors duration-200"
+              className="group block soft-card p-5 sm:p-6"
             >
               <p className="text-xs text-ink-faint mb-2">
                 {project.deliveryTag} &middot; {project.year}
               </p>
-              <h2 className="font-display text-lg font-bold text-ink mb-1.5 group-hover:text-blueprint transition-colors duration-200">
+              <h2 className="text-lg font-bold text-ink mb-1.5 group-hover:text-blueprint transition-colors duration-200">
                 {project.title}
               </h2>
               <p className="text-sm text-ink-soft leading-relaxed mb-5 line-clamp-2">
@@ -51,7 +51,7 @@ export default function WorkPage() {
                 {project.services.map(s => (
                   <span
                     key={s}
-                    className="text-xs text-ink-faint border border-line px-3 py-1"
+                    className="pill-badge bg-ink/5 text-ink-faint text-xs"
                   >
                     {s}
                   </span>

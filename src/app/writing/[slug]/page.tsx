@@ -52,7 +52,7 @@ export default async function WritingPostPage({ params }: PageProps) {
         ]} />
 
         <div className="flex flex-wrap items-center gap-3 mb-5">
-          <span className="text-xs text-blueprint border border-blueprint/30 px-3 py-1 bg-blueprint/10">
+          <span className="pill-badge bg-blueprint/10 text-blueprint text-xs border border-blueprint/20">
             {post.category}
           </span>
           <span className="text-xs text-ink-faint">
@@ -67,14 +67,14 @@ export default async function WritingPostPage({ params }: PageProps) {
           </span>
         </div>
 
-        <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink leading-tight tracking-tight max-w-lg">
+        <h1 className="text-3xl sm:text-4xl font-bold text-ink leading-tight tracking-tighter max-w-lg">
           {post.title}
         </h1>
       </section>
 
       {/* TL;DR */}
-      <section className="pb-10 border-b border-line" aria-label="Summary">
-        <div className="bracket-frame p-5 sm:p-6 bg-blueprint/5">
+      <section className="pb-10" aria-label="Summary">
+        <div className="soft-card p-5 sm:p-6 bg-blueprint/5">
           <p className="text-xs text-blueprint tracking-widest uppercase font-medium mb-2">
             TL;DR
           </p>
@@ -88,12 +88,12 @@ export default async function WritingPostPage({ params }: PageProps) {
       {post.sections.map((section, i) => (
         <section
           key={i}
-          className="py-10 border-b border-line"
+          className="py-10"
           aria-labelledby={`section-${i}`}
         >
           <h2
             id={`section-${i}`}
-            className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug mb-5 max-w-lg"
+            className="text-xl lg:text-3xl font-bold text-ink leading-snug mb-5 max-w-lg"
           >
             {section.heading}
           </h2>
@@ -112,12 +112,12 @@ export default async function WritingPostPage({ params }: PageProps) {
 
       {/* FAQ */}
       {post.faq.length > 0 && (
-        <section className="py-14 border-b border-line" aria-labelledby="faq-heading">
+        <section className="py-14" aria-labelledby="faq-heading">
           <SectionLabel number="" title="FAQ" className="mb-8" />
-          <dl className="space-y-6">
+          <dl className="space-y-4">
             {post.faq.map((item, i) => (
-              <div key={i} className="bracket-frame p-5">
-                <dt className="font-display text-sm font-bold text-ink mb-1.5 max-w-lg">
+              <div key={i} className="soft-card p-5">
+                <dt className="text-sm font-bold text-ink mb-1.5 max-w-lg">
                   {item.question}
                 </dt>
                 <dd className="text-sm text-ink-soft leading-relaxed max-w-lg">
@@ -130,9 +130,9 @@ export default async function WritingPostPage({ params }: PageProps) {
       )}
 
       {/* CTA */}
-      <section className="py-14 border-b border-line" aria-label="Contact">
-        <div className="bracket-frame p-5 sm:p-6 bg-surface/50">
-          <p className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug max-w-lg mb-5">
+      <section className="py-14" aria-label="Contact">
+        <div className="soft-card p-5 sm:p-6">
+          <p className="text-xl lg:text-3xl font-bold text-ink leading-snug max-w-lg mb-5">
             {post.cta}
           </p>
           <Button asChild>
@@ -145,9 +145,9 @@ export default async function WritingPostPage({ params }: PageProps) {
       </section>
 
       {/* Author */}
-      <section className="py-10 border-b border-line" aria-label="Author">
+      <section className="py-10" aria-label="Author">
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 bg-blueprint/20 flex items-center justify-center text-sm font-medium text-blueprint">
+          <div className="w-10 h-10 rounded-full bg-blueprint/20 flex items-center justify-center text-sm font-medium text-blueprint">
             JP
           </div>
           <div>

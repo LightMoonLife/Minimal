@@ -15,7 +15,7 @@ export default function CVPage() {
       {/* What I do */}
       <section className="pt-24 sm:pt-32 lg:pt-40 pb-14 sm:pb-16">
         <SectionLabel number="00" title="About" className="mb-6" />
-        <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight mb-5">
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tighter mb-5">
           Jack Paul Brookes
         </h1>
         <p className="text-lg text-ink leading-relaxed max-w-lg">
@@ -24,18 +24,20 @@ export default function CVPage() {
           engineering, SEO, and the commercial strategy that ties it all together.
           I work directly with a small number of clients at a time.
         </p>
-        <div className="mt-6 inline-flex items-center gap-2 text-xs text-blueprint border border-blueprint/30 px-4 py-2 bg-blueprint/10">
-          <span className="w-2 h-2 bg-blueprint" />
-          Currently taking on new clients
+        <div className="mt-6">
+          <span className="pill-badge bg-blueprint/10 text-blueprint text-xs font-medium border border-blueprint/20">
+            <span className="w-2 h-2 rounded-full bg-blueprint mr-2" />
+            Currently taking on new clients
+          </span>
         </div>
       </section>
 
       {/* Results summary */}
-      <section className="py-14 sm:py-16 border-t border-line" aria-label="Results summary">
+      <section className="py-14 sm:py-16" aria-label="Results summary">
         <SectionLabel number="01" title="Results" className="mb-8" />
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
           {impactMetrics.map((metric) => (
-            <div key={metric.label} className="bracket-frame p-5 bg-surface/50 space-y-1.5">
+            <div key={metric.label} className="soft-card p-5 space-y-1.5">
               <p className="font-mono text-2xl sm:text-3xl font-bold text-ink tracking-tighter leading-none tabular-nums">
                 {metric.value}
               </p>
@@ -47,13 +49,13 @@ export default function CVPage() {
       </section>
 
       {/* Experience */}
-      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="experience-heading">
+      <section className="py-14 sm:py-16" aria-labelledby="experience-heading">
         <SectionLabel number="02" title="Experience" className="mb-8" />
         <ol className="space-y-4" aria-label="Work experience">
           {experience.map((role, i) => (
-            <li key={i} className="bracket-frame p-5 sm:p-6">
+            <li key={i} className="soft-card p-5 sm:p-6">
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-                <h2 className="font-display text-base font-bold text-ink">{role.title}</h2>
+                <h2 className="text-base font-bold text-ink">{role.title}</h2>
                 <span className="text-xs text-blueprint font-medium">{role.company}</span>
               </div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-0.5 mb-3">
@@ -78,12 +80,12 @@ export default function CVPage() {
         </ol>
       </section>
 
-      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="education-heading">
+      <section className="py-14 sm:py-16" aria-labelledby="education-heading">
         <SectionLabel number="03" title="Education" className="mb-8" />
         <ol className="space-y-4" aria-label="Education history">
           {education.map((ed, i) => (
-            <li key={i} className="bracket-frame p-5 sm:p-6">
-              <h2 className="font-display text-base font-bold text-ink mb-1">{ed.degree}</h2>
+            <li key={i} className="soft-card p-5 sm:p-6">
+              <h2 className="text-base font-bold text-ink mb-1">{ed.degree}</h2>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-0.5 mb-2">
                 <span className="text-xs text-blueprint font-medium">{ed.institution}</span>
                 <span className="text-xs text-ink-soft">{ed.year}</span>
@@ -96,17 +98,17 @@ export default function CVPage() {
         </ol>
       </section>
 
-      <section className="py-14 sm:py-16 border-t border-line" aria-labelledby="skills-heading">
+      <section className="py-14 sm:py-16" aria-labelledby="skills-heading">
         <SectionLabel number="04" title="Skills &amp; Tools" className="mb-8" />
         <div className="space-y-4">
           {skills.map(group => (
-            <div key={group.label} className="bracket-frame p-5 sm:p-6">
+            <div key={group.label} className="soft-card p-5 sm:p-6">
               <p className="text-xs text-ink-faint font-medium uppercase tracking-widest mb-3">
                 {group.label}
               </p>
               <div className="flex flex-wrap gap-2">
                 {group.items.map(item => (
-                  <span key={item} className="text-sm text-ink border border-line px-3 py-1.5">
+                  <span key={item} className="pill-badge bg-ink/5 text-ink text-sm">
                     {item}
                   </span>
                 ))}

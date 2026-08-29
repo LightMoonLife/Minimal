@@ -68,41 +68,55 @@ export default function HomePage() {
       <JsonLd data={personJsonLd()} />
       <JsonLd data={professionalServiceJsonLd()} />
       <StickyCTA />
-      <div className="max-w-content mx-auto px-6 sm:px-10">
 
-        {/* Hero */}
-        <section className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-24" aria-label="Introduction">
-          <div className="max-w-2xl space-y-6">
-            <div>
-              <SectionLabel number="00" title="Welcome" className="mb-5" />
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-ink leading-tight tracking-tight">
+      {/* ── Dark Hero ── */}
+      <section className="-mt-16 px-3 pb-6" aria-label="Introduction">
+        <div
+          className="relative overflow-hidden rounded-section pt-32 sm:pt-40 lg:pt-48 pb-16 sm:pb-20 px-6 sm:px-10"
+          style={{
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,197,4,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(89,0,255,0.45), transparent 16rem), #0a0a0a',
+            boxShadow: '0 1.8rem 5rem rgba(21,21,21,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
+          }}
+        >
+          <div className="max-w-content mx-auto">
+            <div className="max-w-2xl space-y-6">
+              <span className="pill-badge bg-white/10 text-white/80 text-xs backdrop-blur-sm border border-white/10">
+                Digital Growth Architect
+              </span>
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight tracking-tighter">
                 Digital growth for
                 <br className="hidden sm:block" />
                 {' '}manufacturers &amp;
                 <br className="hidden sm:block" />
-                {' '}<span className="text-blueprint italic">equipment suppliers.</span>
+                {' '}<span className="text-signal italic">equipment suppliers.</span>
               </h1>
-            </div>
-
-            <p className="text-lg text-ink-soft leading-relaxed max-w-md">
-              I turn B2B operations into revenue systems — platform engineering,
-              conversion optimisation, and digital transformation that drives
-              measurable commercial outcomes.
-            </p>
-
-            <div>
-              <Button size="lg" asChild>
-                <Link href="/contact">
-                  Book your free review
-                  <span aria-hidden="true" className="ml-1">&rarr;</span>
-                </Link>
-              </Button>
+              <p className="text-lg text-white/65 leading-relaxed max-w-md">
+                I turn B2B operations into revenue systems — platform engineering,
+                conversion optimisation, and digital transformation that drives
+                measurable commercial outcomes.
+              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Button size="lg" asChild>
+                  <Link href="/contact">
+                    Book a Consultation
+                    <svg className="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 3 5 5-5 5"/></svg>
+                  </Link>
+                </Button>
+                <Button variant="secondary" asChild>
+                  <Link href="/review">
+                    Free review tool
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <div className="max-w-content mx-auto px-6 sm:px-10">
 
         {/* Proof bar */}
-        <section className="py-14 sm:py-16 border-t border-b border-line" aria-label="Impact metrics">
+        <section className="py-14 sm:py-16" aria-label="Impact metrics">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
             {impactMetrics.map((metric) => (
               <Link
@@ -130,20 +144,20 @@ export default function HomePage() {
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
-                className="group block bracket-frame bg-surface/50 hover:bg-surface transition-colors duration-200"
+                className="group block soft-card overflow-hidden"
               >
                 <Image
                   src={`/work/${project.slug}.webp`}
                   alt={project.title}
                   width={1200}
                   height={680}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="p-5 sm:p-6">
                   <p className="text-xs text-ink-faint mb-2">
                     {project.deliveryTag} &middot; {project.year}
                   </p>
-                  <h3 className="font-display text-lg font-bold text-ink mb-1.5 group-hover:text-blueprint transition-colors duration-200">
+                  <h3 className="text-lg font-bold text-ink mb-1.5 group-hover:text-blueprint transition-colors duration-200">
                     {project.title}
                   </h3>
                   <p className="text-sm text-ink-soft leading-relaxed mb-5 line-clamp-2">
@@ -173,8 +187,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Services — 3 outcome-focused cards */}
-        <section className="py-16 sm:py-24 border-t border-line" aria-labelledby="services-heading">
+        {/* Services */}
+        <section className="py-16 sm:py-24" aria-labelledby="services-heading">
           <SectionLabel number="02" title="What I Do" className="mb-10" />
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -182,12 +196,12 @@ export default function HomePage() {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group bracket-frame p-5 sm:p-6 hover:bg-surface/50 transition-colors duration-200"
+                className="group soft-card p-5 sm:p-6"
               >
                 <span className="font-mono text-xs text-blueprint tabular-nums mb-3 block">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-display text-base font-bold text-ink mb-2 group-hover:text-blueprint transition-colors duration-200">
+                <h3 className="text-base font-bold text-ink mb-2 group-hover:text-blueprint transition-colors duration-200">
                   {service.heading}
                 </h3>
                 <p className="text-sm text-ink-soft leading-relaxed mb-4">
@@ -195,7 +209,7 @@ export default function HomePage() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {service.deliverables.map((d) => (
-                    <span key={d} className="text-xs text-ink-faint border border-line px-3 py-1">
+                    <span key={d} className="pill-badge bg-ink/5 text-ink-faint text-xs">
                       {d}
                     </span>
                   ))}
@@ -206,7 +220,7 @@ export default function HomePage() {
         </section>
 
         {/* How I Work */}
-        <section id="process" className="py-16 sm:py-24 border-t border-line" aria-labelledby="approach-heading">
+        <section id="process" className="py-16 sm:py-24" aria-labelledby="approach-heading">
           <SectionLabel number="03" title="How I Work" className="mb-10" />
 
           <div className="space-y-10">
@@ -223,14 +237,14 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-16 sm:py-24 border-t border-line" aria-label="Client testimonials">
+        <section className="py-16 sm:py-24" aria-label="Client testimonials">
           <SectionLabel number="04" title="What Clients Say" className="mb-10" />
 
           <div className="space-y-5">
             {visibleTestimonials.map((t, i) => (
-              <div key={i} className="bracket-frame p-6 sm:p-10 bg-surface/50">
+              <div key={i} className="soft-card p-6 sm:p-10">
                 <blockquote className="space-y-5">
-                  <p className="font-display text-xl lg:text-2xl font-bold text-ink leading-snug tracking-tight max-w-lg italic">
+                  <p className="text-xl lg:text-2xl font-bold text-ink leading-snug tracking-tight max-w-lg italic">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <footer className="space-y-1">
@@ -245,12 +259,18 @@ export default function HomePage() {
 
         {/* CTA */}
         <section id="contact" className="py-20 sm:py-28" aria-labelledby="contact-heading">
-          <div className="bracket-frame p-6 sm:p-12 bg-surface/50 text-center space-y-5">
+          <div
+            className="rounded-section p-8 sm:p-14 text-center space-y-5"
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.06), transparent 38%), radial-gradient(circle at 88% 6%, rgba(255,197,4,0.15), transparent 12rem), radial-gradient(circle at 12% 95%, rgba(89,0,255,0.45), transparent 16rem), #0a0a0a',
+              boxShadow: '0 1.8rem 5rem rgba(21,21,21,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
+            }}
+          >
             <SectionLabel number="05" title="Next Step" className="justify-center mb-3" />
-            <h2 className="font-display text-xl lg:text-3xl font-bold text-ink leading-snug tracking-tight max-w-md mx-auto">
+            <h2 className="text-xl lg:text-3xl font-bold text-white leading-snug tracking-tight max-w-md mx-auto">
               Find out what&apos;s costing you revenue.
             </h2>
-            <p className="text-base text-ink-soft leading-relaxed max-w-md mx-auto">
+            <p className="text-base text-white/65 leading-relaxed max-w-md mx-auto">
               Book a free 30-minute growth review. I&apos;ll look at your website,
               your systems, and your numbers, and tell you exactly where the
               biggest opportunities are.
@@ -258,21 +278,21 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Button size="lg" asChild>
                 <Link href="/contact">
-                  Book your free review
-                  <span aria-hidden="true" className="ml-1">&rarr;</span>
+                  Book a Consultation
+                  <svg className="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 3 5 5-5 5"/></svg>
                 </Link>
               </Button>
-              <Button variant="outline" asChild>
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 hover:text-white" asChild>
                 <Link href="/review">
                   Try the free benchmark tool
                 </Link>
               </Button>
             </div>
-            <p className="text-xs text-ink-faint">
+            <p className="text-xs text-white/40">
               or email directly:{' '}
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="text-ink hover:text-blueprint transition-colors duration-200"
+                className="text-white/60 hover:text-white transition-colors duration-200"
               >
                 {CONTACT.email}
               </a>
@@ -282,9 +302,9 @@ export default function HomePage() {
 
         {/* Writing — compact */}
         <section className="pb-16 sm:pb-24" aria-labelledby="writing-heading">
-          <div className="border-t border-line pt-10">
+          <div className="pt-10">
             <div className="flex items-center justify-between mb-5">
-              <p className="text-xs tracking-widest text-ink-faint uppercase font-medium font-mono">Latest writing</p>
+              <SectionLabel number="" title="Latest Writing" />
               <Link
                 href="/writing"
                 className="text-xs text-ink-soft hover:text-ink transition-colors duration-200"
@@ -292,12 +312,12 @@ export default function HomePage() {
                 All posts &rarr;
               </Link>
             </div>
-            <div className="divide-y divide-line">
+            <div className="space-y-3">
               {posts.slice(0, 3).map((post) => (
                 <Link
                   key={post.slug}
                   href={`/writing/${post.slug}`}
-                  className="group flex items-center justify-between gap-4 py-3.5"
+                  className="group flex items-center justify-between gap-4 soft-card p-4"
                 >
                   <span className="text-sm text-ink group-hover:text-blueprint transition-colors duration-200 leading-snug truncate">
                     {post.title}

@@ -42,27 +42,27 @@ export function ProcessSteps() {
       <div className="hidden sm:flex items-stretch gap-0">
         {steps.map((step, i) => (
           <div key={step.number} className="flex items-stretch" role="listitem">
-            <div className="bracket-frame p-5 w-48 flex flex-col">
-              <span className="font-mono text-xs text-blueprint tabular-nums block mb-2">
+            <div className="soft-card p-5 w-48 flex flex-col">
+              <span className="text-xs text-blueprint font-mono tabular-nums block mb-2">
                 {step.number}
               </span>
-              <p className="font-display text-base font-bold text-ink mb-1">{step.label}</p>
+              <p className="text-base font-bold text-ink mb-1">{step.label}</p>
               <p className="text-xs text-ink-soft leading-relaxed">{step.description}</p>
             </div>
             {i < steps.length - 1 && (
               <svg
-                className="shrink-0 self-center"
-                width="40"
+                className="shrink-0 self-center mx-1"
+                width="32"
                 height="2"
-                viewBox="0 0 40 2"
+                viewBox="0 0 32 2"
                 aria-hidden="true"
               >
                 <line
-                  x1="0" y1="1" x2="40" y2="1"
+                  x1="0" y1="1" x2="32" y2="1"
                   stroke="rgb(var(--blueprint))"
                   strokeWidth="1.5"
-                  strokeDasharray="40"
-                  strokeDashoffset={visible ? '0' : '40'}
+                  strokeDasharray="32"
+                  strokeDashoffset={visible ? '0' : '32'}
                   style={{
                     transition: visible
                       ? `stroke-dashoffset 1s ease ${i * 0.2 + 0.3}s`
@@ -76,30 +76,30 @@ export function ProcessSteps() {
       </div>
 
       {/* Mobile: vertical stack */}
-      <div className="sm:hidden space-y-0">
+      <div className="sm:hidden space-y-3">
         {steps.map((step, i) => (
           <div key={step.number} role="listitem">
-            <div className="bracket-frame p-5">
-              <span className="font-mono text-xs text-blueprint tabular-nums block mb-2">
+            <div className="soft-card p-5">
+              <span className="text-xs text-blueprint font-mono tabular-nums block mb-2">
                 {step.number}
               </span>
-              <p className="font-display text-base font-bold text-ink mb-1">{step.label}</p>
+              <p className="text-base font-bold text-ink mb-1">{step.label}</p>
               <p className="text-xs text-ink-soft leading-relaxed">{step.description}</p>
             </div>
             {i < steps.length - 1 && (
               <svg
-                className="mx-auto block"
+                className="mx-auto block my-1"
                 width="2"
-                height="24"
-                viewBox="0 0 2 24"
+                height="16"
+                viewBox="0 0 2 16"
                 aria-hidden="true"
               >
                 <line
-                  x1="1" y1="0" x2="1" y2="24"
+                  x1="1" y1="0" x2="1" y2="16"
                   stroke="rgb(var(--blueprint))"
                   strokeWidth="1.5"
-                  strokeDasharray="24"
-                  strokeDashoffset={visible ? '0' : '24'}
+                  strokeDasharray="16"
+                  strokeDashoffset={visible ? '0' : '16'}
                   style={{
                     transition: visible
                       ? `stroke-dashoffset 0.6s ease ${i * 0.15 + 0.2}s`

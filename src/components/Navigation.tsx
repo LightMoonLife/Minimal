@@ -52,7 +52,7 @@ export function Navigation() {
         <div className="max-w-content mx-auto px-6 sm:px-10 h-16 flex items-center">
           <Link
             href="/"
-            className="font-display text-base font-bold tracking-tight text-ink hover:text-blueprint transition-colors duration-200 shrink-0"
+            className="text-base font-bold tracking-tight text-ink hover:text-blueprint transition-colors duration-200 shrink-0"
             aria-label="Home"
           >
             Jack Brookes
@@ -66,7 +66,7 @@ export function Navigation() {
                   <li key={link.href}>
                     <Link
                       href={resolved}
-                      className={`text-sm font-mono transition-colors duration-200 hover:text-ink ${
+                      className={`text-sm transition-colors duration-200 hover:text-ink ${
                         pathname.startsWith(link.href)
                           ? 'text-ink font-medium'
                           : 'text-ink-soft'
@@ -80,9 +80,9 @@ export function Navigation() {
               <li>
                 <Link
                   href={isHome ? '/#contact' : '/contact'}
-                  className="bg-signal text-[#EBEDE4] text-sm font-medium px-5 py-2 hover:brightness-110 transition-all duration-200"
+                  className="bg-signal text-ink text-sm font-bold px-6 py-2.5 rounded-full hover:bg-blueprint hover:text-white transition-all duration-200 shadow-[0_0.5rem_1rem_rgba(255,197,4,0.2)]"
                 >
-                  Book your free review
+                  Book a Consultation
                 </Link>
               </li>
             </ul>
@@ -94,7 +94,7 @@ export function Navigation() {
           <div className="flex items-center gap-5 sm:hidden ml-auto">
             <ThemeToggle />
             <button
-              className="text-sm font-mono text-ink-soft hover:text-ink transition-colors duration-200"
+              className="text-sm text-ink-soft hover:text-ink transition-colors duration-200"
               onClick={() => setOpen(v => !v)}
               aria-label={open ? 'Close navigation' : 'Open navigation'}
               aria-expanded={open}
@@ -127,7 +127,7 @@ export function Navigation() {
                     className="group block"
                     tabIndex={open ? 0 : -1}
                   >
-                    <span className={`font-display text-5xl font-bold tracking-tight transition-colors duration-200 ${
+                    <span className={`text-4xl font-bold tracking-tight transition-colors duration-200 ${
                       pathname === link.href ? 'text-blueprint' : 'text-ink/70 group-hover:text-ink'
                     }`}>
                       {link.label}
@@ -140,10 +140,10 @@ export function Navigation() {
           <Link
             href={isHome ? '/#contact' : '/contact'}
             onClick={() => setOpen(false)}
-            className="mt-10 block text-center bg-signal text-[#EBEDE4] font-medium text-sm py-4 hover:brightness-110 transition-all duration-200"
+            className="mt-10 block text-center bg-signal text-ink font-bold text-sm py-4 rounded-full hover:bg-blueprint hover:text-white transition-all duration-200"
             tabIndex={open ? 0 : -1}
           >
-            Book your free review
+            Book a Consultation
           </Link>
         </nav>
       </div>

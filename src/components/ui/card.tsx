@@ -8,7 +8,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      'bracket-frame bg-surface transition-colors duration-200',
+      'soft-card transition-all duration-200',
       className
     )}
     {...props}
@@ -35,7 +35,7 @@ const CardTitle = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      'font-display text-lg font-bold text-ink leading-snug tracking-tight',
+      'text-lg font-bold text-ink leading-snug tracking-tight',
       className
     )}
     {...props}

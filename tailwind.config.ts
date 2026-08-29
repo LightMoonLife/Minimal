@@ -16,7 +16,6 @@ const config: Config = {
         line: 'var(--line)',
         'line-strong': 'var(--line-strong)',
 
-        // Backward-compatible aliases for pages not yet migrated
         background: 'rgb(var(--bg) / <alpha-value>)',
         foreground: 'rgb(var(--ink) / <alpha-value>)',
         muted: 'rgb(var(--surface) / <alpha-value>)',
@@ -28,15 +27,25 @@ const config: Config = {
         card: 'rgb(var(--surface) / <alpha-value>)',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
       },
       maxWidth: {
         content: '1100px',
       },
+      borderRadius: {
+        card: 'var(--radius-card)',
+        section: 'var(--radius-lg)',
+      },
       letterSpacing: {
+        tight: '-0.04em',
+        tighter: '-0.055em',
         widest: '0.16em',
+      },
+      boxShadow: {
+        card: '0 0.8rem 2.2rem rgba(21, 21, 21, 0.08)',
+        'card-hover': '0 1.35rem 3.4rem rgba(21, 21, 21, 0.14)',
+        hero: '0 1.8rem 5rem rgba(21, 21, 21, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(.22, 1, .36, 1)',
