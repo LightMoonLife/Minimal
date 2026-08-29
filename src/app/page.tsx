@@ -99,11 +99,9 @@ export default function HomePage() {
                     <svg className="w-4 h-4 ml-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 3 5 5-5 5"/></svg>
                   </Link>
                 </Button>
-                <Button variant="secondary" asChild>
-                  <Link href="/review">
-                    Free review tool
-                  </Link>
-                </Button>
+                <Link href="/review" className="text-signal underline hover:text-signal/80 transition-colors duration-200 text-sm font-medium">
+                  Try my free tools
+                </Link>
               </div>
             </div>
           </div>
